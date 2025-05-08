@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { CotswoldsGallery } from '../components/CotswoldsGallery';
 
 const AIRBNB_LINK = "https://www.airbnb.ca/rooms/1414129878809697902?check_in=2025-08-20&check_out=2025-08-24&guests=10&adults=10&s=67&unique_share_id=3bb66e80-1ca0-4eb8-9866-40b102c76e50";
 
@@ -540,21 +541,10 @@ export default function LuxuryRetreat() {
         <section id="gallery" style={styles.altSection}>
           <div style={styles.sectionContainer}>
             <h2 style={styles.heading}>Gallery</h2>
-            <div style={styles.gallery}>
-              {photos.map((photo, index) => (
-                <div key={index} style={styles.galleryItem}>
-                  <div style={styles.imageWrapper}>
-                    <Image 
-                      src={photo}
-                      alt={`Cotswolds Estate - Image ${index + 1}`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
+            <CotswoldsGallery 
+              photos={photos}
+              propertyName="Cotswolds Estate"
+            />
           </div>
         </section>
 
