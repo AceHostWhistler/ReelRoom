@@ -372,12 +372,16 @@
     grid-template-columns: 1fr; /* Single column for galleries on small screens */
   }
 
-  :global(h1) { font-size: 2.5em; }
-  :global(h2) { font-size: 1.8em; }
+  .headingMobile {
+    font-size: 2.5em;
+  }
+  .subheadingMobile {
+    font-size: 1.8em;
+  }
 }
 
 @media (max-width: 480px) {
-  body {
+  .bodyText {
     font-size: 15px; /* Adjust base font size for very small screens */
   }
   .sectionContainer {
