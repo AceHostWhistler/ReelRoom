@@ -7,6 +7,9 @@ interface CotswoldsGalleryProps {
   propertyName: string;
 }
 
+// Small blank base64 image to use as placeholder
+const PLACEHOLDER_IMAGE = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+
 export const CotswoldsGallery = ({
   photos,
   propertyName,
@@ -15,6 +18,24 @@ export const CotswoldsGallery = ({
   const [loading, setLoading] = useState<boolean[]>(photos.map(() => true));
   const [scrollPosition, setScrollPosition] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [imagesPreloaded, setImagesPreloaded] = useState(false);
+
+  // Preload first batch of images
+  useEffect(() => {
+    const preloadCount = Math.min(10, photos.length);
+    Promise.all(
+      photos.slice(0, preloadCount).map((src) => {
+        return new Promise((resolve) => {
+          const img = document.createElement('img');
+          img.src = src;
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+        });
+      })
+    ).then(() => {
+      setImagesPreloaded(true);
+    });
+  }, [photos]);
 
   const handlePhotoClick = (index: number) => {
     setSelectedPhotoIndex(index);
@@ -47,7 +68,7 @@ export const CotswoldsGallery = ({
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
-        left: -1000,
+        left: -1000, // Changed from -300 to -1000 to skip roughly 3 photos
         behavior: 'smooth'
       });
     }
@@ -56,7 +77,7 @@ export const CotswoldsGallery = ({
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
-        left: 1000,
+        left: 1000, // Changed from 300 to 1000 to skip roughly 3 photos
         behavior: 'smooth'
       });
     }
@@ -79,9 +100,13 @@ export const CotswoldsGallery = ({
     
     // Force rerender with a timeout to retry loading the image
     setTimeout(() => {
-      const newLoadingState = [...loading];
-      newLoadingState[index] = true; 
-      setLoading(newLoadingState);
+      // Add cache-busting parameter to force reload
+      const imgEl = document.querySelector(`#gallery-img-${index}`) as HTMLImageElement;
+      if (imgEl && imgEl.src) {
+        const src = new URL(imgEl.src);
+        src.searchParams.set('t', Date.now().toString());
+        imgEl.src = src.toString();
+      }
     }, 1000);
   };
 
@@ -104,6 +129,23 @@ export const CotswoldsGallery = ({
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [selectedPhotoIndex]);
+
+  // Preload neighboring images when in fullscreen mode
+  useEffect(() => {
+    if (selectedPhotoIndex !== null) {
+      const preloadIndices = [
+        (selectedPhotoIndex + 1) % photos.length,
+        (selectedPhotoIndex + 2) % photos.length,
+        (selectedPhotoIndex - 1 + photos.length) % photos.length,
+        (selectedPhotoIndex - 2 + photos.length) % photos.length
+      ];
+      
+      preloadIndices.forEach(index => {
+        const img = document.createElement('img');
+        img.src = photos[index];
+      });
+    }
+  }, [selectedPhotoIndex, photos]);
 
   return (
     <>
@@ -136,18 +178,25 @@ export const CotswoldsGallery = ({
               key={index} 
               className="flex-shrink-0 relative w-80 h-64 mr-4 rounded-lg overflow-hidden cursor-pointer shadow-md"
               onClick={() => handlePhotoClick(index)}
+              style={{ 
+                background: '#f0f0f0', // Light background for loading state
+              }}
             >
               <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-10" 
                    style={{ display: loading[index] ? 'flex' : 'none' }}>
                 <div className="w-10 h-10 border-4 border-t-green-600 border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin"></div>
               </div>
               <Image
+                id={`gallery-img-${index}`}
                 src={photo}
                 alt={`${propertyName} ${index + 1}`}
                 fill
                 sizes="(max-width: 768px) 100vw, 320px"
                 className="object-cover transition-transform duration-300 hover:scale-105"
-                priority={index < 5}
+                priority={index < 8} // Prioritize loading for first 8 images
+                quality={85} // Good quality with reasonable file size
+                placeholder="blur"
+                blurDataURL={PLACEHOLDER_IMAGE}
                 onLoadingComplete={() => handleImageLoad(index)}
                 onError={() => handleImageError(index)}
               />
@@ -198,8 +247,11 @@ export const CotswoldsGallery = ({
                 alt={`${propertyName} full view ${selectedPhotoIndex + 1}`}
                 fill
                 priority
+                quality={90} // Higher quality for fullscreen view
                 className="object-contain z-20"
                 sizes="100vw"
+                placeholder="blur"
+                blurDataURL={PLACEHOLDER_IMAGE}
                 onLoadingComplete={() => {
                   // Hide loader when image is loaded
                   const loaderEl = document.querySelector('.fullscreen-loader');
@@ -210,7 +262,9 @@ export const CotswoldsGallery = ({
                   // Try to reload the image
                   const target = e.target as HTMLImageElement;
                   if (target) {
-                    target.src = photos[selectedPhotoIndex] + '?reload=' + new Date().getTime();
+                    const url = new URL(target.src);
+                    url.searchParams.set('t', Date.now().toString());
+                    target.src = url.toString();
                   }
                 }}
               />
