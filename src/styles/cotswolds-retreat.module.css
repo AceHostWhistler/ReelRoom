@@ -372,8 +372,8 @@
     grid-template-columns: 1fr; /* Single column for galleries on small screens */
   }
 
-  h1 { font-size: 2.5em; }
-  h2 { font-size: 1.8em; }
+  :global(h1) { font-size: 2.5em; }
+  :global(h2) { font-size: 1.8em; }
 }
 
 @media (max-width: 480px) {
