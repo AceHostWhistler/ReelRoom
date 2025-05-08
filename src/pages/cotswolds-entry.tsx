@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export default function CotswoldsEntry() {
   const router = useRouter();
@@ -18,7 +19,7 @@ export default function CotswoldsEntry() {
       <h1>Redirecting to Cotswolds Estate...</h1>
       <p>If you are not automatically redirected, please click the link below:</p>
       <p>
-        <a 
+        <Link 
           href="/luxury-retreat" 
           style={{ 
             color: '#2c5e1a', 
@@ -32,7 +33,7 @@ export default function CotswoldsEntry() {
           }}
         >
           Go to Cotswolds Estate
-        </a>
+        </Link>
       </p>
     </div>
   );
