@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="250" height="50" viewBox="0 0 250 50" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .logo-text { fill: #2c5e1a; }
+    .logo-icon { fill: #2c5e1a; }
+  </style>
+  <g>
+    <!-- Simple house icon -->
+    <polygon class="logo-icon" points="15,5 5,12 5,25 25,25 25,12" />
+    
+    <!-- Simple tree icon -->
+    <polygon class="logo-icon" points="35,5 30,15 40,15" />
+    <rect class="logo-icon" x="34" y="15" width="2" height="10" />
+    
+    <!-- Text -->
+    <text x="50" y="18" class="logo-text" font-family="Arial, sans-serif" font-weight="bold" font-size="14">COTSWOLDS</text>
+    <text x="50" y="35" class="logo-text" font-family="Arial, sans-serif" font-weight="bold" font-size="14">LUXURY RETREAT</text>
+  </g>
+</svg> 

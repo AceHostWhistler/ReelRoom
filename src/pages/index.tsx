@@ -91,6 +91,80 @@ export default function Home() {
         </div>
       </main>
       
+      {/* Cotswolds Estate Quick Access */}
+      <div style={{
+        position: 'fixed',
+        bottom: '20px',
+        right: '20px',
+        zIndex: 9999,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10px',
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        padding: '15px',
+        borderRadius: '8px',
+        boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
+        backdropFilter: 'blur(5px)',
+        border: '1px solid #2c5e1a',
+      }}>
+        <p style={{ 
+          margin: '0 0 10px 0',
+          fontWeight: 'bold',
+          fontSize: '14px',
+          textAlign: 'center'
+        }}>
+          Cotswolds Estate Access
+        </p>
+        
+        <Link 
+          href="/luxury-retreat"
+          style={{
+            backgroundColor: '#2c5e1a',
+            color: 'white',
+            padding: '8px 15px',
+            borderRadius: '4px',
+            textDecoration: 'none',
+            fontSize: '14px',
+            fontWeight: 'bold',
+            textAlign: 'center'
+          }}
+        >
+          Cotswolds Estate
+        </Link>
+        
+        <Link 
+          href="/cotswolds-blog"
+          style={{
+            backgroundColor: '#5a9c48',
+            color: 'white',
+            padding: '8px 15px',
+            borderRadius: '4px',
+            textDecoration: 'none',
+            fontSize: '14px',
+            fontWeight: 'bold',
+            textAlign: 'center'
+          }}
+        >
+          Cotswolds Blog
+        </Link>
+        
+        <Link 
+          href="/diagnostics"
+          style={{
+            backgroundColor: '#333',
+            color: 'white',
+            padding: '8px 15px',
+            borderRadius: '4px',
+            textDecoration: 'none',
+            fontSize: '14px',
+            fontWeight: 'bold',
+            textAlign: 'center'
+          }}
+        >
+          Diagnostics
+        </Link>
+      </div>
+      
       <AceCascadeFooter />
     </div>
   );
