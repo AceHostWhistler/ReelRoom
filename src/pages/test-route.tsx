@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function TestRoute() {
   return (
@@ -6,9 +7,9 @@ export default function TestRoute() {
       <h1>Test Page is Working!</h1>
       <p>If you can see this, custom routes are working.</p>
       <p>
-        <a href="/luxury-retreat" style={{ color: 'green', fontWeight: 'bold' }}>
+        <Link href="/luxury-retreat" style={{ color: 'green', fontWeight: 'bold' }}>
           Go to Cotswolds Estate
-        </a>
+        </Link>
       </p>
     </div>
   );
