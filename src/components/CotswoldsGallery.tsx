@@ -47,7 +47,7 @@ export const CotswoldsGallery = ({
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
-        left: -300,
+        left: -1000,
         behavior: 'smooth'
       });
     }
@@ -56,7 +56,7 @@ export const CotswoldsGallery = ({
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
-        left: 300,
+        left: 1000,
         behavior: 'smooth'
       });
     }
@@ -66,6 +66,23 @@ export const CotswoldsGallery = ({
     const newLoadingState = [...loading];
     newLoadingState[index] = false;
     setLoading(newLoadingState);
+  };
+
+  const handleImageError = (index: number) => {
+    // Log error and try to reload the image
+    console.error(`Failed to load image at index ${index}`);
+    
+    // Keep the loading spinner visible
+    const newLoadingState = [...loading];
+    newLoadingState[index] = true;
+    setLoading(newLoadingState);
+    
+    // Force rerender with a timeout to retry loading the image
+    setTimeout(() => {
+      const newLoadingState = [...loading];
+      newLoadingState[index] = true; 
+      setLoading(newLoadingState);
+    }, 1000);
   };
 
   // Handle keyboard navigation
@@ -130,7 +147,9 @@ export const CotswoldsGallery = ({
                 fill
                 sizes="(max-width: 768px) 100vw, 320px"
                 className="object-cover transition-transform duration-300 hover:scale-105"
+                priority={index < 5}
                 onLoadingComplete={() => handleImageLoad(index)}
+                onError={() => handleImageError(index)}
               />
               <div className="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded">
                 {index + 1}/{photos.length}
@@ -185,6 +204,14 @@ export const CotswoldsGallery = ({
                   // Hide loader when image is loaded
                   const loaderEl = document.querySelector('.fullscreen-loader');
                   if (loaderEl) loaderEl.classList.add('hidden');
+                }}
+                onError={(e) => {
+                  console.error("Failed to load fullscreen image");
+                  // Try to reload the image
+                  const target = e.target as HTMLImageElement;
+                  if (target) {
+                    target.src = photos[selectedPhotoIndex] + '?reload=' + new Date().getTime();
+                  }
                 }}
               />
             </div>

@@ -770,6 +770,9 @@ export default function LuxuryRetreat() {
           <div style={styles.footerColumn}>
             <h3 style={styles.footerHeading}>Contact</h3>
             <p style={styles.footerText}>For inquiries and special requests, please contact us via Airbnb.</p>
+            <p style={styles.footerText}>
+              Looking to list and market your home with us? Visit <a href="https://acehost.ca" target="_blank" rel="noopener noreferrer" style={{color: 'white', textDecoration: 'underline'}}>acehost.ca</a> for more details on our competitive rates and unique marketing approach for your luxury Airbnb Vacation Home in the Cotswolds or the UK.
+            </p>
           </div>
           
           <div style={styles.footerColumn}>
