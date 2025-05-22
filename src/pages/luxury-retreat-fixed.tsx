@@ -365,7 +365,7 @@ export default function LuxuryRetreatFixed() {
             <li style={styles.navItem}><a href="#gallery" style={styles.navLink}>Gallery</a></li>
             <li style={styles.navItem}><a href="#amenities" style={styles.navLink}>Amenities</a></li>
             <li style={styles.navItem}><a href="#bedrooms" style={styles.navLink}>Bedrooms</a></li>
-            <li style={styles.navItem}><a href="/cotswolds-blog" style={styles.navLink}>Blog</a></li>
+            <li style={styles.navItem}><Link href="/cotswolds-blog" style={styles.navLink}>Blog</Link></li>
             <li style={styles.navItem}>
               <a href={AIRBNB_LINK} style={styles.bookNowNav} target="_blank" rel="noopener noreferrer">
                 Book Now
