@@ -17,6 +17,12 @@ const nextConfig = {
       },
     ];
   },
+  
+  // No redirects needed - always show the luxury retreat page
+  async redirects() {
+    return [];
+  },
+  
   // Performance optimizations
   compress: true, // Enable gzip compression
   poweredByHeader: false, // Remove the `X-Powered-By` header
@@ -118,12 +124,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'acehost.ca',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'acehost.vercel.app',
+        hostname: 'cotswoldsvacation.com',
         pathname: '/**',
       },
       {
