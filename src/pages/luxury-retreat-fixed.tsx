@@ -345,8 +345,8 @@ export default function LuxuryRetreatFixed() {
   return (
     <div style={styles.container}>
       <Head>
-        <title>Cotswolds Estate | Luxury Retreat</title>
-        <meta name="description" content="An exclusive luxury estate nestled in the heart of the Cotswolds. Experience tranquility and elegance in a stunning countryside setting." />
+        <title>Cotswolds Luxury Retreat | Tennis & Wellness</title>
+        <meta name="description" content="An exclusive luxury estate nestled in the heart of the Cotswolds. Experience tranquility and elegance in a stunning countryside setting just minutes from Soho Farm House." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
         {/* Preconnect to improve loading performance */}
@@ -397,8 +397,8 @@ export default function LuxuryRetreatFixed() {
         <section id="home" style={styles.hero}>
           <div style={styles.heroOverlay}></div>
           <div style={styles.heroContent}>
-            <h1 style={styles.heroTitle}>Cotswolds Estate</h1>
-            <p style={styles.heroSubtitle}>An Exclusive Haven of Tranquility in the English Countryside</p>
+            <h1 style={styles.heroTitle}>Cotswolds Luxury Retreat | Tennis & Wellness</h1>
+            <p style={styles.heroSubtitle}>Premium Cotswolds Estate with Private Tennis Court & Wellness Facilities, Just 3 Minutes from Soho Farm House</p>
             <a 
               href={AIRBNB_LINK} 
               style={styles.bookNowHero} 
