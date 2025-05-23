@@ -11,8 +11,25 @@ export const FallbackGallery: React.FC<FallbackGalleryProps> = ({ photos, proper
   const [loading, setLoading] = useState<boolean[]>(photos.map(() => true));
   const [failed, setFailed] = useState<boolean[]>(photos.map(() => false));
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const isMountedRef = useRef(false);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    // Initial check
+    checkIfMobile();
+    
+    // Add event listener for window resize
+    window.addEventListener('resize', checkIfMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
 
   // Special handling for the first 6 photos - just mark them as loaded immediately
   useEffect(() => {
@@ -78,10 +95,15 @@ export const FallbackGallery: React.FC<FallbackGalleryProps> = ({ photos, proper
     }
   };
 
+  // Modified scroll functions for mobile
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
+      const scrollAmount = isMobile ? 
+        scrollContainerRef.current.offsetWidth : // Exactly one image width on mobile
+        1000; // Default desktop value
+      
       scrollContainerRef.current.scrollBy({
-        left: -1000,
+        left: -scrollAmount,
         behavior: 'smooth'
       });
     }
@@ -89,8 +111,12 @@ export const FallbackGallery: React.FC<FallbackGalleryProps> = ({ photos, proper
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
+      const scrollAmount = isMobile ? 
+        scrollContainerRef.current.offsetWidth : // Exactly one image width on mobile
+        1000; // Default desktop value
+      
       scrollContainerRef.current.scrollBy({
-        left: 1000,
+        left: scrollAmount,
         behavior: 'smooth'
       });
     }
@@ -163,7 +189,7 @@ export const FallbackGallery: React.FC<FallbackGalleryProps> = ({ photos, proper
       {/* Gallery container */}
       <div
         ref={scrollContainerRef}
-        className="flex overflow-x-auto pb-6 hide-scrollbar"
+        className="flex overflow-x-auto pb-6 hide-scrollbar snap-x snap-mandatory"
         style={{
           scrollBehavior: 'smooth',
           msOverflowStyle: 'none',
@@ -174,9 +200,16 @@ export const FallbackGallery: React.FC<FallbackGalleryProps> = ({ photos, proper
         {photos.map((photo, index) => (
           <div
             key={index}
-            className="flex-shrink-0 relative w-80 h-64 mr-4 rounded-lg overflow-hidden cursor-pointer shadow-md"
+            className={`flex-shrink-0 relative mr-4 rounded-lg overflow-hidden cursor-pointer shadow-md snap-center ${
+              isMobile ? 'w-full' : 'w-80'
+            }`}
+            style={{ 
+              height: '64rem',
+              maxHeight: isMobile ? '40vh' : '64rem',
+              width: isMobile ? 'calc(100% - 16px)' : '20rem',
+              background: '#f0f0f0' 
+            }}
             onClick={() => handlePhotoClick(index)}
-            style={{ background: '#f0f0f0' }}
           >
             {/* Loading spinner - don't show for first 6 */}
             {loading[index] && !failed[index] && index >= 6 && (
@@ -292,6 +325,15 @@ export const FallbackGallery: React.FC<FallbackGalleryProps> = ({ photos, proper
       <style jsx>{`
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
+        }
+        .snap-x {
+          scroll-snap-type: x mandatory;
+        }
+        .snap-center {
+          scroll-snap-align: center;
+        }
+        .snap-mandatory {
+          scroll-snap-stop: always;
         }
       `}</style>
     </div>

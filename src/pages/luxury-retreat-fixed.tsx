@@ -124,21 +124,36 @@ const styles = {
     width: '90%',
     maxWidth: '1400px',
     margin: '0 auto',
+    flexDirection: 'row' as 'row',
+    flexWrap: 'nowrap' as 'nowrap',
+    '@media (max-width: 768px)': {
+      width: '95%',
+    },
   },
   logoContainer: {
     display: 'flex',
     alignItems: 'center',
+    '@media (max-width: 768px)': {
+      flexShrink: 0,
+    },
   },
   logoImage: {
     height: '50px',
     width: 'auto',
     marginRight: '15px',
+    '@media (max-width: 768px)': {
+      height: '40px',
+    },
   },
   logoText: {
     fontSize: '1.8em',
     fontWeight: 'bold',
     color: colors.darkGreen,
     marginLeft: '10px',
+    '@media (max-width: 768px)': {
+      fontSize: '1.3em',
+      marginLeft: '5px',
+    },
   },
   navList: {
     listStyle: 'none',
@@ -146,6 +161,9 @@ const styles = {
     margin: 0,
     display: 'flex',
     alignItems: 'center',
+    '@media (max-width: 768px)': {
+      display: 'none',
+    },
   },
   navItem: {
     marginLeft: '25px',
@@ -312,13 +330,52 @@ const styles = {
     position: 'relative' as 'relative',
     width: '100%',
     height: '100%',
-  }
+  },
+  mobileNavButton: {
+    display: 'none',
+    backgroundColor: 'transparent',
+    border: 'none',
+    fontSize: '1.5em',
+    color: colors.darkGreen,
+    cursor: 'pointer',
+    '@media (max-width: 768px)': {
+      display: 'block',
+    },
+  },
+  mobileNavList: {
+    display: 'none',
+    '@media (max-width: 768px)': {
+      display: 'flex',
+      position: 'absolute',
+      top: '70px',
+      left: 0,
+      right: 0,
+      backgroundColor: 'white',
+      flexDirection: 'column',
+      padding: '10px 0',
+      boxShadow: '0 5px 10px rgba(0,0,0,0.1)',
+      zIndex: 1000,
+    },
+  },
 };
 
 export default function LuxuryRetreatFixed() {
   const [imagesReady, setImagesReady] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    // Initial check
+    checkMobile();
+    
+    // Add listener for resize
+    window.addEventListener('resize', checkMobile);
+
     // Preconnect to external domains for faster loading
     const links = [
       { rel: 'preconnect', href: 'https://www.airbnb.ca' },
@@ -340,6 +397,11 @@ export default function LuxuryRetreatFixed() {
     // Preload logo
     const logoImgElement = document.createElement('img');
     logoImgElement.src = '/photos/642ca4501534ebc86d037617_AceHost-Whistler-Logo.png';
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
   
   return (
@@ -347,7 +409,7 @@ export default function LuxuryRetreatFixed() {
       <Head>
         <title>Cotswolds Luxury Retreat | Tennis & Wellness</title>
         <meta name="description" content="An exclusive luxury estate nestled in the heart of the Cotswolds. Experience tranquility and elegance in a stunning countryside setting just minutes from Soho Farm House." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         
         {/* Preconnect to improve loading performance */}
         <link rel="preconnect" href="https://cotswoldsvacation.com" />
@@ -370,13 +432,22 @@ export default function LuxuryRetreatFixed() {
                   alt="Cotswolds Estate Logo" 
                   width={120} 
                   height={40} 
-                  style={{ height: 'auto', width: '120px' }}
+                  style={{ 
+                    height: 'auto', 
+                    width: isMobile ? '80px' : '120px'
+                  }}
                   priority
                 />
-                <span style={styles.logoText}>Cotswolds Estate</span>
+                <span style={{
+                  ...styles.logoText,
+                  fontSize: isMobile ? '1.3em' : '1.8em',
+                  marginLeft: isMobile ? '5px' : '10px'
+                }}>Cotswolds Estate</span>
               </div>
             </Link>
           </div>
+          
+          {/* Desktop Navigation */}
           <ul style={styles.navList}>
             <li style={styles.navItem}><a href="#home" style={styles.navLink}>Home</a></li>
             <li style={styles.navItem}><a href="#about" style={styles.navLink}>About</a></li>
@@ -390,7 +461,49 @@ export default function LuxuryRetreatFixed() {
               </a>
             </li>
           </ul>
+          
+          {/* Mobile Nav Button */}
+          <button 
+            style={{
+              display: isMobile ? 'block' : 'none',
+              backgroundColor: 'transparent',
+              border: 'none',
+              fontSize: '1.5em',
+              color: colors.darkGreen,
+              cursor: 'pointer'
+            }}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            ☰
+          </button>
         </nav>
+        
+        {/* Mobile Navigation Menu */}
+        {mobileMenuOpen && (
+          <div style={{
+            position: 'absolute',
+            top: '70px',
+            left: 0,
+            right: 0,
+            backgroundColor: 'white',
+            zIndex: 1000,
+            boxShadow: '0 5px 10px rgba(0,0,0,0.1)',
+          }}>
+            <ul style={{ listStyle: 'none', padding: '10px 0', margin: 0 }}>
+              <li style={{ padding: '10px 20px' }}><a href="#home" style={{ ...styles.navLink, display: 'block' }}>Home</a></li>
+              <li style={{ padding: '10px 20px' }}><a href="#about" style={{ ...styles.navLink, display: 'block' }}>About</a></li>
+              <li style={{ padding: '10px 20px' }}><a href="#gallery" style={{ ...styles.navLink, display: 'block' }}>Gallery</a></li>
+              <li style={{ padding: '10px 20px' }}><a href="#amenities" style={{ ...styles.navLink, display: 'block' }}>Amenities</a></li>
+              <li style={{ padding: '10px 20px' }}><a href="#bedrooms" style={{ ...styles.navLink, display: 'block' }}>Bedrooms</a></li>
+              <li style={{ padding: '10px 20px' }}><Link href="/cotswolds-blog" style={{ ...styles.navLink, display: 'block' }}>Blog</Link></li>
+              <li style={{ padding: '10px 20px' }}>
+                <a href={AIRBNB_LINK} style={{ ...styles.bookNowNav, display: 'inline-block' }} target="_blank" rel="noopener noreferrer">
+                  Book Now
+                </a>
+              </li>
+            </ul>
+          </div>
+        )}
       </header>
 
       <main>
