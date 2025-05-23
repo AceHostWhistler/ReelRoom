@@ -225,7 +225,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
         width: '95%',
         margin: '0 auto',
         position: 'relative',
-        zIndex: 9997,
+        zIndex: 100000, // Extremely high z-index
       }}>
         <div style={{
           display: 'flex',
@@ -265,7 +265,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
             fontSize: '2rem',
             cursor: 'pointer',
             padding: '8px 12px',
-            zIndex: 9997,
+            zIndex: 100001, // Ensure button is above all content
             position: 'relative',
           }}
           onClick={toggleMobileMenu}
@@ -284,7 +284,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
           right: 0,
           bottom: 0,
           backgroundColor: 'rgba(0,0,0,0.5)',
-          zIndex: 9998,
+          zIndex: 100002, // Extremely high z-index
           opacity: mobileMenuOpen ? 1 : 0,
           visibility: mobileMenuOpen ? 'visible' : 'hidden',
           transition: 'opacity 0.3s ease',
@@ -302,7 +302,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
         maxWidth: '300px',
         backgroundColor: colors.white,
         boxShadow: '-5px 0 15px rgba(0,0,0,0.1)',
-        zIndex: 9999,
+        zIndex: 100003, // Higher than overlay and all other elements
         transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(100%)',
         transition: 'transform 0.3s ease-in-out',
         display: 'flex',
@@ -326,6 +326,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               fontSize: '1.8rem',
               cursor: 'pointer',
               padding: '0 5px',
+              zIndex: 100004, // Highest z-index
             }}
             onClick={closeMobileMenu}
             aria-label="Close menu"

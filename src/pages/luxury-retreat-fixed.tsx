@@ -481,7 +481,7 @@ export default function LuxuryRetreatFixed() {
 
       <header style={{
         ...styles.header,
-        zIndex: 9000 // Extremely high z-index for the header
+        zIndex: 99999 // Extremely high z-index for the header, but less than mobile menu
       }}>
         <MobileMenu activePage="home" />
       </header>
