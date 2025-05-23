@@ -224,6 +224,8 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
         alignItems: 'center',
         width: '95%',
         margin: '0 auto',
+        position: 'relative',
+        zIndex: 9997,
       }}>
         <div style={{
           display: 'flex',
@@ -263,7 +265,8 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
             fontSize: '2rem',
             cursor: 'pointer',
             padding: '8px 12px',
-            zIndex: 100,
+            zIndex: 9997,
+            position: 'relative',
           }}
           onClick={toggleMobileMenu}
           aria-label="Open menu"
@@ -281,7 +284,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
           right: 0,
           bottom: 0,
           backgroundColor: 'rgba(0,0,0,0.5)',
-          zIndex: 1999,
+          zIndex: 9998,
           opacity: mobileMenuOpen ? 1 : 0,
           visibility: mobileMenuOpen ? 'visible' : 'hidden',
           transition: 'opacity 0.3s ease',
@@ -299,7 +302,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
         maxWidth: '300px',
         backgroundColor: colors.white,
         boxShadow: '-5px 0 15px rgba(0,0,0,0.1)',
-        zIndex: 2000,
+        zIndex: 9999,
         transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(100%)',
         transition: 'transform 0.3s ease-in-out',
         display: 'flex',

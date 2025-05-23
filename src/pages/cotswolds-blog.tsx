@@ -278,7 +278,10 @@ export default function CotswoldsBlog() {
         <link rel="dns-prefetch" href="https://cotswoldsvacation.com" />
       </Head>
 
-      <header style={styles.header}>
+      <header style={{
+        ...styles.header,
+        zIndex: 9000 // Extremely high z-index for the header
+      }}>
         <MobileMenu activePage="blog" />
       </header>
 

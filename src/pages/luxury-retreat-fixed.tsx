@@ -479,7 +479,10 @@ export default function LuxuryRetreatFixed() {
         <link rel="preload" href="/photos/642ca4501534ebc86d037617_AceHost-Whistler-Logo.png" as="image" />
       </Head>
 
-      <header style={styles.header}>
+      <header style={{
+        ...styles.header,
+        zIndex: 9000 // Extremely high z-index for the header
+      }}>
         <MobileMenu activePage="home" />
       </header>
 
