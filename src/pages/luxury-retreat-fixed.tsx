@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -183,6 +183,7 @@ const styles = {
     cursor: 'pointer',
     display: 'none',
     padding: '5px',
+    zIndex: 100,
     '@media (max-width: 768px)': {
       display: 'block',
     },
@@ -201,6 +202,7 @@ const styles = {
     transition: 'transform 0.3s ease-in-out',
     overflowY: 'auto' as 'auto',
     padding: '20px 0',
+    display: 'block', // Always keep in DOM
   },
   mobileMenuOpen: {
     transform: 'translateX(0)',
@@ -435,10 +437,13 @@ export default function LuxuryRetreatFixed() {
   const [imagesReady, setImagesReady] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-
-  // Toggle mobile menu
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  
+  // Toggle mobile menu with improved handling
+  const toggleMobileMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setMobileMenuOpen(prev => !prev);
     
     // Prevent body scrolling when menu is open
     if (!mobileMenuOpen) {
@@ -454,10 +459,21 @@ export default function LuxuryRetreatFixed() {
     document.body.style.overflow = '';
   };
   
+  // Handle clicking links in the menu
+  const handleMenuLinkClick = () => {
+    closeMobileMenu();
+  };
+  
   useEffect(() => {
     // Check if mobile
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      const isMobileView = window.innerWidth <= 768;
+      setIsMobile(isMobileView);
+      
+      // Reset menu state when switching between mobile and desktop
+      if (!isMobileView && mobileMenuOpen) {
+        closeMobileMenu();
+      }
     };
     
     // Initial check
@@ -465,7 +481,22 @@ export default function LuxuryRetreatFixed() {
     
     // Add listener for resize
     window.addEventListener('resize', checkMobile);
-
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+  
+  // Reset body overflow when component unmounts
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
+  
+  useEffect(() => {
     // Preconnect to external domains for faster loading
     const links = [
       { rel: 'preconnect', href: 'https://www.airbnb.ca' },
@@ -490,7 +521,6 @@ export default function LuxuryRetreatFixed() {
     
     // Cleanup
     return () => {
-      window.removeEventListener('resize', checkMobile);
       // Reset body overflow when component unmounts
       document.body.style.overflow = '';
     };
@@ -546,7 +576,16 @@ export default function LuxuryRetreatFixed() {
               </div>
               
               <button 
-                style={styles.hamburgerButton}
+                ref={menuButtonRef}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: colors.darkGreen,
+                  fontSize: '2rem',
+                  cursor: 'pointer',
+                  padding: '8px 12px',
+                  zIndex: 100,
+                }}
                 onClick={toggleMobileMenu}
                 aria-label="Open menu"
               >
@@ -593,103 +632,117 @@ export default function LuxuryRetreatFixed() {
           </nav>
         )}
         
-        {/* Mobile Menu Overlay */}
-        {isMobile && (
-          <div 
-            style={{
-              ...styles.overlay,
-              ...(mobileMenuOpen ? styles.overlayVisible : {})
-            }}
-            onClick={closeMobileMenu}
-          ></div>
-        )}
+        {/* Mobile Menu - Always render but conditionally show */}
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            zIndex: 1999,
+            opacity: mobileMenuOpen ? 1 : 0,
+            visibility: mobileMenuOpen ? 'visible' : 'hidden',
+            transition: 'opacity 0.3s ease',
+          }}
+          onClick={closeMobileMenu}
+        ></div>
         
-        {/* Mobile Menu */}
-        {isMobile && (
-          <div style={{
-            ...styles.mobileMenu,
-            ...(mobileMenuOpen ? styles.mobileMenuOpen : {})
-          }}>
-            <div style={styles.mobileMenuHeader}>
-              <h3 style={{ margin: 0, fontSize: '1.2rem' }}>Menu</h3>
-              <button 
-                style={styles.mobileMenuCloseButton}
-                onClick={closeMobileMenu}
-                aria-label="Close menu"
-              >
-                ×
-              </button>
-            </div>
-            
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-              <li style={styles.mobileNavItem}>
-                <a 
-                  href="#home" 
-                  style={styles.navLink}
-                  onClick={closeMobileMenu}
-                >
-                  Home
-                </a>
-              </li>
-              <li style={styles.mobileNavItem}>
-                <a 
-                  href="#about" 
-                  style={styles.navLink}
-                  onClick={closeMobileMenu}
-                >
-                  About
-                </a>
-              </li>
-              <li style={styles.mobileNavItem}>
-                <a 
-                  href="#gallery" 
-                  style={styles.navLink}
-                  onClick={closeMobileMenu}
-                >
-                  Gallery
-                </a>
-              </li>
-              <li style={styles.mobileNavItem}>
-                <a 
-                  href="#amenities" 
-                  style={styles.navLink}
-                  onClick={closeMobileMenu}
-                >
-                  Amenities
-                </a>
-              </li>
-              <li style={styles.mobileNavItem}>
-                <a 
-                  href="#bedrooms" 
-                  style={styles.navLink}
-                  onClick={closeMobileMenu}
-                >
-                  Bedrooms
-                </a>
-              </li>
-              <li style={styles.mobileNavItem}>
-                <Link 
-                  href="/cotswolds-blog" 
-                  style={styles.navLink}
-                  onClick={closeMobileMenu}
-                >
-                  Blog
-                </Link>
-              </li>
-              <li style={{...styles.mobileNavItem, marginTop: '15px'}}>
-                <a 
-                  href={AIRBNB_LINK} 
-                  style={{...styles.bookNowNav, display: 'inline-block'}} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  onClick={closeMobileMenu}
-                >
-                  Book Now
-                </a>
-              </li>
-            </ul>
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          width: '80%',
+          maxWidth: '300px',
+          backgroundColor: colors.white,
+          boxShadow: '-5px 0 15px rgba(0,0,0,0.1)',
+          zIndex: 2000,
+          transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(100%)',
+          transition: 'transform 0.3s ease-in-out',
+          overflowY: 'auto',
+          padding: '20px 0',
+        }}>
+          <div style={styles.mobileMenuHeader}>
+            <h3 style={{ margin: 0, fontSize: '1.2rem' }}>Menu</h3>
+            <button 
+              style={styles.mobileMenuCloseButton}
+              onClick={closeMobileMenu}
+              aria-label="Close menu"
+            >
+              ×
+            </button>
           </div>
-        )}
+          
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+            <li style={styles.mobileNavItem}>
+              <a 
+                href="#home" 
+                style={styles.navLink}
+                onClick={handleMenuLinkClick}
+              >
+                Home
+              </a>
+            </li>
+            <li style={styles.mobileNavItem}>
+              <a 
+                href="#about" 
+                style={styles.navLink}
+                onClick={handleMenuLinkClick}
+              >
+                About
+              </a>
+            </li>
+            <li style={styles.mobileNavItem}>
+              <a 
+                href="#gallery" 
+                style={styles.navLink}
+                onClick={handleMenuLinkClick}
+              >
+                Gallery
+              </a>
+            </li>
+            <li style={styles.mobileNavItem}>
+              <a 
+                href="#amenities" 
+                style={styles.navLink}
+                onClick={handleMenuLinkClick}
+              >
+                Amenities
+              </a>
+            </li>
+            <li style={styles.mobileNavItem}>
+              <a 
+                href="#bedrooms" 
+                style={styles.navLink}
+                onClick={handleMenuLinkClick}
+              >
+                Bedrooms
+              </a>
+            </li>
+            <li style={styles.mobileNavItem}>
+              <Link 
+                href="/cotswolds-blog" 
+                style={styles.navLink}
+                onClick={handleMenuLinkClick}
+              >
+                Blog
+              </Link>
+            </li>
+            <li style={{...styles.mobileNavItem, marginTop: '15px'}}>
+              <a 
+                href={AIRBNB_LINK} 
+                style={{...styles.bookNowNav, display: 'inline-block'}} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={handleMenuLinkClick}
+              >
+                Book Now
+              </a>
+            </li>
+          </ul>
+        </div>
       </header>
 
       <main>
