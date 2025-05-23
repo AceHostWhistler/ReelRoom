@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
+import MobileMenu from '../../components/MobileMenu';
 
 // Color scheme to match luxury-retreat-fixed.tsx
 const colors = {
@@ -265,39 +266,7 @@ export default function SeasonalActivitiesBlog() {
       </Head>
 
       <header style={styles.header}>
-        <nav style={styles.nav}>
-          <div style={styles.logoContainer}>
-            <Link href="/" passHref>
-              <div style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', cursor: 'pointer' }}>
-                <img 
-                  src="/photos/642ca4501534ebc86d037617_AceHost-Whistler-Logo.png" 
-                  alt="Cotswolds Estate Logo" 
-                  width={120} 
-                  height={40} 
-                  style={{ height: 'auto', width: '120px' }}
-                />
-                <span style={styles.logoText}>Cotswolds Estate</span>
-              </div>
-            </Link>
-          </div>
-          <ul style={styles.navList}>
-            <li style={styles.navItem}><Link href="/#home" style={styles.navLink}>Home</Link></li>
-            <li style={styles.navItem}><Link href="/#about" style={styles.navLink}>About</Link></li>
-            <li style={styles.navItem}><Link href="/#gallery" style={styles.navLink}>Gallery</Link></li>
-            <li style={styles.navItem}><Link href="/#amenities" style={styles.navLink}>Amenities</Link></li>
-            <li style={styles.navItem}><Link href="/#bedrooms" style={styles.navLink}>Bedrooms</Link></li>
-            <li style={styles.navItem}>
-              <Link href="/cotswolds-blog" style={styles.navLink}>
-                Blog
-              </Link>
-            </li>
-            <li style={styles.navItem}>
-              <a href={AIRBNB_LINK} style={styles.bookNowNav} target="_blank" rel="noopener noreferrer">
-                Book Now
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <MobileMenu activePage="blog" />
       </header>
 
       <section style={styles.hero}>

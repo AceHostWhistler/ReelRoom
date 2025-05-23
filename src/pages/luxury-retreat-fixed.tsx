@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FallbackGallery } from '../components/FallbackGallery';
+import MobileMenu from '../components/MobileMenu';
 
 const AIRBNB_LINK = "https://www.airbnb.ca/rooms/1414129878809697902?check_in=2025-08-20&check_out=2025-08-24&guests=10&adults=10&s=67&unique_share_id=3bb66e80-1ca0-4eb8-9866-40b102c76e50";
 
@@ -435,66 +436,6 @@ const styles = {
 
 export default function LuxuryRetreatFixed() {
   const [imagesReady, setImagesReady] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
-  
-  // Toggle mobile menu with improved handling
-  const toggleMobileMenu = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setMobileMenuOpen(prev => !prev);
-    
-    // Prevent body scrolling when menu is open
-    if (!mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-  };
-  
-  // Close mobile menu
-  const closeMobileMenu = () => {
-    setMobileMenuOpen(false);
-    document.body.style.overflow = '';
-  };
-  
-  // Handle clicking links in the menu
-  const handleMenuLinkClick = () => {
-    closeMobileMenu();
-  };
-  
-  useEffect(() => {
-    // Check if mobile
-    const checkMobile = () => {
-      const isMobileView = window.innerWidth <= 768;
-      setIsMobile(isMobileView);
-      
-      // Reset menu state when switching between mobile and desktop
-      if (!isMobileView && mobileMenuOpen) {
-        closeMobileMenu();
-      }
-    };
-    
-    // Initial check
-    checkMobile();
-    
-    // Add listener for resize
-    window.addEventListener('resize', checkMobile);
-    
-    // Cleanup
-    return () => {
-      window.removeEventListener('resize', checkMobile);
-      document.body.style.overflow = '';
-    };
-  }, [mobileMenuOpen]);
-  
-  // Reset body overflow when component unmounts
-  useEffect(() => {
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, []);
   
   useEffect(() => {
     // Preconnect to external domains for faster loading
@@ -518,12 +459,6 @@ export default function LuxuryRetreatFixed() {
     // Preload logo
     const logoImgElement = document.createElement('img');
     logoImgElement.src = '/photos/642ca4501534ebc86d037617_AceHost-Whistler-Logo.png';
-    
-    // Cleanup
-    return () => {
-      // Reset body overflow when component unmounts
-      document.body.style.overflow = '';
-    };
   }, []);
   
   return (
@@ -545,204 +480,7 @@ export default function LuxuryRetreatFixed() {
       </Head>
 
       <header style={styles.header}>
-        {isMobile ? (
-          // Mobile Header
-          <div style={styles.nav}>
-            <div style={styles.mobileHeader}>
-              <div style={styles.mobileLogo}>
-                <Link href="/" passHref>
-                  <div style={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    textDecoration: 'none', 
-                    cursor: 'pointer' 
-                  }}>
-                    <Image 
-                      src="/photos/642ca4501534ebc86d037617_AceHost-Whistler-Logo.png" 
-                      alt="Cotswolds Estate Logo" 
-                      width={80} 
-                      height={30} 
-                      style={{ height: 'auto', width: '80px' }}
-                      priority
-                    />
-                    <span style={{
-                      fontSize: '1.3em',
-                      fontWeight: 'bold',
-                      color: colors.darkGreen,
-                      marginLeft: '5px'
-                    }}>Cotswolds Estate</span>
-                  </div>
-                </Link>
-              </div>
-              
-              <button 
-                ref={menuButtonRef}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  color: colors.darkGreen,
-                  fontSize: '2rem',
-                  cursor: 'pointer',
-                  padding: '8px 12px',
-                  zIndex: 100,
-                }}
-                onClick={toggleMobileMenu}
-                aria-label="Open menu"
-              >
-                ☰
-              </button>
-            </div>
-          </div>
-        ) : (
-          // Desktop Header
-          <nav style={styles.nav}>
-            <div style={styles.logoContainer}>
-              <Link href="/" passHref>
-                <div style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', cursor: 'pointer' }}>
-                  <Image 
-                    src="/photos/642ca4501534ebc86d037617_AceHost-Whistler-Logo.png" 
-                    alt="Cotswolds Estate Logo" 
-                    width={120} 
-                    height={40} 
-                    style={{ height: 'auto', width: '120px' }}
-                    priority
-                  />
-                  <span style={{
-                    ...styles.logoText,
-                    fontSize: '1.8em',
-                    marginLeft: '10px'
-                  }}>Cotswolds Estate</span>
-                </div>
-              </Link>
-            </div>
-            
-            <ul style={styles.navList}>
-              <li style={styles.navItem}><a href="#home" style={styles.navLink}>Home</a></li>
-              <li style={styles.navItem}><a href="#about" style={styles.navLink}>About</a></li>
-              <li style={styles.navItem}><a href="#gallery" style={styles.navLink}>Gallery</a></li>
-              <li style={styles.navItem}><a href="#amenities" style={styles.navLink}>Amenities</a></li>
-              <li style={styles.navItem}><a href="#bedrooms" style={styles.navLink}>Bedrooms</a></li>
-              <li style={styles.navItem}><Link href="/cotswolds-blog" style={styles.navLink}>Blog</Link></li>
-              <li style={styles.navItem}>
-                <a href={AIRBNB_LINK} style={styles.bookNowNav} target="_blank" rel="noopener noreferrer">
-                  Book Now
-                </a>
-              </li>
-            </ul>
-          </nav>
-        )}
-        
-        {/* Mobile Menu - Always render but conditionally show */}
-        <div 
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(0,0,0,0.5)',
-            zIndex: 1999,
-            opacity: mobileMenuOpen ? 1 : 0,
-            visibility: mobileMenuOpen ? 'visible' : 'hidden',
-            transition: 'opacity 0.3s ease',
-          }}
-          onClick={closeMobileMenu}
-        ></div>
-        
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          width: '80%',
-          maxWidth: '300px',
-          backgroundColor: colors.white,
-          boxShadow: '-5px 0 15px rgba(0,0,0,0.1)',
-          zIndex: 2000,
-          transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(100%)',
-          transition: 'transform 0.3s ease-in-out',
-          overflowY: 'auto',
-          padding: '20px 0',
-        }}>
-          <div style={styles.mobileMenuHeader}>
-            <h3 style={{ margin: 0, fontSize: '1.2rem' }}>Menu</h3>
-            <button 
-              style={styles.mobileMenuCloseButton}
-              onClick={closeMobileMenu}
-              aria-label="Close menu"
-            >
-              ×
-            </button>
-          </div>
-          
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-            <li style={styles.mobileNavItem}>
-              <a 
-                href="#home" 
-                style={styles.navLink}
-                onClick={handleMenuLinkClick}
-              >
-                Home
-              </a>
-            </li>
-            <li style={styles.mobileNavItem}>
-              <a 
-                href="#about" 
-                style={styles.navLink}
-                onClick={handleMenuLinkClick}
-              >
-                About
-              </a>
-            </li>
-            <li style={styles.mobileNavItem}>
-              <a 
-                href="#gallery" 
-                style={styles.navLink}
-                onClick={handleMenuLinkClick}
-              >
-                Gallery
-              </a>
-            </li>
-            <li style={styles.mobileNavItem}>
-              <a 
-                href="#amenities" 
-                style={styles.navLink}
-                onClick={handleMenuLinkClick}
-              >
-                Amenities
-              </a>
-            </li>
-            <li style={styles.mobileNavItem}>
-              <a 
-                href="#bedrooms" 
-                style={styles.navLink}
-                onClick={handleMenuLinkClick}
-              >
-                Bedrooms
-              </a>
-            </li>
-            <li style={styles.mobileNavItem}>
-              <Link 
-                href="/cotswolds-blog" 
-                style={styles.navLink}
-                onClick={handleMenuLinkClick}
-              >
-                Blog
-              </Link>
-            </li>
-            <li style={{...styles.mobileNavItem, marginTop: '15px'}}>
-              <a 
-                href={AIRBNB_LINK} 
-                style={{...styles.bookNowNav, display: 'inline-block'}} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                onClick={handleMenuLinkClick}
-              >
-                Book Now
-              </a>
-            </li>
-          </ul>
-        </div>
+        <MobileMenu activePage="home" />
       </header>
 
       <main>
