@@ -204,9 +204,9 @@ export const FallbackGallery: React.FC<FallbackGalleryProps> = ({ photos, proper
               isMobile ? 'w-full' : 'w-80'
             }`}
             style={{ 
-              height: '64rem',
-              maxHeight: isMobile ? '40vh' : '64rem',
-              width: isMobile ? 'calc(100% - 16px)' : '20rem',
+              height: isMobile ? '240px' : '320px', 
+              maxHeight: isMobile ? '240px' : '320px',
+              width: isMobile ? 'calc(100% - 16px)' : '480px',
               background: '#f0f0f0' 
             }}
             onClick={() => handlePhotoClick(index)}
