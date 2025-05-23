@@ -467,6 +467,7 @@ export default function LuxuryRetreatFixed() {
         <title>Cotswolds Luxury Retreat | Tennis & Wellness</title>
         <meta name="description" content="An exclusive luxury estate nestled in the heart of the Cotswolds. Experience tranquility and elegance in a stunning countryside setting just minutes from Soho Farm House." />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta name="google-site-verification" content="YmpuEZdA3JnXEfa8rdhhrb41JyzgSXiM9GPDRr3dAFc" />
         
         {/* Preconnect to improve loading performance */}
         <link rel="preconnect" href="https://cotswoldsvacation.com" />
