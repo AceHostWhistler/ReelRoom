@@ -137,6 +137,16 @@ const styles = {
       flexShrink: 0,
     },
   },
+  mobileHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+  },
+  mobileLogo: {
+    display: 'flex',
+    alignItems: 'center',
+  },
   logoImage: {
     height: '50px',
     width: 'auto',
@@ -165,8 +175,70 @@ const styles = {
       display: 'none',
     },
   },
+  hamburgerButton: {
+    background: 'none',
+    border: 'none',
+    color: colors.darkGreen,
+    fontSize: '1.8rem',
+    cursor: 'pointer',
+    display: 'none',
+    padding: '5px',
+    '@media (max-width: 768px)': {
+      display: 'block',
+    },
+  },
+  mobileMenu: {
+    position: 'fixed' as 'fixed',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    width: '80%',
+    maxWidth: '300px',
+    backgroundColor: colors.white,
+    boxShadow: '-5px 0 15px rgba(0,0,0,0.1)',
+    zIndex: 2000,
+    transform: 'translateX(100%)',
+    transition: 'transform 0.3s ease-in-out',
+    overflowY: 'auto' as 'auto',
+    padding: '20px 0',
+  },
+  mobileMenuOpen: {
+    transform: 'translateX(0)',
+  },
+  mobileMenuHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '0 20px 15px 20px',
+    borderBottom: `1px solid ${colors.lightGray}`,
+    marginBottom: '15px',
+  },
+  mobileMenuCloseButton: {
+    background: 'none',
+    border: 'none',
+    color: colors.darkGreen,
+    fontSize: '1.8rem',
+    cursor: 'pointer',
+  },
   navItem: {
     marginLeft: '25px',
+  },
+  mobileNavItem: {
+    padding: '12px 20px',
+    borderBottom: `1px solid ${colors.lightGray}`,
+  },
+  overlay: {
+    position: 'fixed' as 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    zIndex: 1999,
+    display: 'none',
+  },
+  overlayVisible: {
+    display: 'block',
   },
   navLink: {
     fontSize: '1em',
@@ -364,6 +436,24 @@ export default function LuxuryRetreatFixed() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  // Toggle mobile menu
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+    
+    // Prevent body scrolling when menu is open
+    if (!mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  };
+  
+  // Close mobile menu
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+    document.body.style.overflow = '';
+  };
+  
   useEffect(() => {
     // Check if mobile
     const checkMobile = () => {
@@ -401,6 +491,8 @@ export default function LuxuryRetreatFixed() {
     // Cleanup
     return () => {
       window.removeEventListener('resize', checkMobile);
+      // Reset body overflow when component unmounts
+      document.body.style.overflow = '';
     };
   }, []);
   
@@ -423,81 +515,175 @@ export default function LuxuryRetreatFixed() {
       </Head>
 
       <header style={styles.header}>
-        <nav style={styles.nav}>
-          <div style={styles.logoContainer}>
-            <Link href="/" passHref>
-              <div style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', cursor: 'pointer' }}>
-                <Image 
-                  src="/photos/642ca4501534ebc86d037617_AceHost-Whistler-Logo.png" 
-                  alt="Cotswolds Estate Logo" 
-                  width={120} 
-                  height={40} 
-                  style={{ 
-                    height: 'auto', 
-                    width: isMobile ? '80px' : '120px'
-                  }}
-                  priority
-                />
-                <span style={{
-                  ...styles.logoText,
-                  fontSize: isMobile ? '1.3em' : '1.8em',
-                  marginLeft: isMobile ? '5px' : '10px'
-                }}>Cotswolds Estate</span>
+        {isMobile ? (
+          // Mobile Header
+          <div style={styles.nav}>
+            <div style={styles.mobileHeader}>
+              <div style={styles.mobileLogo}>
+                <Link href="/" passHref>
+                  <div style={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    textDecoration: 'none', 
+                    cursor: 'pointer' 
+                  }}>
+                    <Image 
+                      src="/photos/642ca4501534ebc86d037617_AceHost-Whistler-Logo.png" 
+                      alt="Cotswolds Estate Logo" 
+                      width={80} 
+                      height={30} 
+                      style={{ height: 'auto', width: '80px' }}
+                      priority
+                    />
+                    <span style={{
+                      fontSize: '1.3em',
+                      fontWeight: 'bold',
+                      color: colors.darkGreen,
+                      marginLeft: '5px'
+                    }}>Cotswolds Estate</span>
+                  </div>
+                </Link>
               </div>
-            </Link>
+              
+              <button 
+                style={styles.hamburgerButton}
+                onClick={toggleMobileMenu}
+                aria-label="Open menu"
+              >
+                ☰
+              </button>
+            </div>
           </div>
-          
-          {/* Desktop Navigation */}
-          <ul style={styles.navList}>
-            <li style={styles.navItem}><a href="#home" style={styles.navLink}>Home</a></li>
-            <li style={styles.navItem}><a href="#about" style={styles.navLink}>About</a></li>
-            <li style={styles.navItem}><a href="#gallery" style={styles.navLink}>Gallery</a></li>
-            <li style={styles.navItem}><a href="#amenities" style={styles.navLink}>Amenities</a></li>
-            <li style={styles.navItem}><a href="#bedrooms" style={styles.navLink}>Bedrooms</a></li>
-            <li style={styles.navItem}><Link href="/cotswolds-blog" style={styles.navLink}>Blog</Link></li>
-            <li style={styles.navItem}>
-              <a href={AIRBNB_LINK} style={styles.bookNowNav} target="_blank" rel="noopener noreferrer">
-                Book Now
-              </a>
-            </li>
-          </ul>
-          
-          {/* Mobile Nav Button */}
-          <button 
-            style={{
-              display: isMobile ? 'block' : 'none',
-              backgroundColor: 'transparent',
-              border: 'none',
-              fontSize: '1.5em',
-              color: colors.darkGreen,
-              cursor: 'pointer'
-            }}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            ☰
-          </button>
-        </nav>
+        ) : (
+          // Desktop Header
+          <nav style={styles.nav}>
+            <div style={styles.logoContainer}>
+              <Link href="/" passHref>
+                <div style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', cursor: 'pointer' }}>
+                  <Image 
+                    src="/photos/642ca4501534ebc86d037617_AceHost-Whistler-Logo.png" 
+                    alt="Cotswolds Estate Logo" 
+                    width={120} 
+                    height={40} 
+                    style={{ height: 'auto', width: '120px' }}
+                    priority
+                  />
+                  <span style={{
+                    ...styles.logoText,
+                    fontSize: '1.8em',
+                    marginLeft: '10px'
+                  }}>Cotswolds Estate</span>
+                </div>
+              </Link>
+            </div>
+            
+            <ul style={styles.navList}>
+              <li style={styles.navItem}><a href="#home" style={styles.navLink}>Home</a></li>
+              <li style={styles.navItem}><a href="#about" style={styles.navLink}>About</a></li>
+              <li style={styles.navItem}><a href="#gallery" style={styles.navLink}>Gallery</a></li>
+              <li style={styles.navItem}><a href="#amenities" style={styles.navLink}>Amenities</a></li>
+              <li style={styles.navItem}><a href="#bedrooms" style={styles.navLink}>Bedrooms</a></li>
+              <li style={styles.navItem}><Link href="/cotswolds-blog" style={styles.navLink}>Blog</Link></li>
+              <li style={styles.navItem}>
+                <a href={AIRBNB_LINK} style={styles.bookNowNav} target="_blank" rel="noopener noreferrer">
+                  Book Now
+                </a>
+              </li>
+            </ul>
+          </nav>
+        )}
         
-        {/* Mobile Navigation Menu */}
-        {mobileMenuOpen && (
+        {/* Mobile Menu Overlay */}
+        {isMobile && (
+          <div 
+            style={{
+              ...styles.overlay,
+              ...(mobileMenuOpen ? styles.overlayVisible : {})
+            }}
+            onClick={closeMobileMenu}
+          ></div>
+        )}
+        
+        {/* Mobile Menu */}
+        {isMobile && (
           <div style={{
-            position: 'absolute',
-            top: '70px',
-            left: 0,
-            right: 0,
-            backgroundColor: 'white',
-            zIndex: 1000,
-            boxShadow: '0 5px 10px rgba(0,0,0,0.1)',
+            ...styles.mobileMenu,
+            ...(mobileMenuOpen ? styles.mobileMenuOpen : {})
           }}>
-            <ul style={{ listStyle: 'none', padding: '10px 0', margin: 0 }}>
-              <li style={{ padding: '10px 20px' }}><a href="#home" style={{ ...styles.navLink, display: 'block' }}>Home</a></li>
-              <li style={{ padding: '10px 20px' }}><a href="#about" style={{ ...styles.navLink, display: 'block' }}>About</a></li>
-              <li style={{ padding: '10px 20px' }}><a href="#gallery" style={{ ...styles.navLink, display: 'block' }}>Gallery</a></li>
-              <li style={{ padding: '10px 20px' }}><a href="#amenities" style={{ ...styles.navLink, display: 'block' }}>Amenities</a></li>
-              <li style={{ padding: '10px 20px' }}><a href="#bedrooms" style={{ ...styles.navLink, display: 'block' }}>Bedrooms</a></li>
-              <li style={{ padding: '10px 20px' }}><Link href="/cotswolds-blog" style={{ ...styles.navLink, display: 'block' }}>Blog</Link></li>
-              <li style={{ padding: '10px 20px' }}>
-                <a href={AIRBNB_LINK} style={{ ...styles.bookNowNav, display: 'inline-block' }} target="_blank" rel="noopener noreferrer">
+            <div style={styles.mobileMenuHeader}>
+              <h3 style={{ margin: 0, fontSize: '1.2rem' }}>Menu</h3>
+              <button 
+                style={styles.mobileMenuCloseButton}
+                onClick={closeMobileMenu}
+                aria-label="Close menu"
+              >
+                ×
+              </button>
+            </div>
+            
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+              <li style={styles.mobileNavItem}>
+                <a 
+                  href="#home" 
+                  style={styles.navLink}
+                  onClick={closeMobileMenu}
+                >
+                  Home
+                </a>
+              </li>
+              <li style={styles.mobileNavItem}>
+                <a 
+                  href="#about" 
+                  style={styles.navLink}
+                  onClick={closeMobileMenu}
+                >
+                  About
+                </a>
+              </li>
+              <li style={styles.mobileNavItem}>
+                <a 
+                  href="#gallery" 
+                  style={styles.navLink}
+                  onClick={closeMobileMenu}
+                >
+                  Gallery
+                </a>
+              </li>
+              <li style={styles.mobileNavItem}>
+                <a 
+                  href="#amenities" 
+                  style={styles.navLink}
+                  onClick={closeMobileMenu}
+                >
+                  Amenities
+                </a>
+              </li>
+              <li style={styles.mobileNavItem}>
+                <a 
+                  href="#bedrooms" 
+                  style={styles.navLink}
+                  onClick={closeMobileMenu}
+                >
+                  Bedrooms
+                </a>
+              </li>
+              <li style={styles.mobileNavItem}>
+                <Link 
+                  href="/cotswolds-blog" 
+                  style={styles.navLink}
+                  onClick={closeMobileMenu}
+                >
+                  Blog
+                </Link>
+              </li>
+              <li style={{...styles.mobileNavItem, marginTop: '15px'}}>
+                <a 
+                  href={AIRBNB_LINK} 
+                  style={{...styles.bookNowNav, display: 'inline-block'}} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={closeMobileMenu}
+                >
                   Book Now
                 </a>
               </li>
