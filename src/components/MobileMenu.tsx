@@ -305,15 +305,16 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
         display: 'flex',
         flexDirection: 'column',
         padding: 0,
+        overflow: 'hidden', // Prevent scrolling
       }}>
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          padding: '20px 20px 15px 20px',
+          padding: '10px 15px',
           borderBottom: `1px solid ${colors.lightGray}`,
         }}>
-          <h3 style={{ margin: 0, fontSize: '1.2rem' }}>Menu</h3>
+          <h3 style={{ margin: 0, fontSize: '1.2rem' }}>Navigation</h3>
           <button 
             style={{
               background: 'none',
@@ -321,6 +322,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               color: colors.darkGreen,
               fontSize: '1.8rem',
               cursor: 'pointer',
+              padding: '0 5px',
             }}
             onClick={closeMobileMenu}
             aria-label="Close menu"
@@ -329,31 +331,29 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
           </button>
         </div>
         
+        {/* Compact menu with all options visible */}
         <div style={{ 
-          padding: '10px 0',
-          overflowY: 'auto',
-          flex: 1,
+          padding: '0',
+          flexGrow: 1,
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'flex-start', // Start from the top
+          justifyContent: 'flex-start',
+          height: 'auto',
         }}>
           <ul style={{ 
             listStyle: 'none', 
             padding: 0, 
             margin: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            height: 'auto', // Not fixed height
+            width: '100%',
           }}>
             <li style={{ 
-              padding: '15px 20px',
+              padding: '12px 15px',
               borderBottom: `1px solid ${colors.lightGray}`,
             }}>
               <Link 
                 href="/#home" 
                 style={{ 
-                  fontSize: '1.1em',
+                  fontSize: '1em',
                   color: activePage === 'home' ? colors.darkGreen : colors.darkGray,
                   fontWeight: activePage === 'home' ? 'bold' : 500,
                   textDecoration: 'none',
@@ -365,13 +365,13 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               </Link>
             </li>
             <li style={{ 
-              padding: '15px 20px',
+              padding: '12px 15px',
               borderBottom: `1px solid ${colors.lightGray}`,
             }}>
               <Link 
                 href="/#about" 
                 style={{ 
-                  fontSize: '1.1em',
+                  fontSize: '1em',
                   color: colors.darkGray,
                   fontWeight: 500,
                   textDecoration: 'none',
@@ -383,13 +383,13 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               </Link>
             </li>
             <li style={{ 
-              padding: '15px 20px',
+              padding: '12px 15px',
               borderBottom: `1px solid ${colors.lightGray}`,
             }}>
               <Link 
                 href="/#gallery" 
                 style={{ 
-                  fontSize: '1.1em',
+                  fontSize: '1em',
                   color: colors.darkGray,
                   fontWeight: 500,
                   textDecoration: 'none',
@@ -401,13 +401,13 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               </Link>
             </li>
             <li style={{ 
-              padding: '15px 20px',
+              padding: '12px 15px',
               borderBottom: `1px solid ${colors.lightGray}`,
             }}>
               <Link 
                 href="/#amenities" 
                 style={{ 
-                  fontSize: '1.1em',
+                  fontSize: '1em',
                   color: colors.darkGray,
                   fontWeight: 500,
                   textDecoration: 'none',
@@ -419,13 +419,13 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               </Link>
             </li>
             <li style={{ 
-              padding: '15px 20px',
+              padding: '12px 15px',
               borderBottom: `1px solid ${colors.lightGray}`,
             }}>
               <Link 
                 href="/#bedrooms" 
                 style={{ 
-                  fontSize: '1.1em',
+                  fontSize: '1em',
                   color: colors.darkGray,
                   fontWeight: 500,
                   textDecoration: 'none',
@@ -437,13 +437,13 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               </Link>
             </li>
             <li style={{ 
-              padding: '15px 20px',
+              padding: '12px 15px',
               borderBottom: `1px solid ${colors.lightGray}`,
             }}>
               <Link 
                 href="/cotswolds-blog" 
                 style={{ 
-                  fontSize: '1.1em',
+                  fontSize: '1em',
                   color: activePage === 'blog' ? colors.darkGreen : colors.darkGray,
                   fontWeight: activePage === 'blog' ? 'bold' : 500,
                   textDecoration: 'none',
@@ -454,32 +454,30 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
                 Blog
               </Link>
             </li>
+            <li style={{ 
+              padding: '12px 15px',
+              borderBottom: `1px solid ${colors.lightGray}`,
+            }}>
+              <a 
+                href={AIRBNB_LINK} 
+                style={{
+                  fontSize: '1em',
+                  backgroundColor: colors.black,
+                  color: colors.white,
+                  padding: '8px 12px',
+                  borderRadius: '6px',
+                  fontWeight: 500,
+                  textDecoration: 'none',
+                  display: 'inline-block',
+                }} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={handleMenuLinkClick}
+              >
+                Book Now
+              </a>
+            </li>
           </ul>
-        </div>
-        
-        <div style={{ 
-          padding: '20px',
-          borderTop: `1px solid ${colors.lightGray}`,
-          textAlign: 'center',
-        }}>
-          <a 
-            href={AIRBNB_LINK} 
-            style={{
-              backgroundColor: colors.black,
-              color: colors.white,
-              padding: '12px 24px',
-              borderRadius: '8px',
-              fontWeight: 500,
-              textDecoration: 'none',
-              display: 'inline-block',
-              width: '80%',
-            }} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            onClick={handleMenuLinkClick}
-          >
-            Book Now
-          </a>
         </div>
       </div>
     </>
