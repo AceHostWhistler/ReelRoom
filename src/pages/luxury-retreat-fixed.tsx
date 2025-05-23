@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -318,9 +318,21 @@ const styles = {
 export default function LuxuryRetreatFixed() {
   const [imagesReady, setImagesReady] = useState(false);
 
-  // Preload critical images
   useEffect(() => {
-    // Preload hero image
+    // Preconnect to external domains for faster loading
+    const links = [
+      { rel: 'preconnect', href: 'https://www.airbnb.ca' },
+      { rel: 'dns-prefetch', href: 'https://www.airbnb.ca' }
+    ];
+    
+    links.forEach(link => {
+      const linkElem = document.createElement('link');
+      linkElem.rel = link.rel;
+      linkElem.href = link.href;
+      document.head.appendChild(linkElem);
+    });
+
+    // Preload critical images
     const heroImgElement = document.createElement('img');
     heroImgElement.src = '/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143723_0661_D.jpg';
     heroImgElement.onload = () => setImagesReady(true);
@@ -340,20 +352,26 @@ export default function LuxuryRetreatFixed() {
         {/* Preconnect to improve loading performance */}
         <link rel="preconnect" href="https://cotswoldsvacation.com" />
         <link rel="dns-prefetch" href="https://cotswoldsvacation.com" />
+        <link rel="preconnect" href="https://www.airbnb.ca" />
+        <link rel="dns-prefetch" href="https://www.airbnb.ca" />
+        
+        {/* Preload critical assets */}
+        <link rel="preload" href="/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143723_0661_D.jpg" as="image" />
+        <link rel="preload" href="/photos/642ca4501534ebc86d037617_AceHost-Whistler-Logo.png" as="image" />
       </Head>
 
       <header style={styles.header}>
         <nav style={styles.nav}>
           <div style={styles.logoContainer}>
-            {/* Use regular img for logo to ensure it loads */}
             <Link href="/" passHref>
               <div style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', cursor: 'pointer' }}>
-                <img 
+                <Image 
                   src="/photos/642ca4501534ebc86d037617_AceHost-Whistler-Logo.png" 
                   alt="Cotswolds Estate Logo" 
                   width={120} 
                   height={40} 
                   style={{ height: 'auto', width: '120px' }}
+                  priority
                 />
                 <span style={styles.logoText}>Cotswolds Estate</span>
               </div>
@@ -381,9 +399,6 @@ export default function LuxuryRetreatFixed() {
           <div style={styles.heroContent}>
             <h1 style={styles.heroTitle}>Cotswolds Estate</h1>
             <p style={styles.heroSubtitle}>An Exclusive Haven of Tranquility in the English Countryside</p>
-            <div style={styles.videoPlaceholder}>
-              <p style={styles.placeholderText}>Your amazing video will be here soon!</p>
-            </div>
             <a 
               href={AIRBNB_LINK} 
               style={styles.bookNowHero} 

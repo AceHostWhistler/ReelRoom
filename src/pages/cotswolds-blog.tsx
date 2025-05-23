@@ -23,6 +23,7 @@ const blogPosts = [
     image: '/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143633_0658_D.jpg',
     date: 'June 15, 2025',
     readTime: '5 min read',
+    slug: 'seasonal-activities'
   },
   {
     id: 2,
@@ -31,6 +32,7 @@ const blogPosts = [
     image: '/photos/listings/Cotswolds Luxury Retreat/224A5433.jpg',
     date: 'June 10, 2025',
     readTime: '4 min read',
+    slug: 'dining-experiences'
   },
   {
     id: 3,
@@ -39,6 +41,7 @@ const blogPosts = [
     image: '/photos/listings/Cotswolds Luxury Retreat/224A5368.jpg',
     date: 'June 5, 2025',
     readTime: '6 min read',
+    slug: 'cotswolds-architecture'
   },
   {
     id: 4,
@@ -47,6 +50,7 @@ const blogPosts = [
     image: '/photos/listings/Cotswolds Luxury Retreat/224A5478.jpg',
     date: 'May 28, 2025',
     readTime: '3 min read',
+    slug: 'activities-places-visit'
   },
   {
     id: 5,
@@ -55,6 +59,7 @@ const blogPosts = [
     image: '/photos/listings/Cotswolds Luxury Retreat/224A5307.jpg',
     date: 'May 20, 2025',
     readTime: '5 min read',
+    slug: 'perfect-estate-families'
   },
   {
     id: 6,
@@ -63,6 +68,7 @@ const blogPosts = [
     image: '/photos/listings/Cotswolds Luxury Retreat/224A5516.jpg',
     date: 'May 15, 2025',
     readTime: '4 min read',
+    slug: 'family-gathering'
   },
 ];
 
@@ -321,7 +327,7 @@ export default function CotswoldsBlog() {
         <div style={styles.blogGrid}>
           {blogPosts.map((post) => (
             <article key={post.id} style={styles.blogCard}>
-              <Link href={post.id === 5 ? "/blog-posts/perfect-estate-families" : post.id === 6 ? "/blog-posts/family-gathering" : "#"} passHref>
+              <Link href={`/blog-posts/${post.slug}`} passHref>
                 <div style={{ cursor: 'pointer' }}>
                   <div style={{ position: 'relative', width: '100%', height: '220px' }}>
                     <img
