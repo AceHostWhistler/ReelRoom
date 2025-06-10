@@ -20,10 +20,27 @@ const colors = {
 
 // Include all photos from the gallery directory
 const photos = [
+  '/photos/listings/Cotswolds Luxury Retreat/224A5508.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/224A5516.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/224A5307.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/224A5435.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/224A5368.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/224A5463.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/224A5468.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/224A5472.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/224A7847.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/224A7863.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/224A7868.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/012A0872.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/012A0876.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/012A0878.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/012A0881.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/012A1323.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/012A1327.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/012A1330.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/012A1333.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/012A1337.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/012A1341.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5277.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5279.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5289.jpg',
@@ -32,7 +49,6 @@ const photos = [
   '/photos/listings/Cotswolds Luxury Retreat/224A5297.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5302.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5305.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5307.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5313.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5314.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5317.jpg',
@@ -46,7 +62,6 @@ const photos = [
   '/photos/listings/Cotswolds Luxury Retreat/224A5359.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5361.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5362.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5368.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5372.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5398.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5399.jpg',
@@ -57,33 +72,33 @@ const photos = [
   '/photos/listings/Cotswolds Luxury Retreat/224A5423.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5430.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5433.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5435.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5437.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5441.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5450.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5463.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5468.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5470.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5472.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5478.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5492.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5502.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5506.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5508.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5516.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5518.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5528.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5532.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5535.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/8596128-exterior08-800.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/8596128-exterior09-800.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/8596128-exterior10-800.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/8596128-exterior18-800.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/8596128-exterior21-800.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/224A7821.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/224A7828.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/224A7830.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/224A7831.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/224A7833.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/224A7838.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/224A7850.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/224A7857.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090500_0519_D.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090532_0522_D.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090720_0527_D.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602091050_0536_D.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602091213_0541_D.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602091239_0542_D.jpg',
 ];
 
 // Fallback photos (in case the first approach doesn't work)
@@ -746,7 +761,7 @@ export default function LuxuryRetreatFixed() {
               <div style={{ backgroundColor: colors.white, borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', border: `1px solid ${colors.lightGray}` }}>
                 <div style={{ height: '200px', backgroundColor: colors.lightGreen, position: 'relative', overflow: 'hidden' }}>
                   <img 
-                    src="/photos/listings/Cotswolds Luxury Retreat/224A5472.jpg" 
+                    src="/photos/listings/Cotswolds Luxury Retreat/224A7863.jpg" 
                     alt="Bedroom 7" 
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
                   />
@@ -762,7 +777,7 @@ export default function LuxuryRetreatFixed() {
               <div style={{ backgroundColor: colors.white, borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', border: `1px solid ${colors.lightGray}` }}>
                 <div style={{ height: '200px', backgroundColor: colors.lightGreen, position: 'relative', overflow: 'hidden' }}>
                   <img 
-                    src="/photos/listings/Cotswolds Luxury Retreat/224A5478.jpg" 
+                    src="/photos/listings/Cotswolds Luxury Retreat/224A7847.jpg" 
                     alt="Bedroom 8" 
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
                   />

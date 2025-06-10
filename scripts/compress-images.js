@@ -11,7 +11,7 @@ const PNG_QUALITY = 80; // 0-100, higher is better quality
 const WEBP_QUALITY = 80; // 0-100, higher is better quality
 
 // Compression output folder
-const OUTPUT_DIR = path.join(process.cwd(), 'public/photos');
+const OUTPUT_DIR = path.join(process.cwd(), '../public/photos');
 
 // Counter for stats
 let totalImages = 0;
