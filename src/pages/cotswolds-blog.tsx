@@ -21,7 +21,7 @@ const blogPosts = [
     id: 1,
     title: 'Seasonal Activities in the Cotswolds',
     excerpt: 'Discover the best seasonal activities to enjoy in the beautiful Cotswolds countryside throughout the year.',
-    image: '/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143633_0658_D.jpg',
+    image: '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090532_0522_D.jpg',
     date: 'June 15, 2025',
     readTime: '5 min read',
     slug: 'seasonal-activities'
@@ -136,7 +136,7 @@ const styles = {
     transition: 'background-color 0.3s ease',
   },
   hero: {
-    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143723_0661_D.jpg')",
+    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     color: colors.white,

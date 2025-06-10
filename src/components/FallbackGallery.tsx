@@ -171,7 +171,7 @@ export const FallbackGallery: React.FC<FallbackGalleryProps> = ({ photos, proper
     "/photos/listings/Cotswolds Luxury Retreat/224A5516.jpg", 
     "/photos/listings/Cotswolds Luxury Retreat/224A5307.jpg",
     "/photos/listings/Cotswolds Luxury Retreat/224A5435.jpg",
-    "/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143633_0658_D.jpg",
+    "/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090532_0522_D.jpg",
     "/photos/listings/Cotswolds Luxury Retreat/224A5368.jpg"
   ];
 

@@ -80,7 +80,7 @@ const styles = {
     transition: 'background-color 0.3s ease',
   },
   hero: {
-    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143454_0650_D.jpg')",
+    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090500_0519_D.jpg')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     color: colors.white,
@@ -402,7 +402,7 @@ export default function CotswoldsArchitectureBlog() {
           </p>
 
           <img
-            src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143723_0661_D.jpg"
+            src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg"
             alt="Aerial view of Cotswolds architecture"
             style={styles.blogImage}
           />

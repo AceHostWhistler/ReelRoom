@@ -80,10 +80,10 @@ const photos = [
   '/photos/listings/Cotswolds Luxury Retreat/8596128-exterior10-800.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/8596128-exterior18-800.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/8596128-exterior21-800.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143514_0652_D.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143633_0658_D.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143723_0661_D.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143734_0662_D.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090500_0519_D.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090532_0522_D.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090720_0527_D.jpg',
 ];
 
 // Fallback photos (in case the first approach doesn't work)
@@ -91,10 +91,10 @@ const fallbackPhotos = [
   // Different format for the paths of the problematic photos
   './photos/listings/Cotswolds Luxury Retreat/224A5508.jpg',
   './photos/listings/Cotswolds Luxury Retreat/224A5516.jpg',
-  './photos/listings/Cotswolds Luxury Retreat/DJI_20250502143734_0662_D.jpg',
+  './photos/listings/Cotswolds Luxury Retreat/DJI_20250602090720_0527_D.jpg',
   './photos/listings/Cotswolds Luxury Retreat/224A5307.jpg',
   './photos/listings/Cotswolds Luxury Retreat/224A5435.jpg',
-  './photos/listings/Cotswolds Luxury Retreat/DJI_20250502143633_0658_D.jpg',
+  './photos/listings/Cotswolds Luxury Retreat/DJI_20250602090532_0522_D.jpg',
   './photos/listings/Cotswolds Luxury Retreat/224A5368.jpg',
 ];
 
@@ -259,7 +259,7 @@ const styles = {
     transition: 'background-color 0.3s ease',
   },
   hero: {
-    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143723_0661_D.jpg')",
+    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     color: colors.white,
@@ -453,7 +453,7 @@ export default function LuxuryRetreatFixed() {
 
     // Preload critical images
     const heroImgElement = document.createElement('img');
-    heroImgElement.src = '/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143723_0661_D.jpg';
+    heroImgElement.src = '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg';
     heroImgElement.onload = () => setImagesReady(true);
     
     // Preload logo
@@ -476,7 +476,7 @@ export default function LuxuryRetreatFixed() {
         <link rel="dns-prefetch" href="https://www.airbnb.ca" />
         
         {/* Preload critical assets */}
-        <link rel="preload" href="/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143723_0661_D.jpg" as="image" />
+        <link rel="preload" href="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg" as="image" />
         <link rel="preload" href="/photos/642ca4501534ebc86d037617_AceHost-Whistler-Logo.png" as="image" />
       </Head>
 

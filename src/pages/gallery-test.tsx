@@ -6,10 +6,10 @@ import { OptimizedGallery } from '../components/OptimizedGallery';
 const photos = [
   '/photos/listings/Cotswolds Luxury Retreat/224A5508.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5516.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143734_0662_D.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090720_0527_D.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5307.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5435.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143633_0658_D.jpg',
+  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090532_0522_D.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5368.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5463.jpg',
   '/photos/listings/Cotswolds Luxury Retreat/224A5472.jpg',

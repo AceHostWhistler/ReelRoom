@@ -391,7 +391,7 @@ export default function ActivitiesPlacesVisitBlog() {
           </p>
 
           <img
-            src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143454_0650_D.jpg"
+            src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090500_0519_D.jpg"
             alt="Aerial view of the Cotswolds"
             style={styles.blogImage}
           />
@@ -526,7 +526,7 @@ export default function ActivitiesPlacesVisitBlog() {
           <div style={styles.activityGrid}>
             <div style={styles.activityCard}>
               <img
-                src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143514_0652_D.jpg"
+                src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602091050_0536_D.jpg"
                 alt="Cotswold Way"
                 style={styles.activityImage}
               />

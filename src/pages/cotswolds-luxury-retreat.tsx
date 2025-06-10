@@ -6,16 +6,16 @@ import styles from '../styles/cotswolds-retreat.module.css'; // We'll create thi
 // Note: Next.js Image component optimizes images automatically
 // Define image paths for easy management
 const imagePaths = {
-  hero: '/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143723_0661_D.jpg',
+  hero: '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg',
   gallery: [
     '/photos/listings/Cotswolds Luxury Retreat/224A5508.jpg',
     '/photos/listings/Cotswolds Luxury Retreat/224A5516.jpg',
-    '/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143734_0662_D.jpg',
+    '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090720_0527_D.jpg',
   ],
   explore: {
     livingAreas: '/photos/listings/Cotswolds Luxury Retreat/224A5307.jpg',
     bedrooms: '/photos/listings/Cotswolds Luxury Retreat/224A5435.jpg',
-    outdoorSpaces: '/photos/listings/Cotswolds Luxury Retreat/DJI_20250502143633_0658_D.jpg',
+    outdoorSpaces: '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090532_0522_D.jpg',
     diningKitchen: '/photos/listings/Cotswolds Luxury Retreat/224A5368.jpg',
   }
 };
