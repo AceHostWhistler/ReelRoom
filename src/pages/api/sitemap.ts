@@ -15,43 +15,43 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://acehost.ca</loc>
+    <loc>https://www.cotswoldsvacation.com</loc>
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>https://acehost.ca/blogs</loc>
+    <loc>https://www.cotswoldsvacation.com/blogs</loc>
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://acehost.ca/properties</loc>
+    <loc>https://www.cotswoldsvacation.com/properties</loc>
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://acehost.ca/our-story</loc>
+    <loc>https://www.cotswoldsvacation.com/our-story</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://acehost.ca/contact</loc>
+    <loc>https://www.cotswoldsvacation.com/contact</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://acehost.ca/list-property</loc>
+    <loc>https://www.cotswoldsvacation.com/list-property</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://acehost.ca/concierge-service</loc>
+    <loc>https://www.cotswoldsvacation.com/concierge-service</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -64,7 +64,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     
     sitemap += `
   <url>
-    <loc>https://acehost.ca/post/${slug}</loc>
+    <loc>https://www.cotswoldsvacation.com/post/${slug}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -83,7 +83,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     listings.forEach(listing => {
       sitemap += `
   <url>
-    <loc>https://acehost.ca/listings/${listing}</loc>
+    <loc>https://www.cotswoldsvacation.com/listings/${listing}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
