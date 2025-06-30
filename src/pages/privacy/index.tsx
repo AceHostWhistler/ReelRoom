@@ -8,10 +8,10 @@ export default function Privacy() {
   return (
     <>
       <Head>
-        <title>Privacy Policy | AceHost</title>
+        <title>Privacy Policy | Cotswolds Vacation</title>
         <meta
           name="description"
-          content="Privacy Policy for AceHost - Learn how we handle and protect your personal information when you use our luxury property rental services in Whistler."
+          content="Privacy Policy for Cotswolds Vacation - Learn how we handle and protect your personal information when you use our luxury property rental services in the Cotswolds."
         />
       </Head>
       <Navigation />
@@ -28,10 +28,10 @@ export default function Privacy() {
             })}
           </p>
           <p className="mb-4">
-            At AceHost, we value your privacy and are committed to protecting
+            At Cotswolds Vacation, we value your privacy and are committed to protecting
             your personal data. This privacy policy explains how we collect,
             use, and safeguard your information when you use our website or our
-            luxury property rental services in Whistler, British Columbia.
+            luxury property rental services in the Cotswolds, England.
           </p>
         </section>
 
@@ -158,7 +158,7 @@ export default function Privacy() {
             <li className="mb-2">
               <strong>Business partners:</strong> In connection with providing
               you with additional services such as transportation, concierge
-              services, ski and snowboard rentals, or other experiences
+              services, local experiences, or other amenities
             </li>
           </ul>
           <p className="mb-4">
@@ -174,11 +174,11 @@ export default function Privacy() {
           </h2>
           <p className="mb-4">
             Your information may be transferred to and processed in countries
-            outside of Canada where data protection laws may be different. When
-            we transfer your personal data outside Canada, we ensure a similar
+            outside of the United Kingdom where data protection laws may be different. When
+            we transfer your personal data outside the UK, we ensure a similar
             degree of protection is afforded to it by implementing appropriate
             safeguards and ensuring that the transfer complies with data
-            protection laws.
+            protection laws, including the UK GDPR and Data Protection Act 2018.
           </p>
         </section>
 
@@ -218,7 +218,7 @@ export default function Privacy() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Your Rights</h2>
           <p className="mb-4">
-            Depending on your location, you may have certain rights regarding
+            Under UK data protection law, you have certain rights regarding
             your personal data:
           </p>
           <ul className="list-disc ml-6 mb-4">
@@ -291,13 +291,13 @@ export default function Privacy() {
             privacy practices, please contact us at:
           </p>
           <p className="mb-4">
-            <strong>AceHost</strong>
+            <strong>Cotswolds Vacation</strong>
             <br />
-            Email: privacy@acehost.com
+            Email: privacy@cotswoldsvacation.com
             <br />
-            Phone: +1 (604) 555-1234
+            Phone: +44 (0) 1234 567890
             <br />
-            Address: 4567 Slopes Way, Whistler, BC V0N 1B4, Canada
+            Address: The Old Mill House, High Street, Stow-on-the-Wold, Gloucestershire, GL54 1AB, United Kingdom
           </p>
         </section>
       </main>
