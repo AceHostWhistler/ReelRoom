@@ -531,6 +531,47 @@ export default function LuxuryRetreatFixed() {
             <p style={styles.paragraph}>
               The estate features elegant interiors with high-end furnishings, a state-of-the-art kitchen, and expansive windows that flood the space with natural light while framing the spectacular countryside views. Outside, you'll find beautifully landscaped gardens, perfect for morning coffees or evening cocktails under the stars.
             </p>
+            
+            {/* New drone photos */}
+            <div style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', 
+              gap: '20px', 
+              marginTop: '30px' 
+            }}>
+              <div style={{ 
+                borderRadius: '10px', 
+                overflow: 'hidden', 
+                height: '350px',
+                boxShadow: '0 6px 20px rgba(0,0,0,0.1)'
+              }}>
+                <img 
+                  src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602091239_0542_D.jpg" 
+                  alt="Aerial view of Cotswolds Estate" 
+                  style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    objectFit: 'cover' 
+                  }} 
+                />
+              </div>
+              <div style={{ 
+                borderRadius: '10px', 
+                overflow: 'hidden', 
+                height: '350px',
+                boxShadow: '0 6px 20px rgba(0,0,0,0.1)'
+              }}>
+                <img 
+                  src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090720_0527_D.jpg" 
+                  alt="Panoramic drone view of the property" 
+                  style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    objectFit: 'cover' 
+                  }} 
+                />
+              </div>
+            </div>
           </div>
         </section>
 
