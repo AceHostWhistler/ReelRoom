@@ -3,7 +3,7 @@ const path = require('path');
 const glob = require('glob');
 
 // Configuration
-const SITE_URL = 'https://acehost.ca';
+const SITE_URL = 'https://reelroom.com';
 const OUTPUT_PATH = path.join(process.cwd(), 'public', 'sitemap.xml');
 const PAGES_DIR = path.join(process.cwd(), 'src', 'pages');
 const EXCLUDED_PATHS = [
@@ -13,6 +13,9 @@ const EXCLUDED_PATHS = [
   '404.tsx',
   '500.tsx',
   '_error.tsx',
+  'test.tsx',
+  'test-route.tsx',
+  'gallery-test.tsx'
 ];
 
 // Get current date in YYYY-MM-DD format
@@ -41,12 +44,14 @@ function getAllPages() {
 function generateUrlEntry(path, priority = 0.8) {
   const url = path === '/' ? SITE_URL : `${SITE_URL}${path}`;
   
-  // Set higher priority for home page and key sections
+  // Set priority based on path type
   let finalPriority = priority;
   if (path === '/') {
     finalPriority = 1.0;
-  } else if (path.includes('/post/')) {
+  } else if (path.includes('/blog-articles/') || path.includes('/blog-posts/')) {
     finalPriority = 0.7;
+  } else if (path.includes('/upload')) {
+    finalPriority = 0.6;
   }
 
   return `  <url>
