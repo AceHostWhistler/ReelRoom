@@ -3,7 +3,7 @@ const path = require('path');
 const glob = require('glob');
 
 // Configuration
-const SITE_URL = 'https://reelroom.com';
+const SITE_URL = 'https://www.cotswoldsvacation.com';
 const OUTPUT_PATH = path.join(process.cwd(), 'public', 'sitemap.xml');
 const PAGES_DIR = path.join(process.cwd(), 'src', 'pages');
 const EXCLUDED_PATHS = [
