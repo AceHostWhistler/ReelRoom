@@ -23,8 +23,155 @@ const imagePaths = {
 // Airbnb link
 const AIRBNB_LINK = "https://www.airbnb.ca/rooms/1414129878809697902?check_in=2025-08-20&check_out=2025-08-24&guests=10&adults=10&s=67&unique_share_id=3bb66e80-1ca0-4eb8-9866-40b102c76e50";
 
+// Mobile Menu Component - Separated for better isolation
+const MobileMenuOverlay = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+  if (!isOpen) return null;
+  
+  return (
+    <div 
+      id="mobileMenuContainer"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        zIndex: 99999999,
+        display: 'flex',
+        justifyContent: 'flex-end',
+        WebkitOverflowScrolling: 'touch', // For iOS momentum scrolling
+        WebkitTransform: 'translate3d(0,0,0)', // Force hardware acceleration on iOS
+        transform: 'translate3d(0,0,0)',
+        WebkitBackfaceVisibility: 'hidden', // Prevent iOS rendering issues
+        backfaceVisibility: 'hidden',
+        willChange: 'transform', // Hint to browser for optimization
+        isolation: 'isolate', // Create a new stacking context
+      }}
+      onClick={onClose}
+    >
+      <div 
+        style={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          height: '100%',
+          width: '80%',
+          maxWidth: '300px',
+          backgroundColor: '#fff',
+          boxShadow: '-2px 0 10px rgba(0, 0, 0, 0.2)',
+          overflowY: 'auto',
+          display: 'flex',
+          flexDirection: 'column',
+          WebkitBackfaceVisibility: 'hidden', // Prevent rendering issues on iOS
+          WebkitTransform: 'translateZ(0)', // Force GPU acceleration
+          transform: 'translateZ(0)',
+          isolation: 'isolate',
+          willChange: 'transform',
+        }}
+        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking menu
+      >
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '16px',
+          borderBottom: '1px solid #e0e0e0',
+        }}>
+          <h3 style={{ margin: 0, fontSize: '1.2rem' }}>Navigation</h3>
+          <button 
+            style={{
+              background: 'none',
+              border: 'none',
+              fontSize: '24px',
+              cursor: 'pointer',
+              padding: '4px 8px',
+            }}
+            onClick={onClose}
+          >
+            ×
+          </button>
+        </div>
+        
+        <ul style={{
+          listStyle: 'none',
+          margin: 0,
+          padding: 0,
+        }}>
+          <li style={{ borderBottom: '1px solid #e0e0e0' }}>
+            <a 
+              href="#home" 
+              style={{ padding: '16px', display: 'block', textDecoration: 'none', color: '#333' }}
+              onClick={onClose}
+            >
+              Home
+            </a>
+          </li>
+          <li style={{ borderBottom: '1px solid #e0e0e0' }}>
+            <a 
+              href="#about" 
+              style={{ padding: '16px', display: 'block', textDecoration: 'none', color: '#333' }}
+              onClick={onClose}
+            >
+              About
+            </a>
+          </li>
+          <li style={{ borderBottom: '1px solid #e0e0e0' }}>
+            <a 
+              href="#estate" 
+              style={{ padding: '16px', display: 'block', textDecoration: 'none', color: '#333' }}
+              onClick={onClose}
+            >
+              The Estate
+            </a>
+          </li>
+          <li style={{ borderBottom: '1px solid #e0e0e0' }}>
+            <a 
+              href="#explore" 
+              style={{ padding: '16px', display: 'block', textDecoration: 'none', color: '#333' }}
+              onClick={onClose}
+            >
+              Explore
+            </a>
+          </li>
+          <li style={{ borderBottom: '1px solid #e0e0e0' }}>
+            <a 
+              href="#amenities" 
+              style={{ padding: '16px', display: 'block', textDecoration: 'none', color: '#333' }}
+              onClick={onClose}
+            >
+              Amenities
+            </a>
+          </li>
+          <li style={{ padding: '16px' }}>
+            <a 
+              href={AIRBNB_LINK}
+              style={{ 
+                display: 'block',
+                background: '#007aff',
+                color: '#fff',
+                padding: '12px 16px',
+                borderRadius: '6px',
+                textAlign: 'center',
+                textDecoration: 'none',
+                fontWeight: 'bold',
+              }}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={onClose}
+            >
+              Book Now
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
 export default function CotswoldsLuxuryRetreat() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
   
   // Toggle mobile menu
   const toggleMobileMenu = (e: React.MouseEvent) => {
@@ -54,6 +201,27 @@ export default function CotswoldsLuxuryRetreat() {
       document.body.style.overflow = '';
     };
   }, []);
+
+  // Handle iOS-specific positioning issues
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      if (mobileMenuOpen) {
+        // Force iOS Safari to respect the z-index
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+        document.body.style.top = `-${window.scrollY}px`;
+      } else {
+        // Restore scroll position
+        const scrollY = document.body.style.top;
+        document.body.style.position = '';
+        document.body.style.width = '';
+        document.body.style.top = '';
+        if (scrollY) {
+          window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+        }
+      }
+    }
+  }, [mobileMenuOpen]);
 
   return (
     <>
@@ -103,9 +271,14 @@ export default function CotswoldsLuxuryRetreat() {
           }}
         />
         
-        {/* Additional viewport settings */}
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        {/* iOS specific viewport settings to fix rendering issues */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover, user-scalable=yes, shrink-to-fit=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="format-detection" content="telephone=no" />
       </Head>
+
+      {/* Mobile Menu - completely isolated from main page flow */}
+      <MobileMenuOverlay isOpen={mobileMenuOpen} onClose={closeMobileMenu} />
 
       <div className={styles.container}>
         <header className={styles.header}>
@@ -130,47 +303,26 @@ export default function CotswoldsLuxuryRetreat() {
             
             {/* Mobile menu button */}
             <button 
-              className={styles.mobileMenuButton}
+              style={{
+                display: 'none', // Hidden by default, shown with media query
+                background: 'none',
+                border: 'none',
+                fontSize: '24px',
+                cursor: 'pointer',
+                padding: '8px',
+                color: '#000',
+                position: 'absolute',
+                right: '15px',
+                top: '15px',
+                zIndex: 9999
+              }}
               onClick={toggleMobileMenu}
               aria-label="Toggle Menu"
-              style={{ display: 'none' }} // Hidden by default, shown with media query
+              className={styles.mobileMenuButton}
             >
               ☰
             </button>
           </nav>
-          
-          {/* Mobile menu overlay */}
-          {mobileMenuOpen && (
-            <div className={styles.mobileMenuOverlay} onClick={closeMobileMenu}>
-              <div 
-                className={styles.mobileMenu}
-                onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the menu
-              >
-                <div className={styles.mobileMenuHeader}>
-                  <h3>Navigation</h3>
-                  <button onClick={closeMobileMenu}>×</button>
-                </div>
-                <ul className={styles.mobileMenuItems}>
-                  <li><a href="#home" onClick={closeMobileMenu}>Home</a></li>
-                  <li><a href="#about" onClick={closeMobileMenu}>About</a></li>
-                  <li><a href="#estate" onClick={closeMobileMenu}>The Estate</a></li>
-                  <li><a href="#explore" onClick={closeMobileMenu}>Explore</a></li>
-                  <li><a href="#amenities" onClick={closeMobileMenu}>Amenities</a></li>
-                  <li>
-                    <a 
-                      href={AIRBNB_LINK} 
-                      className={styles.bookNowMobile} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      onClick={closeMobileMenu}
-                    >
-                      Book Now
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          )}
         </header>
 
         <main>
