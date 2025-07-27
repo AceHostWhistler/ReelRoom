@@ -216,9 +216,15 @@ export default function CotswoldsLuxuryRetreat() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         style={{ 
                           objectFit: 'cover',
-                          margin: '0 auto' // Center the image
+                          margin: '0 auto', // Center the image
+                          width: '100%', // Ensure full width
+                          height: '100%', // Ensure full height
+                          position: 'absolute',
+                          top: 0,
+                          left: 0
                         }}
-                        className={styles.galleryImage} // Add a class for additional styling if needed
+                        className={styles.galleryImage}
+                        priority={index < 2} // Prioritize loading the first two images
                       />
                     </div>
                   </div>
