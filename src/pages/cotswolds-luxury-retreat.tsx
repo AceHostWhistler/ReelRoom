@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/cotswolds-retreat.module.css'; // We'll create this file next
@@ -24,11 +24,35 @@ const imagePaths = {
 const AIRBNB_LINK = "https://www.airbnb.ca/rooms/1414129878809697902?check_in=2025-08-20&check_out=2025-08-24&guests=10&adults=10&s=67&unique_share_id=3bb66e80-1ca0-4eb8-9866-40b102c76e50";
 
 export default function CotswoldsLuxuryRetreat() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
+  // Toggle mobile menu
+  const toggleMobileMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setMobileMenuOpen(prev => !prev);
+    
+    // Prevent body scrolling when menu is open
+    if (!mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  };
+  
+  // Close mobile menu
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+    document.body.style.overflow = '';
+  };
+  
   // Add any custom JavaScript from our original script.js
   useEffect(() => {
     console.log("Cotswolds Luxury Retreat page loaded.");
     
-    // You can add any other client-side code here that was in the original script.js
+    // Clean up when component unmounts
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, []);
 
   return (
@@ -45,6 +69,8 @@ export default function CotswoldsLuxuryRetreat() {
             <div className={styles.logo}>
               <a href="#">Cotswolds Luxury Retreat</a>
             </div>
+            
+            {/* Desktop navigation */}
             <ul className={styles.navList}>
               <li><a href="#home">Home</a></li>
               <li><a href="#about">About</a></li>
@@ -57,7 +83,50 @@ export default function CotswoldsLuxuryRetreat() {
                 </a>
               </li>
             </ul>
+            
+            {/* Mobile menu button */}
+            <button 
+              className={styles.mobileMenuButton}
+              onClick={toggleMobileMenu}
+              aria-label="Toggle Menu"
+              style={{ display: 'none' }} // Hidden by default, shown with media query
+            >
+              ☰
+            </button>
           </nav>
+          
+          {/* Mobile menu overlay */}
+          {mobileMenuOpen && (
+            <div className={styles.mobileMenuOverlay} onClick={closeMobileMenu}>
+              <div 
+                className={styles.mobileMenu}
+                onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the menu
+              >
+                <div className={styles.mobileMenuHeader}>
+                  <h3>Navigation</h3>
+                  <button onClick={closeMobileMenu}>×</button>
+                </div>
+                <ul className={styles.mobileMenuItems}>
+                  <li><a href="#home" onClick={closeMobileMenu}>Home</a></li>
+                  <li><a href="#about" onClick={closeMobileMenu}>About</a></li>
+                  <li><a href="#estate" onClick={closeMobileMenu}>The Estate</a></li>
+                  <li><a href="#explore" onClick={closeMobileMenu}>Explore</a></li>
+                  <li><a href="#amenities" onClick={closeMobileMenu}>Amenities</a></li>
+                  <li>
+                    <a 
+                      href={AIRBNB_LINK} 
+                      className={styles.bookNowMobile} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      onClick={closeMobileMenu}
+                    >
+                      Book Now
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          )}
         </header>
 
         <main>
@@ -101,7 +170,11 @@ export default function CotswoldsLuxuryRetreat() {
                         alt={`Estate Image ${index + 1}`} 
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        style={{ objectFit: 'cover' }}
+                        style={{ 
+                          objectFit: 'cover',
+                          margin: '0 auto' // Center the image
+                        }}
+                        className={styles.galleryImage} // Add a class for additional styling if needed
                       />
                     </div>
                   </div>
