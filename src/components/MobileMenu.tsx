@@ -225,7 +225,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
         width: '95%',
         margin: '0 auto',
         position: 'relative',
-        zIndex: 100000, // Extremely high z-index
+        zIndex: 999999, // Increased z-index to ensure it's above everything
       }}>
         <div style={{
           display: 'flex',
@@ -284,7 +284,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
           right: 0,
           bottom: 0,
           backgroundColor: 'rgba(0,0,0,0.5)',
-          zIndex: 100002, // Extremely high z-index
+          zIndex: 999998, // Increased z-index
           opacity: mobileMenuOpen ? 1 : 0,
           visibility: mobileMenuOpen ? 'visible' : 'hidden',
           transition: 'opacity 0.3s ease',
@@ -302,7 +302,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
         maxWidth: '300px',
         backgroundColor: colors.white,
         boxShadow: '-5px 0 15px rgba(0,0,0,0.1)',
-        zIndex: 100003, // Higher than overlay and all other elements
+        zIndex: 999999, // Increased z-index to ensure it's above everything
         transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(100%)',
         transition: 'transform 0.3s ease-in-out',
         display: 'flex',

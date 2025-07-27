@@ -19,6 +19,10 @@ const nextConfig = {
         source: '/sitemap',
         destination: '/api/sitemap',
       },
+      {
+        source: '/robots.txt',
+        destination: '/api/robots',
+      },
     ];
   },
   
@@ -66,6 +70,11 @@ const nextConfig = {
             key: 'Cache-Control',
             value: 'public, max-age=3600, stale-while-revalidate=86400',
           },
+          // Add Content Security Policy for improved security (important for SEO too)
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube.com https://www.google.com; object-src 'none';"
+          },
         ],
       },
       {
@@ -110,6 +119,20 @@ const nextConfig = {
           },
         ],
       },
+      {
+        // Add proper headers for SEO files
+        source: '/(sitemap.xml|robots.txt)',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/plain',
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, must-revalidate',
+          },
+        ],
+      },
     ];
   },
   
@@ -121,7 +144,7 @@ const nextConfig = {
     // Set image sizes for the Image component
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     // Configure image formats - prioritize WebP and AVIF for modern browsers
-    formats: ['image/webp', 'image/avif'],
+    formats: ['image/webp', 'image/avif', 'image/png', 'image/jpeg'],
     // Decrease cache TTL for more frequent updates but with caching benefit
     minimumCacheTTL: 60 * 60 * 24 * 7, // 7 days
     // Configure remote patterns
@@ -129,6 +152,11 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'cotswoldsvacation.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.cotswoldsvacation.com',
         pathname: '/**',
       },
       {
@@ -159,6 +187,8 @@ const nextConfig = {
   experimental: {
     // Improve page loading performance with stable option
     scrollRestoration: true,
+    // Improve SEO with optimized metadata
+    optimizePackageImports: ['@vercel/analytics'],
   },
 }
 

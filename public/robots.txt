@@ -1,6 +1,17 @@
-# Allow all crawlers
+# Allow all web crawlers
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /*.json$
 
-# Sitemap location
-Sitemap: https://www.cotswoldsvacation.com/sitemap.xml 
+# Specify sitemap
+Sitemap: https://www.cotswoldsvacation.com/sitemap.xml
+
+# Allow web crawlers to access images
+User-agent: Googlebot-Image
+Allow: /photos/
+
+# Allow Google AdsBot
+User-agent: AdsBot-Google
+Allow: / 

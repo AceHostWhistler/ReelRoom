@@ -479,10 +479,65 @@ export default function LuxuryRetreatFixed() {
   return (
     <div style={styles.container}>
       <Head>
-        <title>Cotswolds Luxury Retreat | Tennis & Wellness</title>
-        <meta name="description" content="An exclusive luxury estate nestled in the heart of the Cotswolds. Experience tranquility and elegance in a stunning countryside setting just minutes from Soho Farm House." />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <meta name="google-site-verification" content="YmpuEZdA3JnXEfa8rdhhrb41JyzgSXiM9GPDRr3dAFc" />
+        <title>Cotswolds Luxury Retreat | Premium Estate with Tennis Court & Wellness Facilities</title>
+        <meta name="description" content="Experience the ultimate luxury vacation in our exclusive Cotswolds Estate. Private tennis court, wellness facilities, elegant interiors, and just 3 minutes from Soho Farm House." />
+        <meta name="keywords" content="luxury Cotswolds estate, Cotswolds retreat, tennis court, wellness facilities, Soho Farm House, luxury holiday rental, Cotswolds vacation, UK countryside escape" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta name="google-site-verification" content="UmTMmjHtW3Q_-Uzi8WXxrPgE2YBsv0GXgq0RXCQuB_Y" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://www.cotswoldsvacation.com" />
+        
+        {/* Robots directives */}
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:title" content="Cotswolds Luxury Retreat | Premium Estate with Tennis Court & Wellness Facilities" />
+        <meta property="og:description" content="Experience the ultimate luxury vacation in our exclusive Cotswolds Estate. Private tennis court, wellness facilities, and just 3 minutes from Soho Farm House." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.cotswoldsvacation.com" />
+        <meta property="og:image" content="https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg" />
+        <meta property="og:site_name" content="Cotswolds Luxury Retreat" />
+        <meta property="og:locale" content="en_GB" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Cotswolds Luxury Retreat | Premium Cotswolds Estate" />
+        <meta name="twitter:description" content="Luxury estate in the heart of the Cotswolds with tennis court and wellness facilities." />
+        <meta name="twitter:image" content="https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg" />
+        
+        {/* Structured Data for LodgingBusiness */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LodgingBusiness",
+              "name": "Cotswolds Luxury Retreat",
+              "image": "https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg",
+              "url": "https://www.cotswoldsvacation.com",
+              "address": {
+                "@type": "PostalAddress",
+                "addressRegion": "Cotswolds",
+                "addressCountry": "United Kingdom"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "51.9210",
+                "longitude": "-1.7090"
+              },
+              "description": "Premium Cotswolds Estate with Private Tennis Court & Wellness Facilities, Just 3 Minutes from Soho Farm House",
+              "priceRange": "$$$$",
+              "amenityFeature": [
+                {"@type": "LocationFeatureSpecification", "name": "Tennis Court"},
+                {"@type": "LocationFeatureSpecification", "name": "Wellness Facilities"},
+                {"@type": "LocationFeatureSpecification", "name": "High-speed Internet"},
+                {"@type": "LocationFeatureSpecification", "name": "Luxury Bedrooms"},
+                {"@type": "LocationFeatureSpecification", "name": "Garden"}
+              ]
+            })
+          }}
+        />
         
         {/* Preconnect to improve loading performance */}
         <link rel="preconnect" href="https://cotswoldsvacation.com" />

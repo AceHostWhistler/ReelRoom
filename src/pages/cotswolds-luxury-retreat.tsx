@@ -58,9 +58,53 @@ export default function CotswoldsLuxuryRetreat() {
   return (
     <>
       <Head>
-        <title>Cotswolds Luxury Retreat</title>
-        <meta name="description" content="An oasis of tranquility in the Cotswolds" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Cotswolds Luxury Retreat | Premium Estate with Tennis Court & Wellness Facilities</title>
+        <meta name="description" content="Experience the ultimate luxury retreat in the heart of the Cotswolds. Our exclusive estate features elegant interiors, private tennis court, wellness facilities, and is just minutes from Soho Farmhouse." />
+        <meta name="keywords" content="Cotswolds luxury retreat, Cotswolds estate rental, luxury Cotswolds vacation, Cotswolds holiday home, Soho Farmhouse, tennis court, wellness retreat" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://www.cotswoldsvacation.com/cotswolds-luxury-retreat" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:title" content="Cotswolds Luxury Retreat | Premium Estate with Tennis Court & Wellness Facilities" />
+        <meta property="og:description" content="Experience the ultimate luxury retreat in the heart of the Cotswolds. Our exclusive estate features elegant interiors, private tennis court, wellness facilities, and is just minutes from Soho Farmhouse." />
+        <meta property="og:image" content="https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg" />
+        <meta property="og:url" content="https://www.cotswoldsvacation.com/cotswolds-luxury-retreat" />
+        
+        {/* Twitter */}
+        <meta name="twitter:title" content="Cotswolds Luxury Retreat | Premium Estate with Tennis Court & Wellness" />
+        <meta name="twitter:description" content="Experience the ultimate luxury retreat in the heart of the Cotswolds, just minutes from Soho Farmhouse." />
+        <meta name="twitter:image" content="https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg" />
+        
+        {/* Structured Data (JSON-LD) for LodgingBusiness */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LodgingBusiness",
+              "name": "Cotswolds Luxury Retreat",
+              "image": "https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg",
+              "address": {
+                "@type": "PostalAddress",
+                "addressRegion": "Cotswolds",
+                "addressCountry": "United Kingdom"
+              },
+              "description": "An exclusive luxury estate in the heart of the Cotswolds with private tennis court and wellness facilities.",
+              "amenityFeature": [
+                {"@type": "LocationFeatureSpecification", "name": "Tennis Court"},
+                {"@type": "LocationFeatureSpecification", "name": "Wellness Facilities"},
+                {"@type": "LocationFeatureSpecification", "name": "High-speed Internet"},
+                {"@type": "LocationFeatureSpecification", "name": "Luxury Bedrooms"}
+              ],
+              "url": "https://www.cotswoldsvacation.com/cotswolds-luxury-retreat",
+              "priceRange": "$$$$"
+            })
+          }}
+        />
+        
+        {/* Additional viewport settings */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
       </Head>
 
       <div className={styles.container}>
