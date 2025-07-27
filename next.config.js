@@ -144,7 +144,7 @@ const nextConfig = {
     // Set image sizes for the Image component
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     // Configure image formats - prioritize WebP and AVIF for modern browsers
-    formats: ['image/webp', 'image/avif', 'image/png', 'image/jpeg'],
+    formats: ['image/webp', 'image/avif'],
     // Decrease cache TTL for more frequent updates but with caching benefit
     minimumCacheTTL: 60 * 60 * 24 * 7, // 7 days
     // Configure remote patterns
@@ -187,8 +187,6 @@ const nextConfig = {
   experimental: {
     // Improve page loading performance with stable option
     scrollRestoration: true,
-    // Improve SEO with optimized metadata
-    optimizePackageImports: ['@vercel/analytics'],
   },
 }
 
