@@ -26,9 +26,20 @@ const nextConfig = {
     ];
   },
   
-  // No redirects needed - always show the luxury retreat page
+  // Redirect /properties to the home page to fix 404 errors from Google search results
   async redirects() {
-    return [];
+    return [
+      {
+        source: '/properties',
+        destination: '/',
+        permanent: true, // 308 redirect - helps SEO by transferring link equity
+      },
+      {
+        source: '/properties/:path*',
+        destination: '/',
+        permanent: true,
+      }
+    ];
   },
   
   // Performance optimizations

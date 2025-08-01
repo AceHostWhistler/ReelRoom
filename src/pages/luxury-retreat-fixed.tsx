@@ -479,7 +479,7 @@ export default function LuxuryRetreatFixed() {
   return (
     <div style={styles.container}>
       <Head>
-        <title>Cotswolds Luxury Retreat | Premium Estate with Tennis Court & Wellness Facilities</title>
+        <title>Luxury Cotswolds Airbnb Vacation Rental | Near Soho Farm House</title>
         <meta name="description" content="Experience the ultimate luxury vacation in our exclusive Cotswolds Estate. Private tennis court, wellness facilities, elegant interiors, and just 3 minutes from Soho Farm House." />
         <meta name="keywords" content="luxury Cotswolds estate, Cotswolds retreat, tennis court, wellness facilities, Soho Farm House, luxury holiday rental, Cotswolds vacation, UK countryside escape" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
@@ -492,7 +492,7 @@ export default function LuxuryRetreatFixed() {
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         
         {/* Open Graph / Facebook */}
-        <meta property="og:title" content="Cotswolds Luxury Retreat | Premium Estate with Tennis Court & Wellness Facilities" />
+        <meta property="og:title" content="Luxury Cotswolds Airbnb Vacation Rental | Near Soho Farm House" />
         <meta property="og:description" content="Experience the ultimate luxury vacation in our exclusive Cotswolds Estate. Private tennis court, wellness facilities, and just 3 minutes from Soho Farm House." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.cotswoldsvacation.com" />
@@ -502,7 +502,7 @@ export default function LuxuryRetreatFixed() {
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Cotswolds Luxury Retreat | Premium Cotswolds Estate" />
+        <meta name="twitter:title" content="Luxury Cotswolds Airbnb Vacation Rental | Near Soho Farm House" />
         <meta name="twitter:description" content="Luxury estate in the heart of the Cotswolds with tennis court and wellness facilities." />
         <meta name="twitter:image" content="https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg" />
         
