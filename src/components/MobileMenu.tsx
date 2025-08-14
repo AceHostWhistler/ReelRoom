@@ -78,7 +78,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
     return (
       <nav style={{
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
         width: '90%',
         maxWidth: '1400px',
@@ -114,8 +114,11 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
           margin: 0,
           display: 'flex',
           alignItems: 'center',
+          gap: '30px', /* Add spacing between navigation items */
+          justifyContent: 'center', /* Center all items */
+          width: '100%',
         }}>
-          <li style={{ marginLeft: '25px' }}>
+          <li>
             <Link 
               href="/#home" 
               style={{ 
@@ -128,7 +131,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               Home
             </Link>
           </li>
-          <li style={{ marginLeft: '25px' }}>
+          <li>
             <Link 
               href="/#about" 
               style={{ 
@@ -141,7 +144,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               About
             </Link>
           </li>
-          <li style={{ marginLeft: '25px' }}>
+          <li>
             <Link 
               href="/#gallery" 
               style={{ 
@@ -154,7 +157,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               Gallery
             </Link>
           </li>
-          <li style={{ marginLeft: '25px' }}>
+          <li>
             <Link 
               href="/#amenities" 
               style={{ 
@@ -167,7 +170,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               Amenities
             </Link>
           </li>
-          <li style={{ marginLeft: '25px' }}>
+          <li>
             <Link 
               href="/#bedrooms" 
               style={{ 
@@ -180,7 +183,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               Bedrooms
             </Link>
           </li>
-          <li style={{ marginLeft: '25px' }}>
+          <li>
             <Link 
               href="/cotswolds-blog" 
               style={{ 
@@ -193,7 +196,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               Blog
             </Link>
           </li>
-          <li style={{ marginLeft: '25px' }}>
+          <li>
             <a 
               href={AIRBNB_LINK} 
               style={{

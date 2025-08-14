@@ -320,15 +320,14 @@ const styles = {
     width: '100%',
     maxWidth: '900px',
     height: '500px',
-    backgroundColor: 'rgba(0,0,0,0.3)',
+    backgroundColor: '#000000', /* Solid black background */
     borderRadius: '12px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     margin: '20px auto',
-    border: `1px solid ${colors.lightGray}`,
+    border: `1px solid #000000`, /* Black border */
     boxShadow: '0 8px 25px rgba(0,0,0,0.2)',
-    backdropFilter: 'blur(5px)',
   },
   placeholderText: {
     color: colors.white,
