@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const { i18n } = require('./next-i18next.config');
+const legacyRedirects = require('./redirects.config');
 
 const nextConfig = {
   reactStrictMode: true,
@@ -26,20 +27,8 @@ const nextConfig = {
     ];
   },
   
-  // Redirect /properties to the home page to fix 404 errors from Google search results
   async redirects() {
-    return [
-      {
-        source: '/properties',
-        destination: '/',
-        permanent: true, // 308 redirect - helps SEO by transferring link equity
-      },
-      {
-        source: '/properties/:path*',
-        destination: '/',
-        permanent: true,
-      }
-    ];
+    return legacyRedirects;
   },
   
   // Performance optimizations

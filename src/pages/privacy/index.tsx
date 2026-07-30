@@ -1,8 +1,7 @@
 import React from "react";
 import Head from "next/head";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import Link from "next/link";
+import MobileMenu from "@/components/MobileMenu";
 
 export default function Privacy() {
   return (
@@ -13,8 +12,11 @@ export default function Privacy() {
           name="description"
           content="Privacy Policy for Cotswolds Vacation - Learn how we handle and protect your personal information when you use our luxury property rental services in the Cotswolds."
         />
+        <link rel="canonical" href="https://www.cotswoldsvacation.com/privacy" />
       </Head>
-      <Navigation />
+      <header style={{ padding: "20px 0", borderBottom: "1px solid #e0e0e0" }}>
+        <MobileMenu activePage="home" />
+      </header>
       <main className="container mx-auto px-4 py-16 max-w-5xl">
         <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
 
@@ -301,7 +303,14 @@ export default function Privacy() {
           </p>
         </section>
       </main>
-      <Footer />
+      <footer style={{ padding: "40px 24px", textAlign: "center", borderTop: "1px solid #e0e0e0", color: "#666" }}>
+        <p>
+          <Link href="/" style={{ color: "#2c5e1a" }}>Cotswolds Luxury Retreat</Link>
+          {" · "}
+          <Link href="/terms" style={{ color: "#2c5e1a" }}>Terms</Link>
+        </p>
+        <p style={{ marginTop: "12px" }}>&copy; {new Date().getFullYear()} Cotswolds Estate</p>
+      </footer>
     </>
   );
 }

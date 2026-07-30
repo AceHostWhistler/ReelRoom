@@ -5,7 +5,7 @@ import Image, { ImageProps } from 'next/image';
 const WHITE_BLUR_DATA_URL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=";
 
 // Default fallback image that should always be available
-const DEFAULT_FALLBACK = "/photos/homepage/WhistlerVacationRental.jpg";
+const DEFAULT_FALLBACK = "/photos/listings/Cotswolds Luxury Retreat/224A5508.jpg";
 
 // Ultimate static fallback that is very small and guaranteed to exist
 const STATIC_BACKUP = "/photos/static-backup.png";

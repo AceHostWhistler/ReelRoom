@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import Head from "next/head";
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+import MobileMenu from "@/components/MobileMenu";
 import {
   Home,
   Bed,
@@ -149,7 +148,7 @@ const PropertyUpload = () => {
       );
 
       // Redirect to the new property page
-      router.push(`/properties/${propertySlug}`);
+      router.push("/");
     } catch (error) {
       console.error("Error submitting property:", error);
       alert("There was an error submitting the property. Please try again.");
@@ -159,15 +158,18 @@ const PropertyUpload = () => {
   return (
     <>
       <Head>
-        <title>Upload Property | AceHost</title>
+        <title>Property Upload | Cotswolds Vacation</title>
         <meta
           name="description"
-          content="Upload a new luxury property to the AceHost catalog"
+          content="Internal property upload form for Cotswolds Vacation"
         />
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
 
       <div className="min-h-screen bg-white">
-        <Navigation transparent={false} />
+        <header style={{ padding: "20px 0", borderBottom: "1px solid #e0e0e0" }}>
+          <MobileMenu activePage="home" />
+        </header>
 
         <main className="py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -205,7 +207,7 @@ const PropertyUpload = () => {
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="e.g. Altitude Retreat | Kadenwood"
+                      placeholder="e.g. Cotswolds Luxury Retreat"
                     />
                   </div>
 
@@ -224,7 +226,7 @@ const PropertyUpload = () => {
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                       value={formData.location}
                       onChange={handleChange}
-                      placeholder="e.g. Whistler Village, Creekside"
+                      placeholder="e.g. Stow-on-the-Wold, Gloucestershire"
                     />
                   </div>
 
@@ -244,7 +246,7 @@ const PropertyUpload = () => {
                       onChange={handleChange}
                     >
                       <option value="">Select a category</option>
-                      <option value="whistler">Whistler Properties</option>
+                      <option value="cotswolds">Cotswolds Properties</option>
                       <option value="vancouver">Vancouver Properties</option>
                       <option value="worldwide">Worldwide</option>
                       <option value="pets-allowed">Pets Allowed</option>
@@ -715,7 +717,9 @@ const PropertyUpload = () => {
           </div>
         </main>
 
-        <Footer />
+        <footer style={{ padding: "40px 24px", textAlign: "center", borderTop: "1px solid #e0e0e0", color: "#666" }}>
+          <p>&copy; {new Date().getFullYear()} Cotswolds Estate</p>
+        </footer>
       </div>
     </>
   );

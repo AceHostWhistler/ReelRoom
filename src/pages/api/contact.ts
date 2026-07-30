@@ -4,23 +4,19 @@ import smtpTransport from 'nodemailer-smtp-transport';
 import fs from 'fs';
 import path from 'path';
 
-// For debugging
-const DEBUG_MODE = true;
+const DEBUG_MODE = process.env.NODE_ENV === 'development';
+const SITE_NAME = 'Cotswolds Vacation';
+const DEFAULT_CONTACT_EMAIL = 'privacy@cotswoldsvacation.com';
 
-// Add a function to save form submissions to file if email fails
-const saveSubmissionToFile = async (data: any) => {
+const saveSubmissionToFile = async (data: Record<string, unknown>) => {
   try {
-    // Create a submissions directory if it doesn't exist
     const dir = path.join(process.cwd(), 'contact-submissions');
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
 
-    // Create a unique filename with timestamp
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
     const filename = path.join(dir, `submission-${timestamp}.json`);
-    
-    // Write the submission data to file
     fs.writeFileSync(filename, JSON.stringify(data, null, 2));
     console.log(`Saved submission to ${filename}`);
     return true;
@@ -30,84 +26,38 @@ const saveSubmissionToFile = async (data: any) => {
   }
 };
 
-// Function to create a nodemailer transport using environment variables
 const createTransport = () => {
-  // Log all environment variables for debugging
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPass = process.env.SMTP_PASSWORD;
+  const recipientEmail = process.env.CONTACT_EMAIL || DEFAULT_CONTACT_EMAIL;
+
   if (DEBUG_MODE) {
-    console.log("Environment Variables Available:");
-    console.log("SMTP_USER:", process.env.SMTP_USER);
-    console.log("SMTP_PASSWORD:", process.env.SMTP_PASSWORD ? "Set (length: " + process.env.SMTP_PASSWORD.length + ")" : "Not Set");
-    console.log("SMTP_HOST:", process.env.SMTP_HOST);
-    console.log("SMTP_PORT:", process.env.SMTP_PORT);
-    console.log("SMTP_SECURE:", process.env.SMTP_SECURE);
-    console.log("NODE_ENV:", process.env.NODE_ENV);
+    console.log("SMTP_USER:", smtpUser ? "Set" : "Not Set");
+    console.log("SMTP_PASSWORD:", smtpPass ? "Set" : "Not Set");
+    console.log("CONTACT_EMAIL:", recipientEmail);
   }
 
-  // Hardcode credentials as fallback
-  const smtpUser = process.env.SMTP_USER || 'ben@acehost.ca';
-  const smtpPass = process.env.SMTP_PASSWORD || 'jreg ytvb dmcs kpej'; // App password for Gmail
-  
-  // Use explicit Gmail SMTP configuration
+  if (!smtpUser || !smtpPass) {
+    console.warn("SMTP credentials not configured — submissions will be saved to disk only");
+    return null;
+  }
+
   const smtpConfig = {
     host: process.env.SMTP_HOST || 'smtp.gmail.com',
     port: process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT) : 465,
-    secure: process.env.SMTP_SECURE === 'true', // Use SSL
+    secure: process.env.SMTP_SECURE !== 'false',
     auth: {
       user: smtpUser,
       pass: smtpPass,
     },
-    debug: true, // Enable debug output
-    logger: true // Log information to console
   };
 
-  // Always send to ben@acehost.ca as requested
-  const recipientEmail = "ben@acehost.ca";
-
-  if (DEBUG_MODE) {
-    console.log("SMTP Configuration:", {
-      host: smtpConfig.host,
-      port: smtpConfig.port,
-      secure: smtpConfig.secure,
-      user: smtpUser,
-      pass: smtpPass ? "PASSWORD SET (length: " + smtpPass.length + ")" : "NOT SET",
-      recipient: recipientEmail,
-    });
-  }
-
-  if (!smtpPass) {
-    console.error("SMTP_PASSWORD not set in environment variables or hardcoded fallback");
-    return null;
-  }
-  
   try {
-    // Create transport with detailed options
     const transport = nodemailer.createTransport(smtpTransport(smtpConfig));
-    return {
-      transport,
-      recipient: recipientEmail,
-    };
+    return { transport, recipient: recipientEmail, smtpUser };
   } catch (err) {
     console.error("Failed to create transport:", err);
-    
-    // Try an alternative approach with direct nodemailer
-    try {
-      console.log("Attempting alternative transport creation...");
-      const alternativeTransport = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: smtpUser,
-          pass: smtpPass,
-        },
-      });
-      
-      return {
-        transport: alternativeTransport,
-        recipient: recipientEmail,
-      };
-    } catch (altErr) {
-      console.error("Failed to create alternative transport:", altErr);
-      return null;
-    }
+    return null;
   }
 };
 
@@ -115,12 +65,10 @@ export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse<{ message: string } | { error: string, details?: string }>
 ) {
-  // First, save all form submissions to disk regardless of what happens
   const submissionTimestamp = new Date().toISOString();
-  
+
   if (request.method === "POST") {
     try {
-      // Extract form data
       const formData = request.body;
       const {
         name = '',
@@ -133,13 +81,6 @@ export default async function handler(
         guests,
       } = formData;
 
-      // Always log the raw request for debugging
-      if (DEBUG_MODE) {
-        console.log("Request headers:", request.headers);
-        console.log("Raw form data:", formData);
-      }
-
-      // Validate required fields
       if (!name || !email || !phone || !message) {
         return response.status(400).json({
           error: "Missing required fields",
@@ -147,7 +88,6 @@ export default async function handler(
         });
       }
 
-      // Create a data object with all submission information
       const submissionData = {
         name,
         email,
@@ -160,120 +100,52 @@ export default async function handler(
         submittedAt: submissionTimestamp,
       };
 
-      // First, always save to file as backup
-      const savedToFile = await saveSubmissionToFile(submissionData);
-      if (!savedToFile) {
-        console.warn("Failed to save submission to file");
-      }
-      
-      console.log("Form submission received and saved to file:", JSON.stringify(submissionData, null, 2));
+      await saveSubmissionToFile(submissionData);
 
-      // ----------------------------------------------------------------
-      // Try the main email transport method first
-      // ----------------------------------------------------------------
       let isEmailSent = false;
-      let transportInfo = createTransport();
-      
+      const transportInfo = createTransport();
+
       if (transportInfo) {
-        const { transport, recipient } = transportInfo;
-        
+        const { transport, recipient, smtpUser } = transportInfo;
+
         try {
-          // Configure email
           const mailOptions = {
-            from: `"AceHost Website" <${process.env.SMTP_USER || 'ben@acehost.ca'}>`,
+            from: `"${SITE_NAME}" <${smtpUser}>`,
             to: recipient,
-            subject: `[AceHost Contact] New ${inquiryType} Inquiry from ${name}`,
+            subject: `[${SITE_NAME}] New ${inquiryType} from ${name}`,
             html: generateEmail(submissionData),
             replyTo: email,
             text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nInquiry: ${inquiryType}\nMessage: ${message}`,
           };
 
-          console.log("Preparing to send email with options:", {
-            from: mailOptions.from,
-            to: mailOptions.to,
-            subject: mailOptions.subject,
-            replyTo: mailOptions.replyTo,
-          });
-
-          // Verify SMTP connection before attempting to send
-          try {
-            await transport.verify();
-            console.log("SMTP connection verified successfully");
-            
-            // Send email
-            const info = await transport.sendMail(mailOptions);
-            console.log("Email sent successfully:", info.messageId, info.response);
-            isEmailSent = true;
-          } catch (verifyError: any) {
-            console.error("SMTP connection failed:", verifyError.message);
-          }
-        } catch (emailError: any) {
-          console.error("Error in main email sending attempt:", emailError.message);
-        }
-      }
-
-      // ----------------------------------------------------------------
-      // If the main method failed, try a direct simple approach
-      // ----------------------------------------------------------------
-      if (!isEmailSent) {
-        console.log("Main email method failed, trying fallback approach...");
-        try {
-          // Create a simple transport with minimal config
-          const fallbackTransport = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-              user: 'ben@acehost.ca',
-              pass: process.env.SMTP_PASSWORD || 'jreg ytvb dmcs kpej',
-            }
-          });
-          
-          const fallbackMailOptions = {
-            from: 'ben@acehost.ca',
-            to: 'ben@acehost.ca',
-            subject: `[AceHost] Form Submission from ${name}`,
-            text: `
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Inquiry Type: ${inquiryType}
-Property Interest: ${propertyInterest || 'Not specified'}
-Dates: ${dates || 'Not specified'}
-Guests: ${guests || 'Not specified'}
-Message:
-${message}
-            `,
-          };
-          
-          const info = await fallbackTransport.sendMail(fallbackMailOptions);
-          console.log("Fallback email sent successfully:", info.messageId);
+          await transport.verify();
+          const info = await transport.sendMail(mailOptions);
+          console.log("Email sent successfully:", info.messageId);
           isEmailSent = true;
-        } catch (fallbackError: any) {
-          console.error("Fallback email method also failed:", fallbackError.message);
+        } catch (emailError: unknown) {
+          const message = emailError instanceof Error ? emailError.message : String(emailError);
+          console.error("Error sending email:", message);
         }
       }
-      
-      // Return success response - even if email failed, we saved the data
-      return response.status(200).json({ 
-        message: isEmailSent 
-          ? "Your message has been sent successfully. We'll be in touch soon!" 
+
+      return response.status(200).json({
+        message: isEmailSent
+          ? "Your message has been sent successfully. We'll be in touch soon!"
           : "Your inquiry has been recorded. Our team will review it shortly."
       });
-    } catch (error: any) {
-      // Log detailed error information
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Unknown error occurred";
       console.error("Error processing contact form:", error);
-      
-      // Return error response with details if available
       return response.status(500).json({
         error: "We couldn't process your request at this time",
-        details: error.message || "Unknown error occurred"
+        details: message
       });
     }
-  } else {
-    return response.status(405).json({ error: "Method not allowed" });
   }
+
+  return response.status(405).json({ error: "Method not allowed" });
 }
 
-// Configure API to accept larger request bodies
 export const config = {
   api: {
     bodyParser: {
@@ -282,7 +154,6 @@ export const config = {
   },
 };
 
-// Function to generate HTML email content
 function generateEmail({
   name,
   email,
@@ -306,92 +177,25 @@ function generateEmail({
     <html>
         <head>
             <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>AceHost Whistler - New Inquiry</title>
+            <title>${SITE_NAME} - New Inquiry</title>
             <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    line-height: 1.6;
-                    color: #333;
-                    margin: 0;
-                    padding: 0;
-                }
-
-                .email-wrapper {
-                    max-width: 600px;
-                    margin: 0 auto;
-                    background-color: #ffffff;
-                    border: 1px solid #ddd;
-                }
-
-                .header {
-                    background-color: #000000;
-                    padding: 20px;
-                    text-align: center;
-                }
-
-                .content {
-                    padding: 20px;
-                }
-
-                .info-section {
-                    margin-bottom: 20px;
-                    border-left: 4px solid #000;
-                    padding-left: 15px;
-                }
-
-                .message-content {
-                    background-color: #f7f7f7;
-                    padding: 15px;
-                    border-radius: 5px;
-                    margin-top: 10px;
-                }
-
-                h1 {
-                    margin-top: 0;
-                    font-size: 22px;
-                    color: #000;
-                }
-
-                h2 {
-                    font-size: 18px;
-                    margin-bottom: 10px;
-                    color: #000;
-                }
-
-                .footer {
-                    text-align: center;
-                    padding: 15px;
-                    font-size: 12px;
-                    background-color: #f7f7f7;
-                    color: #666;
-                }
-
-                .button {
-                    display: inline-block;
-                    background-color: #000;
-                    color: white;
-                    padding: 10px 20px;
-                    text-decoration: none;
-                    border-radius: 4px;
-                    font-weight: bold;
-                }
-
-                a {
-                    color: #0066cc;
-                }
+                body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
+                .email-wrapper { max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #ddd; }
+                .header { background-color: #2c5e1a; padding: 20px; text-align: center; }
+                .content { padding: 20px; }
+                .info-section { margin-bottom: 20px; border-left: 4px solid #2c5e1a; padding-left: 15px; }
+                .message-content { background-color: #f7f7f7; padding: 15px; border-radius: 5px; margin-top: 10px; }
+                .footer { text-align: center; padding: 15px; font-size: 12px; background-color: #f7f7f7; color: #666; }
             </style>
         </head>
         <body>
             <div class="email-wrapper">
                 <div class="header">
-                    <h1 style="color: #ffffff; margin: 0;">AceHost Whistler Inquiry</h1>
+                    <h1 style="color: #ffffff; margin: 0;">${SITE_NAME}</h1>
                 </div>
-                
                 <div class="content">
-                    <h1>New ${inquiryType} Inquiry</h1>
-                    <p>You have received a new inquiry from the AceHost website contact form.</p>
-                    
+                    <h1>New ${inquiryType}</h1>
+                    <p>You have received a new inquiry from the ${SITE_NAME} website contact form.</p>
                     <div class="info-section">
                         <h2>Contact Information</h2>
                         <p><strong>Name:</strong> ${name}</p>
@@ -399,38 +203,22 @@ function generateEmail({
                         <p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>
                         <p><strong>Inquiry Type:</strong> ${inquiryType}</p>
                     </div>
-                    
-                    ${propertyInterest ? `
-                    <div class="info-section">
-                        <h2>Property Interest</h2>
-                        <p>${propertyInterest}</p>
-                    </div>
-                    ` : ''}
-                    
-                    ${dates || guests ? `
-                    <div class="info-section">
-                        <h2>Travel Details</h2>
-                        ${dates ? `<p><strong>Dates:</strong> ${dates}</p>` : ''}
-                        ${guests ? `<p><strong>Guests:</strong> ${guests}</p>` : ''}
-                    </div>
-                    ` : ''}
-                    
+                    ${propertyInterest ? `<div class="info-section"><h2>Property Interest</h2><p>${propertyInterest}</p></div>` : ''}
+                    ${dates || guests ? `<div class="info-section"><h2>Travel Details</h2>${dates ? `<p><strong>Dates:</strong> ${dates}</p>` : ''}${guests ? `<p><strong>Guests:</strong> ${guests}</p>` : ''}</div>` : ''}
                     <div class="info-section">
                         <h2>Message</h2>
                         <div class="message-content">${message.replace(/\n/g, '<br>')}</div>
                     </div>
-                    
                     <div style="margin-top: 30px; text-align: center;">
-                        <a href="mailto:${email}?subject=RE: Your AceHost Inquiry" style="background-color: #000; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold;">Reply to ${name}</a>
+                        <a href="mailto:${email}?subject=RE: Your ${SITE_NAME} inquiry" style="background-color: #2c5e1a; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold;">Reply to ${name}</a>
                     </div>
                 </div>
-                
                 <div class="footer">
-                    <p>This email was sent from the AceHost Whistler website contact form.</p>
-                    <p>&copy; ${new Date().getFullYear()} AceHost Whistler. All rights reserved.</p>
+                    <p>This email was sent from the ${SITE_NAME} website contact form.</p>
+                    <p>&copy; ${new Date().getFullYear()} ${SITE_NAME}. All rights reserved.</p>
                 </div>
             </div>
         </body>
     </html>
   `;
-} 
+}

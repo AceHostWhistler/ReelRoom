@@ -41,6 +41,7 @@ export default function GalleryTest() {
       <Head>
         <title>Optimized Gallery Test</title>
         <meta name="description" content="Testing improved image loading for large photos" />
+        <meta name="robots" content="noindex, nofollow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Only add preconnect if we have an origin (client-side) */}
         {origin && (

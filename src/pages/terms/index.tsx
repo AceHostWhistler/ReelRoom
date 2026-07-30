@@ -1,21 +1,24 @@
 import React from "react";
 import Head from "next/head";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+import Link from "next/link";
+import MobileMenu from "@/components/MobileMenu";
 
 const TermsOfService = () => {
   return (
     <>
       <Head>
-        <title>Terms of Service | AceHost</title>
+        <title>Terms of Service | Cotswolds Vacation</title>
         <meta
           name="description"
-          content="View the terms of service for AceHost, detailing the conditions for using our luxury property rental services in Whistler."
+          content="View the terms of service for Cotswolds Vacation, detailing the conditions for using our luxury property rental services in the Cotswolds."
         />
+        <link rel="canonical" href="https://www.cotswoldsvacation.com/terms" />
       </Head>
 
       <div className="min-h-screen bg-white">
-        <Navigation />
+        <header style={{ padding: "20px 0", borderBottom: "1px solid #e0e0e0" }}>
+          <MobileMenu activePage="home" />
+        </header>
 
         <section className="pt-24 pb-12">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,272 +36,99 @@ const TermsOfService = () => {
 
             <div className="prose max-w-none prose-gray">
               <section className="mb-10">
-                <h2 className="text-2xl font-medium mb-4 text-gray-900">
-                  Introduction
-                </h2>
+                <h2 className="text-2xl font-medium mb-4 text-gray-900">Introduction</h2>
                 <p>
-                  Welcome to AceHost. These terms and conditions govern your use
-                  of our website and services. By accessing our website or using
-                  our services, you agree to these terms. Please read them
-                  carefully.
+                  Welcome to Cotswolds Vacation. These terms and conditions govern your use
+                  of our website and services. By accessing our website or using our services,
+                  you agree to these terms.
                 </p>
                 <p>
-                  These Terms of Service (&quot;Terms&quot;) constitute a
-                  legally binding agreement between you and AceHost governing
-                  your access to and use of the website and services.
+                  These Terms of Service constitute a legally binding agreement between you
+                  and Cotswolds Vacation governing your access to and use of this website.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-medium mb-4 text-gray-900">
-                  Use of Services
-                </h2>
-                <p>
-                  AceHost provides a platform for users to browse, inquire
-                  about, and book luxury property rentals. Our services include:
-                </p>
+                <h2 className="text-2xl font-medium mb-4 text-gray-900">Use of Services</h2>
+                <p>Cotswolds Vacation provides information about our luxury holiday rental property in the Cotswolds, including:</p>
                 <ul className="list-disc pl-6 mb-6 space-y-2 text-gray-600">
-                  <li>Luxury property booking and inquiry services</li>
-                  <li>
-                    Information about property specifications, availability, and
-                    pricing
-                  </li>
-                  <li>
-                    Communication channels between clients and our property
-                    specialists
-                  </li>
-                  <li>
-                    Informational content about Whistler properties and
-                    experiences
-                  </li>
-                  <li>VIP concierge services for Whistler visitors</li>
-                  <li>Property management services for homeowners</li>
+                  <li>Property details, amenities, and availability information</li>
+                  <li>Links to book stays through approved booking platforms</li>
+                  <li>Travel and local area content about the Cotswolds</li>
                 </ul>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-medium mb-4 text-gray-900">
-                  Eligibility
-                </h2>
+                <h2 className="text-2xl font-medium mb-4 text-gray-900">Bookings</h2>
                 <p>
-                  You must be at least 18 years old and able to form legally
-                  binding contracts to use our services. By using our services,
-                  you represent and warrant that you meet these requirements.
+                  Bookings are made through third-party platforms such as Airbnb unless
+                  otherwise agreed in writing. Payment terms, cancellation policies, and
+                  house rules are governed by the booking platform and your rental agreement.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-medium mb-4 text-gray-900">
-                  Account Registration
-                </h2>
-                <p>
-                  Some features of our services may require you to register an
-                  account. When you register, you agree to provide accurate,
-                  current, and complete information and to update such
-                  information to keep it accurate, current, and complete.
-                </p>
-                <p>
-                  You are responsible for safeguarding your account password and
-                  for all activities that occur under your account. You agree to
-                  notify us immediately of any unauthorized use of your account.
-                </p>
-              </section>
-
-              <section className="mb-10">
-                <h2 className="text-2xl font-medium mb-4 text-gray-900">
-                  Booking and Payments
-                </h2>
-                <p>
-                  All property rental bookings are subject to availability and
-                  confirmation. Prices are as quoted on our website or as
-                  otherwise communicated to you.
-                </p>
-                <p>
-                  A deposit is required to confirm your booking, with the
-                  balance due before the rental date as specified in your rental
-                  agreement. Payment terms will be detailed in your booking
-                  confirmation.
-                </p>
-                <p>
-                  Cancellation policies vary depending on the property and
-                  rental period. Specific cancellation terms will be provided in
-                  your rental agreement.
-                </p>
-              </section>
-
-              <section className="mb-10">
-                <h2 className="text-2xl font-medium mb-4 text-gray-900">
-                  Code of Conduct
-                </h2>
-                <p>When using our services, you agree not to:</p>
+                <h2 className="text-2xl font-medium mb-4 text-gray-900">Property Rules</h2>
+                <p>When staying at our property, you agree to:</p>
                 <ul className="list-disc pl-6 mb-6 space-y-2 text-gray-600">
-                  <li>Violate any applicable laws or regulations</li>
-                  <li>Infringe upon the rights of others</li>
-                  <li>
-                    Use our services for any illegal or unauthorized purpose
-                  </li>
-                  <li>Interfere with or disrupt our services or servers</li>
-                  <li>
-                    Attempt to gain unauthorized access to any part of our
-                    services
-                  </li>
-                  <li>
-                    Engage in any activity that could damage, disable, or impair
-                    our services
-                  </li>
+                  <li>Respect the property, its contents, and neighbours</li>
+                  <li>Comply with occupancy limits and house rules</li>
+                  <li>Report any damage or maintenance issues promptly</li>
+                  <li>Leave the property in a reasonable condition upon departure</li>
                 </ul>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-medium mb-4 text-gray-900">
-                  Property Rules and Regulations
-                </h2>
+                <h2 className="text-2xl font-medium mb-4 text-gray-900">Intellectual Property</h2>
                 <p>
-                  When staying at any property booked through AceHost, you agree
-                  to:
-                </p>
-                <ul className="list-disc pl-6 mb-6 space-y-2 text-gray-600">
-                  <li>Respect the property and its contents</li>
-                  <li>
-                    Comply with occupancy limits specified for the property
-                  </li>
-                  <li>
-                    Follow any house rules provided for the specific property
-                  </li>
-                  <li>Report any damages or issues promptly</li>
-                  <li>Be considerate of neighbors and the local community</li>
-                  <li>
-                    Leave the property in a reasonable condition upon departure
-                  </li>
-                </ul>
-                <p>
-                  Additional property-specific rules may apply and will be
-                  communicated to you before or at the time of check-in.
+                  All content on this website, including text, photographs, logos, and design,
+                  is owned by Cotswolds Vacation or its licensors and is protected by copyright
+                  laws. You may not reproduce or use our content without prior written permission.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-medium mb-4 text-gray-900">
-                  Intellectual Property
-                </h2>
+                <h2 className="text-2xl font-medium mb-4 text-gray-900">Disclaimer</h2>
                 <p>
-                  All content on our website, including text, graphics, logos,
-                  images, audio, video, and software, is the property of AceHost
-                  or its content suppliers and is protected by international
-                  copyright laws.
-                </p>
-                <p>
-                  You may not reproduce, modify, distribute, display, perform,
-                  or otherwise use any of the content without our prior written
-                  permission.
+                  This website and its content are provided on an &quot;as is&quot; basis.
+                  We make reasonable efforts to keep information accurate but do not guarantee
+                  that all details are complete or current at all times.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-medium mb-4 text-gray-900">
-                  Disclaimer of Warranties
-                </h2>
+                <h2 className="text-2xl font-medium mb-4 text-gray-900">Governing Law</h2>
                 <p>
-                  Our services are provided on an &quot;as is&quot; and &quot;as
-                  available&quot; basis. AceHost makes no representations or
-                  warranties of any kind, express or implied, regarding the
-                  operation of our services or the information, content,
-                  materials, or products included on our website.
-                </p>
-                <p>
-                  To the full extent permissible by applicable law, AceHost
-                  disclaims all warranties, express or implied, including but
-                  not limited to, implied warranties of merchantability and
-                  fitness for a particular purpose.
+                  These Terms are governed by the laws of England and Wales.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-medium mb-4 text-gray-900">
-                  Limitation of Liability
-                </h2>
-                <p>
-                  AceHost will not be liable for any damages of any kind arising
-                  from the use of our services, including but not limited to
-                  direct, indirect, incidental, punitive, and consequential
-                  damages.
-                </p>
-              </section>
-
-              <section className="mb-10">
-                <h2 className="text-2xl font-medium mb-4 text-gray-900">
-                  Indemnification
-                </h2>
-                <p>
-                  You agree to indemnify, defend, and hold harmless AceHost, its
-                  officers, directors, employees, agents, and suppliers from and
-                  against all losses, expenses, damages, and costs, including
-                  reasonable attorneys' fees, resulting from any violation
-                  of these Terms or any activity related to your account.
-                </p>
-              </section>
-
-              <section className="mb-10">
-                <h2 className="text-2xl font-medium mb-4 text-gray-900">
-                  Termination
-                </h2>
-                <p>
-                  We may terminate or suspend your access to our services
-                  immediately, without prior notice or liability, for any
-                  reason, including without limitation if you breach these
-                  Terms.
-                </p>
-              </section>
-
-              <section className="mb-10">
-                <h2 className="text-2xl font-medium mb-4 text-gray-900">
-                  Governing Law
-                </h2>
-                <p>
-                  These Terms shall be governed by and construed in accordance
-                  with the laws of British Columbia, Canada, without regard to
-                  its conflict of law provisions.
-                </p>
-              </section>
-
-              <section className="mb-10">
-                <h2 className="text-2xl font-medium mb-4 text-gray-900">
-                  Changes to Terms
-                </h2>
-                <p>
-                  We reserve the right to modify or replace these Terms at any
-                  time. If a revision is material, we will provide at least 30
-                  days' notice prior to any new terms taking effect.
-                </p>
-                <p>
-                  Your continued use of our services after any changes to these
-                  Terms constitutes your acceptance of such changes.
-                </p>
-              </section>
-
-              <section className="mb-10">
-                <h2 className="text-2xl font-medium mb-4 text-gray-900">
-                  Contact Information
-                </h2>
-                <p>
-                  If you have any questions about these Terms, please contact
-                  us:
-                </p>
+                <h2 className="text-2xl font-medium mb-4 text-gray-900">Contact</h2>
+                <p>If you have questions about these Terms, please contact us:</p>
                 <p className="mt-4">
-                  <strong>AceHost</strong>
+                  <strong>Cotswolds Vacation</strong>
                   <br />
-                  Email: terms@acehost.com
+                  Email: privacy@cotswoldsvacation.com
                   <br />
-                  Phone: +1 (604) 555-1234
-                  <br />
-                  Address: 4567 Slopes Way, Whistler, BC V0N 1B4, Canada
+                  Website:{" "}
+                  <a href="https://www.cotswoldsvacation.com" className="text-green-800 underline">
+                    www.cotswoldsvacation.com
+                  </a>
                 </p>
               </section>
             </div>
           </div>
         </section>
 
-        <Footer />
+        <footer style={{ padding: "40px 24px", textAlign: "center", borderTop: "1px solid #e0e0e0", color: "#666" }}>
+          <p>
+            <Link href="/" style={{ color: "#2c5e1a" }}>Cotswolds Luxury Retreat</Link>
+            {" · "}
+            <Link href="/privacy" style={{ color: "#2c5e1a" }}>Privacy</Link>
+          </p>
+          <p style={{ marginTop: "12px" }}>&copy; {new Date().getFullYear()} Cotswolds Estate</p>
+        </footer>
       </div>
     </>
   );

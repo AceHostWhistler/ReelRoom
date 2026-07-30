@@ -320,14 +320,15 @@ const styles = {
     width: '100%',
     maxWidth: '900px',
     height: '500px',
-    backgroundColor: '#000000', /* Solid black background */
+    backgroundColor: 'rgba(0,0,0,0.3)',
     borderRadius: '12px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     margin: '20px auto',
-    border: `1px solid #000000`, /* Black border */
+    border: `1px solid ${colors.lightGray}`,
     boxShadow: '0 8px 25px rgba(0,0,0,0.2)',
+    backdropFilter: 'blur(5px)',
   },
   placeholderText: {
     color: colors.white,
@@ -472,7 +473,7 @@ export default function LuxuryRetreatFixed() {
     
     // Preload logo
     const logoImgElement = document.createElement('img');
-    logoImgElement.src = '/photos/642ca4501534ebc86d037617_AceHost-Whistler-Logo.png';
+    logoImgElement.src = '/logo.svg';
   }, []);
   
   return (
@@ -546,7 +547,7 @@ export default function LuxuryRetreatFixed() {
         
         {/* Preload critical assets */}
         <link rel="preload" href="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg" as="image" />
-        <link rel="preload" href="/photos/642ca4501534ebc86d037617_AceHost-Whistler-Logo.png" as="image" />
+        <link rel="preload" href="/logo.svg" as="image" />
       </Head>
 
       <header style={{

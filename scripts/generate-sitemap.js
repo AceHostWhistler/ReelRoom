@@ -1,79 +1,44 @@
 const fs = require('fs');
 const path = require('path');
-const glob = require('glob');
 
-// Configuration
 const SITE_URL = 'https://www.cotswoldsvacation.com';
 const OUTPUT_PATH = path.join(process.cwd(), 'public', 'sitemap.xml');
-const PAGES_DIR = path.join(process.cwd(), 'src', 'pages');
-const EXCLUDED_PATHS = [
-  '_app.tsx',
-  '_document.tsx',
-  'api',
-  '404.tsx',
-  '500.tsx',
-  '_error.tsx',
-  'test.tsx',
-  'test-route.tsx',
-  'gallery-test.tsx'
+
+/** Explicit allowlist — do not auto-discover pages (avoids indexing dev/legacy routes). */
+const INDEXABLE_ROUTES = [
+  { path: '/', priority: 1.0 },
+  { path: '/cotswolds-luxury-retreat', priority: 0.9 },
+  { path: '/cotswolds-blog', priority: 0.8 },
+  { path: '/blog-posts/activities-places-visit', priority: 0.7 },
+  { path: '/blog-posts/cotswolds-architecture', priority: 0.7 },
+  { path: '/blog-posts/dining-experiences', priority: 0.7 },
+  { path: '/blog-posts/family-gathering', priority: 0.7 },
+  { path: '/blog-posts/perfect-estate-families', priority: 0.7 },
+  { path: '/blog-posts/seasonal-activities', priority: 0.7 },
+  { path: '/privacy', priority: 0.5 },
+  { path: '/terms', priority: 0.5 },
 ];
 
-// Get current date in YYYY-MM-DD format
 const currentDate = new Date().toISOString().split('T')[0];
 
-// Function to recursively get all pages
-function getAllPages() {
-  // Get all .tsx and .jsx files in the pages directory
-  const files = glob.sync('**/*.{tsx,jsx,ts,js}', { cwd: PAGES_DIR });
-  
-  // Filter out excluded paths and process the valid ones
-  return files
-    .filter(file => !EXCLUDED_PATHS.some(excluded => file.startsWith(excluded)))
-    .map(file => {
-      // Replace index files with directory path
-      const url = file
-        .replace(/\.(tsx|jsx|ts|js)$/, '')
-        .replace(/\/index$/, '');
-      
-      // Create URL path with leading slash
-      return url === 'index' ? '/' : `/${url}`;
-    });
-}
-
-// Generate a single URL entry for the sitemap
-function generateUrlEntry(path, priority = 0.8) {
-  const url = path === '/' ? SITE_URL : `${SITE_URL}${path}`;
-  
-  // Set priority based on path type
-  let finalPriority = priority;
-  if (path === '/') {
-    finalPriority = 1.0;
-  } else if (path.includes('/blog-articles/') || path.includes('/blog-posts/')) {
-    finalPriority = 0.7;
-  } else if (path.includes('/upload')) {
-    finalPriority = 0.6;
-  }
-
+function generateUrlEntry(routePath, priority) {
+  const url = routePath === '/' ? SITE_URL : `${SITE_URL}${routePath}`;
   return `  <url>
     <loc>${url}</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>${finalPriority}</priority>
+    <priority>${priority}</priority>
   </url>`;
 }
 
-// Generate the complete sitemap XML
 function generateSitemap() {
-  const pages = getAllPages();
-  
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages.map(page => generateUrlEntry(page)).join('\n')}
+${INDEXABLE_ROUTES.map(({ path, priority }) => generateUrlEntry(path, priority)).join('\n')}
 </urlset>`;
 
   fs.writeFileSync(OUTPUT_PATH, sitemap);
   console.log(`Sitemap generated at ${OUTPUT_PATH}`);
 }
 
-// Generate the sitemap
-generateSitemap(); 
+generateSitemap();

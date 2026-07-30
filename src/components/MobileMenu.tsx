@@ -78,7 +78,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
     return (
       <nav style={{
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
         width: '90%',
         maxWidth: '1400px',
@@ -91,8 +91,8 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
           <Link href="/" passHref>
             <div style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', cursor: 'pointer' }}>
               <Image 
-                src="/photos/642ca4501534ebc86d037617_AceHost-Whistler-Logo.png" 
-                alt="Cotswolds Estate Logo" 
+                src="/logo.svg" 
+                alt="Cotswolds Luxury Retreat" 
                 width={120} 
                 height={40} 
                 style={{ height: 'auto', width: '120px' }}
@@ -114,11 +114,8 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
           margin: 0,
           display: 'flex',
           alignItems: 'center',
-          gap: '30px', /* Add spacing between navigation items */
-          justifyContent: 'center', /* Center all items */
-          width: '100%',
         }}>
-          <li>
+          <li style={{ marginLeft: '25px' }}>
             <Link 
               href="/#home" 
               style={{ 
@@ -131,7 +128,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               Home
             </Link>
           </li>
-          <li>
+          <li style={{ marginLeft: '25px' }}>
             <Link 
               href="/#about" 
               style={{ 
@@ -144,7 +141,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               About
             </Link>
           </li>
-          <li>
+          <li style={{ marginLeft: '25px' }}>
             <Link 
               href="/#gallery" 
               style={{ 
@@ -157,7 +154,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               Gallery
             </Link>
           </li>
-          <li>
+          <li style={{ marginLeft: '25px' }}>
             <Link 
               href="/#amenities" 
               style={{ 
@@ -170,7 +167,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               Amenities
             </Link>
           </li>
-          <li>
+          <li style={{ marginLeft: '25px' }}>
             <Link 
               href="/#bedrooms" 
               style={{ 
@@ -183,7 +180,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               Bedrooms
             </Link>
           </li>
-          <li>
+          <li style={{ marginLeft: '25px' }}>
             <Link 
               href="/cotswolds-blog" 
               style={{ 
@@ -196,7 +193,7 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               Blog
             </Link>
           </li>
-          <li>
+          <li style={{ marginLeft: '25px' }}>
             <a 
               href={AIRBNB_LINK} 
               style={{
@@ -242,8 +239,8 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
               cursor: 'pointer' 
             }}>
               <Image 
-                src="/photos/642ca4501534ebc86d037617_AceHost-Whistler-Logo.png" 
-                alt="Cotswolds Estate Logo" 
+                src="/logo.svg"
+                alt="Cotswolds Luxury Retreat"
                 width={80} 
                 height={30} 
                 style={{ height: 'auto', width: '80px' }}

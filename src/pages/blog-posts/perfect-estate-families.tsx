@@ -282,7 +282,7 @@ export default function PerfectEstateFamiliesBlog() {
             <Link href="/" passHref>
               <div style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', cursor: 'pointer' }}>
                 <img 
-                  src="/photos/642ca4501534ebc86d037617_AceHost-Whistler-Logo.png" 
+                  src="/logo.svg" 
                   alt="Cotswolds Estate Logo" 
                   width={120} 
                   height={40} 
