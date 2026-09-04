@@ -4,7 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FallbackGallery } from '../components/FallbackGallery';
 import MobileMenu from '../components/MobileMenu';
-import { AIRBNB_LINK, PROPERTY } from '../config/property';
+import { AIRBNB_LINK, PROPERTY, MAIN_HOUSE_BEDROOMS, ANNEX_BEDROOMS, HOUSE_RULES } from '../config/property';
+import { GALLERY_PHOTOS, HERO_PHOTO } from '../config/cotswoldsPhotos';
+
+const photos = GALLERY_PHOTOS;
 
 // Color scheme
 const colors = {
@@ -17,100 +20,7 @@ const colors = {
   darkGray: '#333333',
 };
 
-// Include all photos from the gallery directory
-const photos = [
-  '/photos/listings/Cotswolds Luxury Retreat/224A5508.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5516.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5307.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5435.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5368.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5463.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5468.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5472.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A7847.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A7863.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A7868.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/012A0872.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/012A0876.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/012A0878.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/012A0881.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/012A1323.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/012A1327.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/012A1330.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/012A1333.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/012A1337.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/012A1341.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5277.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5279.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5289.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5290.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5292.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5297.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5302.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5305.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5313.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5314.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5317.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5324.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5331.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5336.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5339.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5345.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5351.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5352.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5359.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5361.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5362.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5372.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5398.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5399.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5405.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5410.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5413.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5417.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5423.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5430.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5433.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5437.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5441.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5450.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5470.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5478.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5492.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5502.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5506.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5518.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5528.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5532.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5535.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A7821.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A7828.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A7830.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A7831.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A7833.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A7838.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A7850.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A7857.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090500_0519_D.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090532_0522_D.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090720_0527_D.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602091050_0536_D.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602091213_0541_D.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602091239_0542_D.jpg',
-];
-
-// Fallback photos (in case the first approach doesn't work)
-const fallbackPhotos = [
-  // Different format for the paths of the problematic photos
-  './photos/listings/Cotswolds Luxury Retreat/224A5508.jpg',
-  './photos/listings/Cotswolds Luxury Retreat/224A5516.jpg',
-  './photos/listings/Cotswolds Luxury Retreat/DJI_20250602090720_0527_D.jpg',
-  './photos/listings/Cotswolds Luxury Retreat/224A5307.jpg',
-  './photos/listings/Cotswolds Luxury Retreat/224A5435.jpg',
-  './photos/listings/Cotswolds Luxury Retreat/DJI_20250602090532_0522_D.jpg',
-  './photos/listings/Cotswolds Luxury Retreat/224A5368.jpg',
-];
+const ogImageUrl = `https://www.cotswoldsvacation.com${encodeURI(HERO_PHOTO)}`;
 
 // Define TypeScript-compatible styles
 const styles = {
@@ -273,7 +183,6 @@ const styles = {
     transition: 'background-color 0.3s ease',
   },
   hero: {
-    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     color: colors.white,
@@ -467,7 +376,7 @@ export default function LuxuryRetreatFixed() {
 
     // Preload critical images
     const heroImgElement = document.createElement('img');
-    heroImgElement.src = '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg';
+    heroImgElement.src = HERO_PHOTO;
     heroImgElement.onload = () => setImagesReady(true);
     
     // Preload logo
@@ -495,7 +404,7 @@ export default function LuxuryRetreatFixed() {
         <meta property="og:description" content={PROPERTY.metaDescription} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.cotswoldsvacation.com" />
-        <meta property="og:image" content="https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg" />
+        <meta property="og:image" content={ogImageUrl} />
         <meta property="og:site_name" content="Cotswolds Luxury Retreat" />
         <meta property="og:locale" content="en_GB" />
         
@@ -503,7 +412,7 @@ export default function LuxuryRetreatFixed() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`${PROPERTY.airbnbTitle} | Cotswolds Vacation Rental`} />
         <meta name="twitter:description" content={PROPERTY.tagline} />
-        <meta name="twitter:image" content="https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg" />
+        <meta name="twitter:image" content={ogImageUrl} />
         
         {/* Structured Data for LodgingBusiness */}
         <script
@@ -513,7 +422,7 @@ export default function LuxuryRetreatFixed() {
               "@context": "https://schema.org",
               "@type": "LodgingBusiness",
               "name": PROPERTY.airbnbTitle,
-              "image": "https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg",
+              "image": ogImageUrl,
               "url": PROPERTY.siteUrl,
               "address": {
                 "@type": "PostalAddress",
@@ -558,7 +467,7 @@ export default function LuxuryRetreatFixed() {
         <link rel="dns-prefetch" href="https://www.airbnb.ca" />
         
         {/* Preload critical assets */}
-        <link rel="preload" href="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg" as="image" />
+        <link rel="preload" href={HERO_PHOTO} as="image" />
         <link rel="preload" href="/logo.svg" as="image" />
       </Head>
 
@@ -570,13 +479,16 @@ export default function LuxuryRetreatFixed() {
       </header>
 
       <main>
-        <section id="home" style={styles.hero}>
+        <section id="home" style={{ ...styles.hero, backgroundImage: `url('${HERO_PHOTO}')` }}>
           <div style={styles.heroOverlay}></div>
           <div style={styles.heroContent}>
             <h1 style={styles.heroTitle}>{PROPERTY.airbnbTitle}</h1>
             <p style={styles.heroSubtitle}>{PROPERTY.heroSubtitle}</p>
             <p style={{ fontSize: '1.1em', color: colors.white, marginBottom: '0.5em', textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }}>
               {PROPERTY.bedrooms} bedrooms · {PROPERTY.bathrooms} bathrooms · Sleeps {PROPERTY.maxGuests} · {PROPERTY.location}, {PROPERTY.region}
+            </p>
+            <p style={{ fontSize: '1em', color: colors.white, marginBottom: '1em', textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }}>
+              {PROPERTY.priceRange} · {PROPERTY.minStay}
             </p>
             <a 
               href={AIRBNB_LINK} 
@@ -616,7 +528,7 @@ export default function LuxuryRetreatFixed() {
                 boxShadow: '0 6px 20px rgba(0,0,0,0.1)'
               }}>
                 <img 
-                  src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602091239_0542_D.jpg" 
+                  src="/photos/listings/Cotswolds Luxury Retreat/DJI_20260722213403_0216_D.jpg" 
                   alt="Aerial view of Cotswolds Estate" 
                   style={{ 
                     width: '100%', 
@@ -632,7 +544,7 @@ export default function LuxuryRetreatFixed() {
                 boxShadow: '0 6px 20px rgba(0,0,0,0.1)'
               }}>
                 <img 
-                  src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090720_0527_D.jpg" 
+                  src="/photos/listings/Cotswolds Luxury Retreat/DJI_20260722215623_0226_D.jpg" 
                   alt="Panoramic drone view of the property" 
                   style={{ 
                     width: '100%', 
@@ -779,101 +691,23 @@ export default function LuxuryRetreatFixed() {
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px', marginBottom: '50px' }}>
-              <div style={{ backgroundColor: colors.white, borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', border: `1px solid ${colors.lightGray}` }}>
-                <div style={{ height: '200px', backgroundColor: colors.lightGreen, position: 'relative', overflow: 'hidden' }}>
-                  <img 
-                    src="/photos/listings/Cotswolds Luxury Retreat/224A5405.jpg" 
-                    alt="Bedroom 1" 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                  />
+              {MAIN_HOUSE_BEDROOMS.map((bedroom) => (
+                <div key={bedroom.name} style={{ backgroundColor: colors.white, borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', border: `1px solid ${colors.lightGray}` }}>
+                  <div style={{ height: '200px', backgroundColor: colors.lightGreen, position: 'relative', overflow: 'hidden' }}>
+                    <img 
+                      src={bedroom.image} 
+                      alt={bedroom.name} 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    />
+                  </div>
+                  <div style={{ padding: '20px' }}>
+                    <h3 style={{ fontSize: '1.4em', color: colors.darkGreen, marginBottom: '10px' }}>{bedroom.name}</h3>
+                    <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Type:</strong> {bedroom.type}</p>
+                    <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Features:</strong> {bedroom.features}</p>
+                    <p style={{ fontSize: '0.9em', color: '#666', fontStyle: 'italic' }}>{bedroom.note}</p>
+                  </div>
                 </div>
-                <div style={{ padding: '20px' }}>
-                  <h3 style={{ fontSize: '1.4em', color: colors.darkGreen, marginBottom: '10px' }}>Bedroom 1</h3>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Type:</strong> Emperor King</p>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Features:</strong> Ensuite bathroom with spa amenities, luxurious linens</p>
-                  <p style={{ fontSize: '0.9em', color: '#666', fontStyle: 'italic' }}>Main House - Master Suite</p>
-                </div>
-              </div>
-
-              <div style={{ backgroundColor: colors.white, borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', border: `1px solid ${colors.lightGray}` }}>
-                <div style={{ height: '200px', backgroundColor: colors.lightGreen, position: 'relative', overflow: 'hidden' }}>
-                  <img 
-                    src="/photos/listings/Cotswolds Luxury Retreat/224A5410.jpg" 
-                    alt="Bedroom 2" 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                  />
-                </div>
-                <div style={{ padding: '20px' }}>
-                  <h3 style={{ fontSize: '1.4em', color: colors.darkGreen, marginBottom: '10px' }}>Bedroom 2</h3>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Type:</strong> Super King</p>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Features:</strong> Ensuite bathroom, premium bedding</p>
-                  <p style={{ fontSize: '0.9em', color: '#666', fontStyle: 'italic' }}>Main House</p>
-                </div>
-              </div>
-
-              <div style={{ backgroundColor: colors.white, borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', border: `1px solid ${colors.lightGray}` }}>
-                <div style={{ height: '200px', backgroundColor: colors.lightGreen, position: 'relative', overflow: 'hidden' }}>
-                  <img 
-                    src="/photos/listings/Cotswolds Luxury Retreat/224A5417.jpg" 
-                    alt="Bedroom 3" 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                  />
-                </div>
-                <div style={{ padding: '20px' }}>
-                  <h3 style={{ fontSize: '1.4em', color: colors.darkGreen, marginBottom: '10px' }}>Bedroom 3</h3>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Type:</strong> Super King</p>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Features:</strong> Shared bathroom access, countryside views</p>
-                  <p style={{ fontSize: '0.9em', color: '#666', fontStyle: 'italic' }}>Main House</p>
-                </div>
-              </div>
-              
-              <div style={{ backgroundColor: colors.white, borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', border: `1px solid ${colors.lightGray}` }}>
-                <div style={{ height: '200px', backgroundColor: colors.lightGreen, position: 'relative', overflow: 'hidden' }}>
-                  <img 
-                    src="/photos/listings/Cotswolds Luxury Retreat/224A5423.jpg" 
-                    alt="Bedroom 4" 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                  />
-                </div>
-                <div style={{ padding: '20px' }}>
-                  <h3 style={{ fontSize: '1.4em', color: colors.darkGreen, marginBottom: '10px' }}>Bedroom 4</h3>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Type:</strong> King</p>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Features:</strong> Shared bathroom access, cozy retreat</p>
-                  <p style={{ fontSize: '0.9em', color: '#666', fontStyle: 'italic' }}>Main House</p>
-                </div>
-              </div>
-              
-              <div style={{ backgroundColor: colors.white, borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', border: `1px solid ${colors.lightGray}` }}>
-                <div style={{ height: '200px', backgroundColor: colors.lightGreen, position: 'relative', overflow: 'hidden' }}>
-                  <img 
-                    src="/photos/listings/Cotswolds Luxury Retreat/224A5430.jpg" 
-                    alt="Bedroom 5" 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                  />
-                </div>
-                <div style={{ padding: '20px' }}>
-                  <h3 style={{ fontSize: '1.4em', color: colors.darkGreen, marginBottom: '10px' }}>Bedroom 5</h3>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Type:</strong> California King</p>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Features:</strong> Shared bathroom access, charming space</p>
-                  <p style={{ fontSize: '0.9em', color: '#666', fontStyle: 'italic' }}>Main House</p>
-                </div>
-              </div>
-              
-              <div style={{ backgroundColor: colors.white, borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', border: `1px solid ${colors.lightGray}` }}>
-                <div style={{ height: '200px', backgroundColor: colors.lightGreen, position: 'relative', overflow: 'hidden' }}>
-                  <img 
-                    src="/photos/listings/Cotswolds Luxury Retreat/224A5359.jpg" 
-                    alt="Bedroom 6" 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                  />
-                </div>
-                <div style={{ padding: '20px' }}>
-                  <h3 style={{ fontSize: '1.4em', color: colors.darkGreen, marginBottom: '10px' }}>Bedroom 6</h3>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Type:</strong> Queen</p>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Features:</strong> Main-floor access with one step, shared bathroom nearby</p>
-                  <p style={{ fontSize: '0.9em', color: '#666', fontStyle: 'italic' }}>Main House — main floor</p>
-                </div>
-              </div>
+              ))}
             </div>
             
             <div style={{ marginBottom: '40px', marginTop: '40px' }}>
@@ -884,37 +718,34 @@ export default function LuxuryRetreatFixed() {
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px' }}>
-              <div style={{ backgroundColor: colors.white, borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', border: `1px solid ${colors.lightGray}` }}>
-                <div style={{ height: '200px', backgroundColor: colors.lightGreen, position: 'relative', overflow: 'hidden' }}>
-                  <img 
-                    src="/photos/listings/Cotswolds Luxury Retreat/224A7863.jpg" 
-                    alt="Bedroom 7" 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                  />
+              {ANNEX_BEDROOMS.map((bedroom) => (
+                <div key={bedroom.name} style={{ backgroundColor: colors.white, borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', border: `1px solid ${colors.lightGray}` }}>
+                  <div style={{ height: '200px', backgroundColor: colors.lightGreen, position: 'relative', overflow: 'hidden' }}>
+                    <img 
+                      src={bedroom.image} 
+                      alt={bedroom.name} 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    />
+                  </div>
+                  <div style={{ padding: '20px' }}>
+                    <h3 style={{ fontSize: '1.4em', color: colors.darkGreen, marginBottom: '10px' }}>{bedroom.name}</h3>
+                    <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Type:</strong> {bedroom.type}</p>
+                    <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Features:</strong> {bedroom.features}</p>
+                    <p style={{ fontSize: '0.9em', color: '#666', fontStyle: 'italic' }}>{bedroom.note}</p>
+                  </div>
                 </div>
-                <div style={{ padding: '20px' }}>
-                  <h3 style={{ fontSize: '1.4em', color: colors.darkGreen, marginBottom: '10px' }}>Bedroom 7</h3>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Type:</strong> Super King</p>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Features:</strong> Private bathroom access, secluded retreat</p>
-                  <p style={{ fontSize: '0.9em', color: '#666', fontStyle: 'italic' }}>Annex House</p>
-                </div>
-              </div>
-              
-              <div style={{ backgroundColor: colors.white, borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', border: `1px solid ${colors.lightGray}` }}>
-                <div style={{ height: '200px', backgroundColor: colors.lightGreen, position: 'relative', overflow: 'hidden' }}>
-                  <img 
-                    src="/photos/listings/Cotswolds Luxury Retreat/224A7847.jpg" 
-                    alt="Bedroom 8" 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                  />
-                </div>
-                <div style={{ padding: '20px' }}>
-                  <h3 style={{ fontSize: '1.4em', color: colors.darkGreen, marginBottom: '10px' }}>Bedroom 8</h3>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Type:</strong> Single</p>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Features:</strong> Shared bathroom in annex, comfortable single bed</p>
-                  <p style={{ fontSize: '0.9em', color: '#666', fontStyle: 'italic' }}>Annex House — step-free access</p>
-                </div>
-              </div>
+              ))}
+            </div>
+
+            <div style={{ marginTop: '50px' }}>
+              <h3 style={{ fontSize: '1.8em', color: colors.darkGreen, marginBottom: '15px' }}>House Rules & Notes</h3>
+              <ul style={{ ...styles.paragraph, paddingLeft: '24px' }}>
+                {HOUSE_RULES.map((rule) => (
+                  <li key={rule} style={{ marginBottom: '8px' }}>{rule}</li>
+                ))}
+              </ul>
+              <p style={styles.paragraph}>{PROPERTY.petPolicy}</p>
+              <p style={styles.paragraph}>{PROPERTY.quietHours}</p>
             </div>
           </div>
         </section>
