@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { AIRBNB_LINK } from '../config/property';
+import { airbnbButtonHeader } from '../lib/airbnbButtonStyles';
 
 // Color scheme
 const colors = {
@@ -196,19 +197,11 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
           <li style={{ marginLeft: '25px' }}>
             <a 
               href={AIRBNB_LINK} 
-              style={{
-                backgroundColor: colors.black,
-                color: colors.white,
-                padding: '10px 20px',
-                borderRadius: '8px',
-                fontWeight: 500,
-                textDecoration: 'none',
-                transition: 'background-color 0.3s ease',
-              }} 
+              className={airbnbButtonHeader}
               target="_blank" 
               rel="noopener noreferrer"
             >
-              Book Now
+              Book on Airbnb
             </a>
           </li>
         </ul>
@@ -464,21 +457,12 @@ export default function MobileMenu({ activePage = 'home' }: MobileMenuProps) {
             }}>
               <a 
                 href={AIRBNB_LINK} 
-                style={{
-                  fontSize: '1em',
-                  backgroundColor: colors.black,
-                  color: colors.white,
-                  padding: '8px 12px',
-                  borderRadius: '6px',
-                  fontWeight: 500,
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                }} 
+                className={`${airbnbButtonHeader} w-full justify-center`}
                 target="_blank" 
                 rel="noopener noreferrer"
                 onClick={handleMenuLinkClick}
               >
-                Book Now
+                Book on Airbnb
               </a>
             </li>
           </ul>

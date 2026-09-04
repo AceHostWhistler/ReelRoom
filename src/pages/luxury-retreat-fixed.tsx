@@ -3,8 +3,10 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { EditorialGallery } from '../components/EditorialGallery';
+import { AirbnbButton } from '../components/AirbnbButton';
 import MobileMenu from '../components/MobileMenu';
 import { AIRBNB_LINK, PROPERTY, MAIN_HOUSE_BEDROOMS, ANNEX_BEDROOMS, HOUSE_RULES } from '../config/property';
+import { AIRBNB_RED_HEX } from '../lib/airbnbButtonStyles';
 import { GALLERY_PHOTOS, HERO_PHOTO } from '../config/cotswoldsPhotos';
 
 const photos = GALLERY_PHOTOS;
@@ -490,14 +492,9 @@ export default function LuxuryRetreatFixed() {
             <p style={{ fontSize: '1em', color: colors.white, marginBottom: '1em', textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }}>
               {PROPERTY.priceRange} · {PROPERTY.minStay}
             </p>
-            <a 
-              href={AIRBNB_LINK} 
-              style={styles.bookNowHero} 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              Book Your Stay
-            </a>
+            <AirbnbButton variant="lg" className="mt-8 shadow-md">
+              Book on Airbnb
+            </AirbnbButton>
           </div>
         </section>
 
@@ -557,6 +554,10 @@ export default function LuxuryRetreatFixed() {
                   }} 
                 />
               </div>
+            </div>
+
+            <div className="text-center mt-10">
+              <AirbnbButton variant="md">Check Availability on Airbnb</AirbnbButton>
             </div>
           </div>
         </section>
@@ -659,6 +660,10 @@ export default function LuxuryRetreatFixed() {
                 </ul>
               </div>
             </div>
+
+            <div className="text-center mt-12">
+              <AirbnbButton variant="md">Book on Airbnb</AirbnbButton>
+            </div>
           </div>
         </section>
 
@@ -737,6 +742,16 @@ export default function LuxuryRetreatFixed() {
               <p style={styles.paragraph}>{PROPERTY.petPolicy}</p>
               <p style={styles.paragraph}>{PROPERTY.quietHours}</p>
             </div>
+
+            <div className="text-center mt-14 py-10 px-6 rounded-xl" style={{ backgroundColor: colors.white, border: `1px solid ${colors.lightGray}` }}>
+              <h3 style={{ fontSize: '1.8em', color: colors.darkGreen, marginBottom: '12px', fontWeight: 600 }}>
+                Experience countryside luxury at its finest
+              </h3>
+              <p style={{ ...styles.paragraph, maxWidth: '640px', margin: '0 auto 24px' }}>
+                Perfect for family gatherings, celebratory weekends, or corporate retreats — book your dates on Airbnb.
+              </p>
+              <AirbnbButton variant="lg">Book on Airbnb</AirbnbButton>
+            </div>
           </div>
         </section>
       </main>
@@ -756,8 +771,8 @@ export default function LuxuryRetreatFixed() {
           <div style={styles.footerColumn}>
             <h3 style={styles.footerHeading}>Book Your Stay</h3>
             <p style={styles.footerText}>
-              <a href={AIRBNB_LINK} target="_blank" rel="noopener noreferrer" style={{color: 'white', textDecoration: 'underline'}}>
-                Reserve through Airbnb
+              <a href={AIRBNB_LINK} target="_blank" rel="noopener noreferrer" style={{ color: AIRBNB_RED_HEX, textDecoration: 'none', fontWeight: 600 }}>
+                Reserve on Airbnb →
               </a>
             </p>
           </div>
