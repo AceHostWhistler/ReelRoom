@@ -14,7 +14,7 @@ export const GALLERY_PHOTOS: string[] = [
   "/photos/listings/Cotswolds Luxury Retreat/224A5313.jpg",
   "/photos/listings/Cotswolds Luxury Retreat/224A8507.jpg",
   "/photos/listings/Cotswolds Luxury Retreat/224A8486.jpg",
-  "/photos/listings/Cotswolds Luxury Retreat/224A8473.jpg",
+  "/photos/listings/Cotswolds Luxury Retreat/224A5405.jpg",
   "/photos/listings/Cotswolds Luxury Retreat/DJI_20260722213403_0216_D.jpg",
   "/photos/listings/Cotswolds Luxury Retreat/224A5331.jpg",
   "/photos/listings/Cotswolds Luxury Retreat/224A8477.jpg",
@@ -83,5 +83,5 @@ export const GALLERY_PHOTOS: string[] = [
   "/photos/listings/Cotswolds Luxury Retreat/224A8480.jpg",
   "/photos/listings/Cotswolds Luxury Retreat/224A5532.jpg",
   "/photos/listings/Cotswolds Luxury Retreat/224A7833.jpg",
-  "/photos/listings/Cotswolds Luxury Retreat/224A5405.jpg"
+  "/photos/listings/Cotswolds Luxury Retreat/224A8473.jpg"
 ];
