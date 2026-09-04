@@ -382,7 +382,7 @@ export default function PerfectEstateFamiliesBlog() {
               </li>
               <li style={styles.listItem}>
                 <span style={styles.listItemDot}></span>
-                Bedroom 6: Single with shared bathroom access (main floor, no stairs)
+                Bedroom 6: Queen with shared bathroom access (main floor, one step)
               </li>
             </ul>
             <p style={{marginTop: '15px', marginBottom: '15px'}}>Annex House (2 bedrooms, 40m²):</p>
@@ -393,7 +393,7 @@ export default function PerfectEstateFamiliesBlog() {
               </li>
               <li style={styles.listItem}>
                 <span style={styles.listItemDot}></span>
-                Bedroom 8: Flexible (two singles or king) with shared bathroom access
+                Bedroom 8: Single with shared bathroom access (annex, step-free)
               </li>
             </ul>
           </div>
