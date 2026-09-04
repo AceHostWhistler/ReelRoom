@@ -6,7 +6,8 @@ export const PHOTO_BASE = '/photos/listings/Cotswolds Luxury Retreat';
 
 export const PROPERTY = {
   name: 'Cotswolds Luxury Retreat',
-  airbnbTitle: 'Luxury Cotswolds Estate Near Soho Farmhouse | Pool, Tennis & Spa',
+  /** Exact title from the Airbnb listing */
+  airbnbTitle: 'Luxury Retreat Near Soho Farmhouse | Pool & Tennis',
   location: 'Sandford Saint Martin',
   region: 'Oxfordshire',
   country: 'United Kingdom',
@@ -24,13 +25,23 @@ export const PROPERTY = {
   priceRange: '£1,200–£3,100 per night',
   minStay: '2–3 night minimum',
   tagline:
-    '8-bedroom stone estate with heated pool, tennis court, spa & annex — minutes from Soho Farmhouse.',
+    'Luxury retreat near Soho Farmhouse with outdoor spa, heated pool, hot tub, A/C, tennis court & annex — sleeps 15.',
   metaDescription:
-    'Luxury 8-bedroom Cotswolds estate near Soho Farmhouse in Sandford Saint Martin. Heated pool, tennis court, hot tub, sauna, cold plunge & annex. Sleeps 15. From £1,200/night.',
+    'Luxury Retreat Near Soho Farmhouse | Pool & Tennis. 8-bedroom estate in Sandford Saint Martin with outdoor spa, heated pool, hot tub, sauna, cold plunge, private tennis court & cozy annex. Sleeps 15.',
   heroSubtitle:
-    'Pool, Tennis & Spa — 8 bedrooms, 5 bathrooms, sleeps 15. Four minutes from Soho Farmhouse.',
-  petPolicy: 'Up to 2 dogs welcome (small fee — declare in guest count on Airbnb).',
-  quietHours: 'Please keep spa and tennis court use between 8am and 10pm out of respect for neighbours.',
+    'Outdoor spa, heated pool & hot tub · A/C · Private tennis court · Cozy annex — 8 bedrooms, 8 beds, 5 baths, sleeps 15',
+  /** Opening description — matches Airbnb listing copy */
+  airbnbIntro:
+    'Escape to a stunning estate near Soho Farmhouse, offering a luxurious retreat with an outdoor spa & heated pool/hot tub, A/C, private tennis court, and cozy annex for additional sleeping. This beautiful house is spread across several acres, features 8 bedrooms, a gourmet kitchen, multiple living areas, and 5 bathrooms. Enjoy the hot tub, infrared sauna, cold plunge, pool, & outdoor fire pit.',
+  airbnbIntroClosing:
+    'Perfect for families or groups seeking a peaceful Cotswolds getaway in a prestigious, rural setting.',
+  guestAccess:
+    'No noise or use of spa or tennis court after 10 pm, or before 8 am. For elderly guests, our annex home is step free, located right next to the main home and tennis court, and has 2 full bedrooms and 1 bathroom with a shower — a great option for those looking for step-free access.',
+  otherNotes:
+    'Perfect getaway for a family or group of 6 to 12 people total, with the option to sleep up to 15 guests.',
+  petPolicy: 'We welcome a maximum of 2 dogs for a small fee. Please declare in the guest count on Airbnb.',
+  quietHours:
+    'No noise or use of spa or tennis court after 10 pm, or before 8 am.',
 } as const;
 
 export const MAIN_HOUSE_BEDROOMS = [
@@ -48,8 +59,8 @@ export const ANNEX_BEDROOMS = [
 ] as const;
 
 export const HOUSE_RULES = [
-  'Spa and tennis court: 8am–10pm only',
+  'Spa and tennis court: 8am–10pm only (no noise before 8am or after 10pm)',
   'BBQ available April 1 – October 30',
-  'Up to 2 dogs welcome (fee applies — book via Airbnb)',
+  'Up to 2 dogs welcome (small fee — declare in guest count on Airbnb)',
   'Annex offers step-free access for elderly guests or minimal stairs',
 ] as const;

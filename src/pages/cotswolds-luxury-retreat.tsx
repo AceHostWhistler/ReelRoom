@@ -348,9 +348,10 @@ export default function CotswoldsLuxuryRetreat() {
 
           <section id="about" className={styles.section}>
             <div className={styles.sectionContainer}>
-              <h2>About Cotswolds Luxury Retreat</h2>
-              <p>Discover the ultimate luxury experience nestled in the heart of the Cotswolds. Our estate offers a serene and lavish escape from the everyday, combining sophisticated design with the timeless beauty of the English countryside.</p>
-              <p>Perfect for discerning guests seeking privacy, comfort, and unparalleled service. Whether you're planning a family vacation, a romantic getaway, or a corporate retreat, Cotswolds Luxury Retreat provides an unforgettable backdrop.</p>
+              <h2>The Space</h2>
+              <p>{PROPERTY.airbnbIntro}</p>
+              <p>{PROPERTY.airbnbIntroClosing}</p>
+              <p>{PROPERTY.otherNotes}</p>
             </div>
           </section>
 

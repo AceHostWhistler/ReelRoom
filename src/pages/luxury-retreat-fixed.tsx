@@ -487,7 +487,7 @@ export default function LuxuryRetreatFixed() {
             <h1 style={styles.heroTitle}>{PROPERTY.airbnbTitle}</h1>
             <p style={styles.heroSubtitle}>{PROPERTY.heroSubtitle}</p>
             <p style={{ fontSize: '1.1em', color: colors.white, marginBottom: '0.5em', textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }}>
-              {PROPERTY.bedrooms} bedrooms · {PROPERTY.bathrooms} bathrooms · Sleeps {PROPERTY.maxGuests} · {PROPERTY.location}, {PROPERTY.region}
+              ★ {PROPERTY.rating} · {PROPERTY.bedrooms} bedrooms · {PROPERTY.beds} beds · {PROPERTY.bathrooms} baths · Sleeps {PROPERTY.maxGuests} · {PROPERTY.location}, {PROPERTY.region}
             </p>
             <p style={{ fontSize: '1em', color: colors.white, marginBottom: '1em', textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }}>
               {PROPERTY.priceRange} · {PROPERTY.minStay}
@@ -504,16 +504,13 @@ export default function LuxuryRetreatFixed() {
 
         <section id="about" style={styles.section}>
           <div style={styles.sectionContainer}>
-            <h2 style={styles.heading}>About Our Luxury Estate</h2>
+            <h2 style={styles.heading}>The Space</h2>
+            <p style={styles.paragraph}>{PROPERTY.airbnbIntro}</p>
+            <p style={styles.paragraph}>{PROPERTY.airbnbIntroClosing}</p>
             <p style={styles.paragraph}>
-              Welcome to our exclusive Cotswolds estate in {PROPERTY.location}, a stunning stone retreat set on {PROPERTY.acres} acres of peaceful Oxfordshire countryside. Beautifully renovated with over 320m² of living space across the main house and annex, this is a rare blend of rustic Cotswold charm and modern luxury.
+              Soho Farmhouse is just {PROPERTY.sohoFarmhouseDrive} by car, or a scenic {PROPERTY.sohoFarmhouseWalk}.
             </p>
-            <p style={styles.paragraph}>
-              Perfect for families and groups of 6–{PROPERTY.maxGuests}, the estate combines elegant interiors, a Devol designer kitchen with AGA oven, multiple living areas, and exceptional outdoor amenities — including a year-round heated pool, private tennis court, hot tub, sauna, and cold plunge.
-            </p>
-            <p style={styles.paragraph}>
-              Soho Farmhouse is just {PROPERTY.sohoFarmhouseDrive} by car, or a scenic {PROPERTY.sohoFarmhouseWalk}. Whether you are planning a family gathering, celebratory weekend, or corporate retreat, every detail has been curated for comfort, privacy, and unforgettable countryside living.
-            </p>
+            <p style={styles.paragraph}>{PROPERTY.otherNotes}</p>
             
             {/* New drone photos */}
             <div style={{ 
@@ -708,7 +705,7 @@ export default function LuxuryRetreatFixed() {
             <div style={{ marginBottom: '40px', marginTop: '40px' }}>
               <h3 style={{ fontSize: '1.8em', color: colors.darkGreen, marginBottom: '15px' }}>Annex House (40m²)</h3>
               <p style={styles.paragraph}>
-                Tucked away behind the newly surfaced private tennis court, the annex is a peaceful escape of its own — with step-free access to two bedrooms and a full bathroom, ideal for elderly guests or anyone who prefer minimal stairs. It features a compact kitchenette for light meals and snacks.
+                Tucked away behind the newly surfaced private tennis court, the cozy annex is a peaceful escape of its own — step-free access to two full bedrooms and a bathroom with a shower, ideal for elderly guests or anyone who prefer minimal stairs. It features a compact kitchenette for light meals and snacks.
               </p>
             </div>
 
@@ -739,8 +736,8 @@ export default function LuxuryRetreatFixed() {
                   <li key={rule} style={{ marginBottom: '8px' }}>{rule}</li>
                 ))}
               </ul>
+              <p style={styles.paragraph}>{PROPERTY.guestAccess}</p>
               <p style={styles.paragraph}>{PROPERTY.petPolicy}</p>
-              <p style={styles.paragraph}>{PROPERTY.quietHours}</p>
             </div>
 
             <div className="text-center mt-14 py-10 px-6 rounded-xl" style={{ backgroundColor: colors.white, border: `1px solid ${colors.lightGray}` }}>
