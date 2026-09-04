@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FallbackGallery } from '../components/FallbackGallery';
+import { EditorialGallery } from '../components/EditorialGallery';
 import MobileMenu from '../components/MobileMenu';
 import { AIRBNB_LINK, PROPERTY, MAIN_HOUSE_BEDROOMS, ANNEX_BEDROOMS, HOUSE_RULES } from '../config/property';
 import { GALLERY_PHOTOS, HERO_PHOTO } from '../config/cotswoldsPhotos';
@@ -501,6 +501,10 @@ export default function LuxuryRetreatFixed() {
           </div>
         </section>
 
+        <section id="gallery" style={{ ...styles.section, paddingTop: '40px', paddingBottom: '20px' }}>
+          <EditorialGallery photos={photos} propertyName="Cotswolds Estate" />
+        </section>
+
         <section id="about" style={styles.section}>
           <div style={styles.sectionContainer}>
             <h2 style={styles.heading}>About Our Luxury Estate</h2>
@@ -553,20 +557,6 @@ export default function LuxuryRetreatFixed() {
                   }} 
                 />
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="gallery" style={styles.altSection}>
-          <div style={styles.sectionContainer}>
-            <h2 style={styles.heading}>Gallery</h2>
-            
-            {/* Main gallery component with fixed handling of first 7 photos */}
-            <div className="relative w-full">
-              <FallbackGallery 
-                photos={photos}
-                propertyName="Cotswolds Estate"
-              />
             </div>
           </div>
         </section>

@@ -1,0 +1,1 @@
+export const GALLERY_PREVIEW_LIMIT = 18;
