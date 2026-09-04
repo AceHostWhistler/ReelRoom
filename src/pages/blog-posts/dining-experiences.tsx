@@ -1,7 +1,10 @@
 import React from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
+import { BlogSeoHead } from '../../components/BlogSeoHead';
+import { getBlogSeo } from '../../config/blogSeo';
+
+const seo = getBlogSeo('dining-experiences');
 
 // Color scheme to match luxury-retreat-fixed.tsx
 const colors = {
@@ -291,15 +294,7 @@ const styles = {
 export default function DiningExperiencesBlog() {
   return (
     <div style={styles.container}>
-      <Head>
-        <title>Cotswolds Local Dining Experiences Near Soho Farm House | Luxury Retreat</title>
-        <meta name="description" content="Discover the best dining experiences near Soho Farm House in the Cotswolds, from Michelin-starred restaurants to charming country pubs near our luxury accommodation." />
-        <meta name="keywords" content="dining near Soho Farm House, luxury Cotswolds restaurants, Cotswolds fine dining, luxury stays near Soho Farm House, Cotswolds gastro pubs" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
-        <link rel="preconnect" href="https://cotswoldsvacation.com" />
-        <link rel="dns-prefetch" href="https://cotswoldsvacation.com" />
-      </Head>
+      <BlogSeoHead seo={seo} />
 
       <header style={styles.header}>
         <nav style={styles.nav}>
@@ -340,10 +335,8 @@ export default function DiningExperiencesBlog() {
       <section style={styles.hero}>
         <div style={styles.heroOverlay}></div>
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>Cotswolds Local Dining Experiences Near Soho Farm House</h1>
-          <p style={styles.heroSubtitle}>
-            A culinary journey through the finest dining destinations within easy reach of our luxury estate
-          </p>
+          <h1 style={styles.heroTitle}>{seo.h1}</h1>
+          <p style={styles.heroSubtitle}>{seo.heroSubtitle}</p>
         </div>
       </section>
 
@@ -354,8 +347,8 @@ export default function DiningExperiencesBlog() {
         
         <article style={styles.blogContent}>
           <div style={styles.metaInfo}>
-            <span>June 10, 2025</span>
-            <span>4 min read</span>
+            <span>{seo.publishedDisplay}</span>
+            <span>{seo.readTime}</span>
           </div>
           
           <p style={styles.paragraph}>

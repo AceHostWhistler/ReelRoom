@@ -1,9 +1,12 @@
 import React from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import MobileMenu from '../../components/MobileMenu';
 import { AirbnbButton } from '../../components/AirbnbButton';
+import { BlogSeoHead } from '../../components/BlogSeoHead';
+import { getBlogSeo } from '../../config/blogSeo';
 import { PROPERTY } from '../../config/property';
+
+const seo = getBlogSeo('london-to-cotswolds-weekend');
 
 const colors = {
   darkGreen: '#2c5e1a',
@@ -99,30 +102,9 @@ const styles = {
 };
 
 export default function LondonToCotswoldsWeekendBlog() {
-  const canonical = `${PROPERTY.siteUrl}/blog-posts/london-to-cotswolds-weekend`;
-
   return (
     <div style={styles.container}>
-      <Head>
-        <title>London to Cotswolds: The Perfect 48-Hour Luxury Escape</title>
-        <meta
-          name="description"
-          content="Leave London Friday, swim in a heated pool by Saturday. A 48-hour luxury Cotswolds weekend itinerary from our estate near Soho Farmhouse."
-        />
-        <meta
-          name="keywords"
-          content="Cotswolds weekend from London, luxury Cotswolds rental, short break Cotswolds, Soho Farmhouse area, Oxfordshire weekend trip, heated pool Cotswolds"
-        />
-        <link rel="canonical" href={canonical} />
-        <meta property="og:title" content="London to Cotswolds: The Perfect 48-Hour Luxury Escape" />
-        <meta
-          property="og:description"
-          content="A realistic, fun two-day blueprint for escaping London to a private Cotswolds estate with pool, tennis and spa."
-        />
-        <meta property="og:url" content={canonical} />
-        <meta property="og:type" content="article" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+      <BlogSeoHead seo={seo} />
 
       <header style={{ ...styles.header, zIndex: 99999 }}>
         <MobileMenu activePage="blog" />
@@ -131,10 +113,8 @@ export default function LondonToCotswoldsWeekendBlog() {
       <section style={styles.hero}>
         <div style={styles.heroOverlay} />
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>London to the Cotswolds in 48 Hours</h1>
-          <p style={styles.heroSubtitle}>
-            The realistic luxury weekend: leave the city Friday, be in the pool by Saturday
-          </p>
+          <h1 style={styles.heroTitle}>{seo.h1}</h1>
+          <p style={styles.heroSubtitle}>{seo.heroSubtitle}</p>
         </div>
       </section>
 
@@ -143,8 +123,8 @@ export default function LondonToCotswoldsWeekendBlog() {
 
         <article style={styles.blogContent}>
           <div style={styles.metaInfo}>
-            <span>August 28, 2026</span>
-            <span>6 min read</span>
+            <span>{seo.publishedDisplay}</span>
+            <span>{seo.readTime}</span>
           </div>
 
           <p style={styles.paragraph}>

@@ -1,8 +1,11 @@
 import React from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import MobileMenu from '../../components/MobileMenu';
+import { BlogSeoHead } from '../../components/BlogSeoHead';
+import { getBlogSeo } from '../../config/blogSeo';
+
+const seo = getBlogSeo('seasonal-activities');
 
 // Color scheme to match luxury-retreat-fixed.tsx
 const colors = {
@@ -255,15 +258,7 @@ const styles = {
 export default function SeasonalActivitiesBlog() {
   return (
     <div style={styles.container}>
-      <Head>
-        <title>Seasonal Activities in the Cotswolds | Luxury Retreat</title>
-        <meta name="description" content="Discover the best seasonal activities in the Cotswolds, from spring blooms and summer festivals to autumn colors and winter charm near our luxury accommodation." />
-        <meta name="keywords" content="seasonal activities Cotswolds, Cotswolds luxury stays, estates near Soho Farm House, luxury villas Cotswolds, Cotswolds things to do" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
-        <link rel="preconnect" href="https://cotswoldsvacation.com" />
-        <link rel="dns-prefetch" href="https://cotswoldsvacation.com" />
-      </Head>
+      <BlogSeoHead seo={seo} />
 
       <header style={{
         ...styles.header,
@@ -275,10 +270,8 @@ export default function SeasonalActivitiesBlog() {
       <section style={styles.hero}>
         <div style={styles.heroOverlay}></div>
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>Seasonal Activities in the Cotswolds</h1>
-          <p style={styles.heroSubtitle}>
-            Experience the magic of the Cotswolds throughout the year from our luxury estate
-          </p>
+          <h1 style={styles.heroTitle}>{seo.h1}</h1>
+          <p style={styles.heroSubtitle}>{seo.heroSubtitle}</p>
         </div>
       </section>
 
@@ -289,8 +282,8 @@ export default function SeasonalActivitiesBlog() {
         
         <article style={styles.blogContent}>
           <div style={styles.metaInfo}>
-            <span>June 15, 2025</span>
-            <span>5 min read</span>
+            <span>{seo.publishedDisplay}</span>
+            <span>{seo.readTime}</span>
           </div>
           
           <p style={styles.paragraph}>

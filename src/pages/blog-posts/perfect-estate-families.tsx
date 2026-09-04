@@ -1,7 +1,10 @@
 import React from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
+import { BlogSeoHead } from '../../components/BlogSeoHead';
+import { getBlogSeo } from '../../config/blogSeo';
+
+const seo = getBlogSeo('perfect-estate-families');
 
 // Color scheme to match luxury-retreat-fixed.tsx
 const colors = {
@@ -266,15 +269,7 @@ const styles = {
 export default function PerfectEstateFamiliesBlog() {
   return (
     <div style={styles.container}>
-      <Head>
-        <title>The Perfect Cotswolds Estate for Large Families | Luxury Retreat</title>
-        <meta name="description" content="Discover why our spacious Cotswolds estate is ideal for large family holidays. Eight luxury bedrooms, private amenities, and perfect location near Soho Farm House." />
-        <meta name="keywords" content="luxury villas Cotswolds, estates near Soho Farm House, luxury Cotswolds stays, luxury farmhouse Cotswolds, large family accommodation Cotswolds" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
-        <link rel="preconnect" href="https://cotswoldsvacation.com" />
-        <link rel="dns-prefetch" href="https://cotswoldsvacation.com" />
-      </Head>
+      <BlogSeoHead seo={seo} />
 
       <header style={styles.header}>
         <nav style={styles.nav}>
@@ -315,10 +310,8 @@ export default function PerfectEstateFamiliesBlog() {
       <section style={styles.hero}>
         <div style={styles.heroOverlay}></div>
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>The Perfect Cotswolds Estate for Large Families</h1>
-          <p style={styles.heroSubtitle}>
-            Experience luxury, space, and comfort in our eight-bedroom retreat near Soho Farm House
-          </p>
+          <h1 style={styles.heroTitle}>{seo.h1}</h1>
+          <p style={styles.heroSubtitle}>{seo.heroSubtitle}</p>
         </div>
       </section>
 
@@ -329,8 +322,8 @@ export default function PerfectEstateFamiliesBlog() {
         
         <article style={styles.blogContent}>
           <div style={styles.metaInfo}>
-            <span>May 20, 2025</span>
-            <span>5 min read</span>
+            <span>{seo.publishedDisplay}</span>
+            <span>{seo.readTime}</span>
           </div>
           
           <p style={styles.paragraph}>

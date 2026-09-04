@@ -1,9 +1,12 @@
 import React from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import MobileMenu from '../../components/MobileMenu';
 import { AirbnbButton } from '../../components/AirbnbButton';
+import { BlogSeoHead } from '../../components/BlogSeoHead';
+import { getBlogSeo } from '../../config/blogSeo';
 import { PROPERTY } from '../../config/property';
+
+const seo = getBlogSeo('soho-farmhouse-area-guide');
 
 const colors = {
   darkGreen: '#2c5e1a',
@@ -114,30 +117,9 @@ const styles = {
 };
 
 export default function SohoFarmhouseAreaGuideBlog() {
-  const canonical = `${PROPERTY.siteUrl}/blog-posts/soho-farmhouse-area-guide`;
-
   return (
     <div style={styles.container}>
-      <Head>
-        <title>Near Soho Farmhouse: What to Do Without a Membership | Cotswolds Guide</title>
-        <meta
-          name="description"
-          content="Planning a Cotswolds trip near Soho Farmhouse? Discover pubs, walks, villages and luxury stays in Sandford Saint Martin — no membership required."
-        />
-        <meta
-          name="keywords"
-          content="Soho Farmhouse Cotswolds, things to do near Soho Farmhouse, Sandford Saint Martin, luxury Cotswolds rental, Oxfordshire countryside, Cotswolds without membership"
-        />
-        <link rel="canonical" href={canonical} />
-        <meta property="og:title" content="Near Soho Farmhouse: What to Do Without a Membership" />
-        <meta
-          property="og:description"
-          content="The insider guide to enjoying the Soho Farmhouse area from a private luxury estate — walks, pubs, day trips and more."
-        />
-        <meta property="og:url" content={canonical} />
-        <meta property="og:type" content="article" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+      <BlogSeoHead seo={seo} />
 
       <header style={{ ...styles.header, zIndex: 99999 }}>
         <MobileMenu activePage="blog" />
@@ -146,10 +128,8 @@ export default function SohoFarmhouseAreaGuideBlog() {
       <section style={styles.hero}>
         <div style={styles.heroOverlay} />
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>Near Soho Farmhouse (No Membership Required)</h1>
-          <p style={styles.heroSubtitle}>
-            How to enjoy the same postcode energy — with your own pool, tennis court and hot tub
-          </p>
+          <h1 style={styles.heroTitle}>{seo.h1}</h1>
+          <p style={styles.heroSubtitle}>{seo.heroSubtitle}</p>
         </div>
       </section>
 
@@ -158,8 +138,8 @@ export default function SohoFarmhouseAreaGuideBlog() {
 
         <article style={styles.blogContent}>
           <div style={styles.metaInfo}>
-            <span>September 4, 2026</span>
-            <span>6 min read</span>
+            <span>{seo.publishedDisplay}</span>
+            <span>{seo.readTime}</span>
           </div>
 
           <p style={styles.paragraph}>

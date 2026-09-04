@@ -3,7 +3,10 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import MobileMenu from '../components/MobileMenu';
-import { AIRBNB_LINK } from '../config/property';
+import { getBlogIndexPosts } from '../config/blogSeo';
+import { PROPERTY, AIRBNB_LINK } from '../config/property';
+
+const blogPosts = getBlogIndexPosts();
 
 // Color scheme to match luxury-retreat-fixed.tsx
 const colors = {
@@ -15,91 +18,6 @@ const colors = {
   lightGray: '#e0e0e0',
   darkGray: '#333333',
 };
-
-// Blog posts data
-const blogPosts = [
-  {
-    id: 7,
-    title: 'Near Soho Farmhouse (No Membership Required)',
-    excerpt: 'Enjoy the same stunning Oxfordshire countryside — with your own pool, tennis court and spa instead of a waiting list.',
-    image: '/photos/listings/Cotswolds Luxury Retreat/DJI_20260722215623_0226_D.jpg',
-    date: 'September 4, 2026',
-    readTime: '6 min read',
-    slug: 'soho-farmhouse-area-guide'
-  },
-  {
-    id: 8,
-    title: 'Bring the Dogs: A Proper Cotswolds Holiday',
-    excerpt: 'Walks, pub gardens and a luxury estate that welcomes up to two dogs — because leaving them behind is not a holiday.',
-    image: '/photos/listings/Cotswolds Luxury Retreat/224A5345.jpg',
-    date: 'September 2, 2026',
-    readTime: '5 min read',
-    slug: 'dog-friendly-cotswolds-holiday'
-  },
-  {
-    id: 9,
-    title: 'London to the Cotswolds in 48 Hours',
-    excerpt: 'Leave the city Friday, swim in a heated pool by Saturday. A realistic luxury weekend blueprint from London.',
-    image: '/photos/listings/Cotswolds Luxury Retreat/224A8292.jpg',
-    date: 'August 28, 2026',
-    readTime: '6 min read',
-    slug: 'london-to-cotswolds-weekend'
-  },
-  {
-    id: 1,
-    title: 'Seasonal Activities in the Cotswolds',
-    excerpt: 'Discover the best seasonal activities to enjoy in the beautiful Cotswolds countryside throughout the year.',
-    image: '/photos/listings/Cotswolds Luxury Retreat/DJI_20260722212904_0203_D.jpg',
-    date: 'June 15, 2025',
-    readTime: '5 min read',
-    slug: 'seasonal-activities'
-  },
-  {
-    id: 2,
-    title: 'Cotswolds Local Dining Experiences Near Soho Farm House',
-    excerpt: 'Explore our handpicked selection of the finest restaurants, pubs, and cafés within a short drive from the estate.',
-    image: '/photos/listings/Cotswolds Luxury Retreat/224A5417.jpg',
-    date: 'June 10, 2025',
-    readTime: '4 min read',
-    slug: 'dining-experiences'
-  },
-  {
-    id: 3,
-    title: 'A History of Cotswolds Architecture',
-    excerpt: 'Learn about the distinctive architectural features that make Cotswolds properties some of the most charming in England.',
-    image: '/photos/listings/Cotswolds Luxury Retreat/224A5413.jpg',
-    date: 'June 5, 2025',
-    readTime: '6 min read',
-    slug: 'cotswolds-architecture'
-  },
-  {
-    id: 4,
-    title: 'Activities and places to visit in the Cotswolds',
-    excerpt: 'Make the most of your stay by exploring these stunning attractions and engaging activities throughout the Cotswolds region.',
-    image: '/photos/listings/Cotswolds Luxury Retreat/224A5508.jpg',
-    date: 'May 28, 2025',
-    readTime: '3 min read',
-    slug: 'activities-places-visit'
-  },
-  {
-    id: 5,
-    title: 'The perfect Cotswolds Estate for large families',
-    excerpt: 'Discover why our spacious estate offers the ideal setting for large family gatherings with amenities for all generations.',
-    image: '/photos/listings/Cotswolds Luxury Retreat/224A5450.jpg',
-    date: 'May 20, 2025',
-    readTime: '5 min read',
-    slug: 'perfect-estate-families'
-  },
-  {
-    id: 6,
-    title: 'Planning the Perfect Family Gathering in a large luxury Cotswolds Property',
-    excerpt: 'Tips and ideas for hosting an unforgettable family reunion or celebration at our Cotswolds Estate.',
-    image: '/photos/listings/Cotswolds Luxury Retreat/224A5516.jpg',
-    date: 'May 15, 2025',
-    readTime: '4 min read',
-    slug: 'family-gathering'
-  },
-];
 
 const styles = {
   container: {
@@ -296,12 +214,33 @@ export default function CotswoldsBlog() {
   return (
     <div style={styles.container}>
       <Head>
-        <title>Blog | Cotswolds Estate</title>
-        <meta name="description" content="Explore our collection of articles about the Cotswolds area, local attractions, and tips for making the most of your luxury retreat stay." />
+        <title>Cotswolds Travel Blog | Luxury Estate Near Soho Farmhouse</title>
+        <meta
+          name="description"
+          content="Guides to the Cotswolds — Soho Farmhouse area, dog-friendly holidays, London weekend trips, dining, seasonal activities and family stays at our luxury Oxfordshire estate."
+        />
+        <meta
+          name="keywords"
+          content="Cotswolds blog, Soho Farmhouse area guide, luxury Cotswolds rental, things to do Cotswolds, Oxfordshire travel tips"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
-        <link rel="preconnect" href="https://cotswoldsvacation.com" />
-        <link rel="dns-prefetch" href="https://cotswoldsvacation.com" />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <link rel="canonical" href={`${PROPERTY.siteUrl}/cotswolds-blog`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Cotswolds Travel Blog | Luxury Estate Near Soho Farmhouse" />
+        <meta
+          property="og:description"
+          content="Guides to the Cotswolds — walks, dining, seasonal activities and luxury stays near Soho Farmhouse."
+        />
+        <meta property="og:url" content={`${PROPERTY.siteUrl}/cotswolds-blog`} />
+        <meta property="og:site_name" content="Cotswolds Vacation" />
+        <meta property="og:locale" content="en_GB" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Cotswolds Travel Blog" />
+        <meta
+          name="twitter:description"
+          content="Guides to the Cotswolds — walks, dining, seasonal activities and luxury stays near Soho Farmhouse."
+        />
       </Head>
 
       <header style={{

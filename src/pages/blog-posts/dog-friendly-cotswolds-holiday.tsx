@@ -1,9 +1,12 @@
 import React from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import MobileMenu from '../../components/MobileMenu';
 import { AirbnbButton } from '../../components/AirbnbButton';
+import { BlogSeoHead } from '../../components/BlogSeoHead';
+import { getBlogSeo } from '../../config/blogSeo';
 import { PROPERTY } from '../../config/property';
+
+const seo = getBlogSeo('dog-friendly-cotswolds-holiday');
 
 const colors = {
   darkGreen: '#2c5e1a',
@@ -100,27 +103,9 @@ const styles = {
 };
 
 export default function DogFriendlyCotswoldsBlog() {
-  const canonical = `${PROPERTY.siteUrl}/blog-posts/dog-friendly-cotswolds-holiday`;
-
   return (
     <div style={styles.container}>
-      <Head>
-        <title>Dog-Friendly Cotswolds Holiday Guide | Luxury Rental Near Soho Farmhouse</title>
-        <meta
-          name="description"
-          content="Planning a dog-friendly Cotswolds break? Walks, pubs, tips and a luxury 8-bedroom estate near Soho Farmhouse that welcomes up to 2 dogs."
-        />
-        <meta
-          name="keywords"
-          content="dog friendly Cotswolds, Cotswolds holiday with dogs, pet friendly luxury rental Cotswolds, Soho Farmhouse area walks, Oxfordshire dog walks"
-        />
-        <link rel="canonical" href={canonical} />
-        <meta property="og:title" content="Dog-Friendly Cotswolds Holiday Guide" />
-        <meta property="og:description" content="Bring the dogs — the Cotswolds was basically designed for muddy paws and long walks." />
-        <meta property="og:url" content={canonical} />
-        <meta property="og:type" content="article" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+      <BlogSeoHead seo={seo} />
 
       <header style={{ ...styles.header, zIndex: 99999 }}>
         <MobileMenu activePage="blog" />
@@ -129,10 +114,8 @@ export default function DogFriendlyCotswoldsBlog() {
       <section style={styles.hero}>
         <div style={styles.heroOverlay} />
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>Bring the Dogs: A Proper Cotswolds Holiday</h1>
-          <p style={styles.heroSubtitle}>
-            Mud, walks, pub gardens and a luxury estate that actually wants your four-legged co-pilots
-          </p>
+          <h1 style={styles.heroTitle}>{seo.h1}</h1>
+          <p style={styles.heroSubtitle}>{seo.heroSubtitle}</p>
         </div>
       </section>
 
@@ -141,8 +124,8 @@ export default function DogFriendlyCotswoldsBlog() {
 
         <article style={styles.blogContent}>
           <div style={styles.metaInfo}>
-            <span>September 2, 2026</span>
-            <span>5 min read</span>
+            <span>{seo.publishedDisplay}</span>
+            <span>{seo.readTime}</span>
           </div>
 
           <p style={styles.paragraph}>

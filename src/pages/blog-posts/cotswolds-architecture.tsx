@@ -1,7 +1,10 @@
 import React from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
+import { BlogSeoHead } from '../../components/BlogSeoHead';
+import { getBlogSeo } from '../../config/blogSeo';
+
+const seo = getBlogSeo('cotswolds-architecture');
 
 // Color scheme to match luxury-retreat-fixed.tsx
 const colors = {
@@ -322,15 +325,7 @@ const styles = {
 export default function CotswoldsArchitectureBlog() {
   return (
     <div style={styles.container}>
-      <Head>
-        <title>A History of Cotswolds Architecture | Luxury Retreat</title>
-        <meta name="description" content="Explore the rich history of Cotswolds architecture from medieval to modern times, including the famous honey-colored stone buildings that define this beautiful region." />
-        <meta name="keywords" content="Cotswolds architecture, honey-colored stone, luxury Cotswolds stays, traditional Cotswolds buildings, Cotswolds history" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
-        <link rel="preconnect" href="https://cotswoldsvacation.com" />
-        <link rel="dns-prefetch" href="https://cotswoldsvacation.com" />
-      </Head>
+      <BlogSeoHead seo={seo} />
 
       <header style={styles.header}>
         <nav style={styles.nav}>
@@ -371,10 +366,8 @@ export default function CotswoldsArchitectureBlog() {
       <section style={styles.hero}>
         <div style={styles.heroOverlay}></div>
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>A History of Cotswolds Architecture</h1>
-          <p style={styles.heroSubtitle}>
-            Exploring the timeless beauty and evolution of the Cotswolds' distinctive architectural heritage
-          </p>
+          <h1 style={styles.heroTitle}>{seo.h1}</h1>
+          <p style={styles.heroSubtitle}>{seo.heroSubtitle}</p>
         </div>
       </section>
 
@@ -385,8 +378,8 @@ export default function CotswoldsArchitectureBlog() {
         
         <article style={styles.blogContent}>
           <div style={styles.metaInfo}>
-            <span>May 25, 2025</span>
-            <span>6 min read</span>
+            <span>{seo.publishedDisplay}</span>
+            <span>{seo.readTime}</span>
           </div>
           
           <p style={styles.paragraph}>

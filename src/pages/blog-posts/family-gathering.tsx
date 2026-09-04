@@ -1,7 +1,10 @@
 import React from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
+import { BlogSeoHead } from '../../components/BlogSeoHead';
+import { getBlogSeo } from '../../config/blogSeo';
+
+const seo = getBlogSeo('family-gathering');
 
 // Color scheme to match luxury-retreat-fixed.tsx
 const colors = {
@@ -239,15 +242,7 @@ const styles = {
 export default function FamilyGatheringBlog() {
   return (
     <div style={styles.container}>
-      <Head>
-        <title>Planning the Perfect Family Gathering in a Luxury Cotswolds Property | Cotswolds Estate</title>
-        <meta name="description" content="Discover how to plan an unforgettable family reunion at our luxury Cotswolds estate near Soho Farm House. Tips for organizing activities, meals, and creating lasting memories in our spacious vacation rental." />
-        <meta name="keywords" content="luxury Cotswolds stays, family gathering Cotswolds, luxury homes near Soho Farm House Cotswolds, estates near Soho Farm House, luxury farmhouse Cotswolds" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
-        <link rel="preconnect" href="https://cotswoldsvacation.com" />
-        <link rel="dns-prefetch" href="https://cotswoldsvacation.com" />
-      </Head>
+      <BlogSeoHead seo={seo} />
 
       <header style={styles.header}>
         <nav style={styles.nav}>
@@ -288,10 +283,8 @@ export default function FamilyGatheringBlog() {
       <section style={styles.hero}>
         <div style={styles.heroOverlay}></div>
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>Planning the Perfect Family Gathering in a Luxury Cotswolds Property</h1>
-          <p style={styles.heroSubtitle}>
-            Create lasting memories with your loved ones in our spacious estate near Soho Farm House
-          </p>
+          <h1 style={styles.heroTitle}>{seo.h1}</h1>
+          <p style={styles.heroSubtitle}>{seo.heroSubtitle}</p>
         </div>
       </section>
 
@@ -302,8 +295,8 @@ export default function FamilyGatheringBlog() {
         
         <article style={styles.blogContent}>
           <div style={styles.metaInfo}>
-            <span>May 15, 2025</span>
-            <span>4 min read</span>
+            <span>{seo.publishedDisplay}</span>
+            <span>{seo.readTime}</span>
           </div>
           
           <p style={styles.paragraph}>
