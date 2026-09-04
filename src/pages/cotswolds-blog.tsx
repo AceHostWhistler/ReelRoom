@@ -19,6 +19,33 @@ const colors = {
 // Blog posts data
 const blogPosts = [
   {
+    id: 7,
+    title: 'Near Soho Farmhouse (No Membership Required)',
+    excerpt: 'Enjoy the same stunning Oxfordshire countryside — with your own pool, tennis court and spa instead of a waiting list.',
+    image: '/photos/listings/Cotswolds Luxury Retreat/DJI_20260722215623_0226_D.jpg',
+    date: 'September 4, 2026',
+    readTime: '6 min read',
+    slug: 'soho-farmhouse-area-guide'
+  },
+  {
+    id: 8,
+    title: 'Bring the Dogs: A Proper Cotswolds Holiday',
+    excerpt: 'Walks, pub gardens and a luxury estate that welcomes up to two dogs — because leaving them behind is not a holiday.',
+    image: '/photos/listings/Cotswolds Luxury Retreat/224A5345.jpg',
+    date: 'September 2, 2026',
+    readTime: '5 min read',
+    slug: 'dog-friendly-cotswolds-holiday'
+  },
+  {
+    id: 9,
+    title: 'London to the Cotswolds in 48 Hours',
+    excerpt: 'Leave the city Friday, swim in a heated pool by Saturday. A realistic luxury weekend blueprint from London.',
+    image: '/photos/listings/Cotswolds Luxury Retreat/224A8292.jpg',
+    date: 'August 28, 2026',
+    readTime: '6 min read',
+    slug: 'london-to-cotswolds-weekend'
+  },
+  {
     id: 1,
     title: 'Seasonal Activities in the Cotswolds',
     excerpt: 'Discover the best seasonal activities to enjoy in the beautiful Cotswolds countryside throughout the year.',
