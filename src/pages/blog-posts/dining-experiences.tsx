@@ -80,7 +80,7 @@ const styles = {
     transition: 'background-color 0.3s ease',
   },
   hero: {
-    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/224A5314.jpg')",
+    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/224A5423.jpg')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     color: colors.white,
@@ -371,7 +371,7 @@ export default function DiningExperiencesBlog() {
           </p>
 
           <img
-            src="/photos/listings/Cotswolds Luxury Retreat/224A5307.jpg"
+            src="/photos/listings/Cotswolds Luxury Retreat/224A5450.jpg"
             alt="Dining area at Cotswolds Estate"
             style={styles.blogImage}
           />
@@ -386,7 +386,7 @@ export default function DiningExperiencesBlog() {
           <div style={styles.restaurantGrid}>
             <div style={styles.restaurantCard}>
               <img
-                src="/photos/listings/Cotswolds Luxury Retreat/224A5307.jpg"
+                src="/photos/listings/Cotswolds Luxury Retreat/224A5450.jpg"
                 alt="The Wild Rabbit"
                 style={styles.restaurantImage}
               />
@@ -446,7 +446,7 @@ export default function DiningExperiencesBlog() {
           <div style={styles.restaurantGrid}>
             <div style={styles.restaurantCard}>
               <img
-                src="/photos/listings/Cotswolds Luxury Retreat/224A5368.jpg"
+                src="/photos/listings/Cotswolds Luxury Retreat/224A5413.jpg"
                 alt="The Kingham Plough"
                 style={styles.restaurantImage}
               />
@@ -527,7 +527,7 @@ export default function DiningExperiencesBlog() {
           </p>
 
           <img
-            src="/photos/listings/Cotswolds Luxury Retreat/224A5433.jpg"
+            src="/photos/listings/Cotswolds Luxury Retreat/224A5417.jpg"
             alt="Kitchen at Cotswolds Estate"
             style={styles.blogImage}
           />
@@ -599,7 +599,7 @@ export default function DiningExperiencesBlog() {
           </p>
 
           <img
-            src="/photos/listings/Cotswolds Luxury Retreat/224A5492.jpg"
+            src="/photos/listings/Cotswolds Luxury Retreat/224A5516.jpg"
             alt="Elegant dining at Cotswolds Estate"
             style={styles.blogImage}
           />

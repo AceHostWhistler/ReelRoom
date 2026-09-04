@@ -22,7 +22,7 @@ const blogPosts = [
     id: 1,
     title: 'Seasonal Activities in the Cotswolds',
     excerpt: 'Discover the best seasonal activities to enjoy in the beautiful Cotswolds countryside throughout the year.',
-    image: '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090532_0522_D.jpg',
+    image: '/photos/listings/Cotswolds Luxury Retreat/DJI_20260722212904_0203_D.jpg',
     date: 'June 15, 2025',
     readTime: '5 min read',
     slug: 'seasonal-activities'
@@ -31,7 +31,7 @@ const blogPosts = [
     id: 2,
     title: 'Cotswolds Local Dining Experiences Near Soho Farm House',
     excerpt: 'Explore our handpicked selection of the finest restaurants, pubs, and cafés within a short drive from the estate.',
-    image: '/photos/listings/Cotswolds Luxury Retreat/224A5433.jpg',
+    image: '/photos/listings/Cotswolds Luxury Retreat/224A5417.jpg',
     date: 'June 10, 2025',
     readTime: '4 min read',
     slug: 'dining-experiences'
@@ -40,7 +40,7 @@ const blogPosts = [
     id: 3,
     title: 'A History of Cotswolds Architecture',
     excerpt: 'Learn about the distinctive architectural features that make Cotswolds properties some of the most charming in England.',
-    image: '/photos/listings/Cotswolds Luxury Retreat/224A5368.jpg',
+    image: '/photos/listings/Cotswolds Luxury Retreat/224A5413.jpg',
     date: 'June 5, 2025',
     readTime: '6 min read',
     slug: 'cotswolds-architecture'
@@ -49,7 +49,7 @@ const blogPosts = [
     id: 4,
     title: 'Activities and places to visit in the Cotswolds',
     excerpt: 'Make the most of your stay by exploring these stunning attractions and engaging activities throughout the Cotswolds region.',
-    image: '/photos/listings/Cotswolds Luxury Retreat/224A5478.jpg',
+    image: '/photos/listings/Cotswolds Luxury Retreat/224A5508.jpg',
     date: 'May 28, 2025',
     readTime: '3 min read',
     slug: 'activities-places-visit'
@@ -58,7 +58,7 @@ const blogPosts = [
     id: 5,
     title: 'The perfect Cotswolds Estate for large families',
     excerpt: 'Discover why our spacious estate offers the ideal setting for large family gatherings with amenities for all generations.',
-    image: '/photos/listings/Cotswolds Luxury Retreat/224A5307.jpg',
+    image: '/photos/listings/Cotswolds Luxury Retreat/224A5450.jpg',
     date: 'May 20, 2025',
     readTime: '5 min read',
     slug: 'perfect-estate-families'
@@ -137,7 +137,7 @@ const styles = {
     transition: 'background-color 0.3s ease',
   },
   hero: {
-    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg')",
+    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/224A8292.jpg')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     color: colors.white,

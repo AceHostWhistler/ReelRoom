@@ -305,7 +305,7 @@ export default function SeasonalActivitiesBlog() {
           </p>
 
           <img
-            src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602091050_0536_D.jpg"
+            src="/photos/listings/Cotswolds Luxury Retreat/DJI_20260722213403_0216_D.jpg"
             alt="Aerial view of Cotswolds countryside"
             style={styles.blogImage}
           />
@@ -352,7 +352,7 @@ export default function SeasonalActivitiesBlog() {
               </p>
               
               <img
-                src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg"
+                src="/photos/listings/Cotswolds Luxury Retreat/224A8292.jpg"
                 alt="Spring flowers in the Cotswolds"
                 style={styles.blogImage}
               />
@@ -402,7 +402,7 @@ export default function SeasonalActivitiesBlog() {
               </p>
               
               <img
-                src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg"
+                src="/photos/listings/Cotswolds Luxury Retreat/224A8292.jpg"
                 alt="Summer at the Cotswolds Estate"
                 style={styles.blogImage}
               />
@@ -451,7 +451,7 @@ export default function SeasonalActivitiesBlog() {
               </p>
               
               <img
-                src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg"
+                src="/photos/listings/Cotswolds Luxury Retreat/224A8292.jpg"
                 alt="Autumn colors in Cotswolds living room"
                 style={styles.blogImage}
               />
@@ -502,7 +502,7 @@ export default function SeasonalActivitiesBlog() {
               </p>
               
               <img
-                src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg"
+                src="/photos/listings/Cotswolds Luxury Retreat/224A8292.jpg"
                 alt="Cozy interior perfect for winter evenings"
                 style={styles.blogImage}
               />
@@ -596,7 +596,7 @@ export default function SeasonalActivitiesBlog() {
           </p>
 
           <img
-            src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602091050_0536_D.jpg"
+            src="/photos/listings/Cotswolds Luxury Retreat/DJI_20260722213403_0216_D.jpg"
             alt="Relaxing at the Cotswolds Estate"
             style={styles.blogImage}
           />

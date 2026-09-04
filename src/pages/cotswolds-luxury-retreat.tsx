@@ -2,22 +2,18 @@ import { useEffect, useState, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/cotswolds-retreat.module.css';
-import { AIRBNB_LINK, PROPERTY } from '../config/property';
+import { AIRBNB_LINK, PROPERTY, MAIN_HOUSE_BEDROOMS } from '../config/property';
+import { GALLERY_PHOTOS, HERO_PHOTO } from '../config/cotswoldsPhotos';
 
-// Note: Next.js Image component optimizes images automatically
 // Define image paths for easy management
 const imagePaths = {
-  hero: '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg',
-  gallery: [
-    '/photos/listings/Cotswolds Luxury Retreat/224A5508.jpg',
-    '/photos/listings/Cotswolds Luxury Retreat/224A5516.jpg',
-    '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090720_0527_D.jpg',
-  ],
+  hero: HERO_PHOTO,
+  gallery: GALLERY_PHOTOS.slice(0, 3),
   explore: {
-    livingAreas: '/photos/listings/Cotswolds Luxury Retreat/224A5307.jpg',
-    bedrooms: '/photos/listings/Cotswolds Luxury Retreat/224A5435.jpg',
-    outdoorSpaces: '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090532_0522_D.jpg',
-    diningKitchen: '/photos/listings/Cotswolds Luxury Retreat/224A5368.jpg',
+    livingAreas: '/photos/listings/Cotswolds Luxury Retreat/224A5450.jpg',
+    bedrooms: MAIN_HOUSE_BEDROOMS[0].image,
+    outdoorSpaces: '/photos/listings/Cotswolds Luxury Retreat/DJI_20260722212904_0203_D.jpg',
+    diningKitchen: '/photos/listings/Cotswolds Luxury Retreat/224A5413.jpg',
   }
 };
 
@@ -234,13 +230,13 @@ export default function CotswoldsLuxuryRetreat() {
         {/* Open Graph / Facebook */}
         <meta property="og:title" content={`${PROPERTY.airbnbTitle} | Cotswolds Luxury Retreat`} />
         <meta property="og:description" content={PROPERTY.metaDescription} />
-        <meta property="og:image" content="https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg" />
+        <meta property="og:image" content="https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/224A8292.jpg" />
         <meta property="og:url" content="https://www.cotswoldsvacation.com/cotswolds-luxury-retreat" />
         
         {/* Twitter */}
         <meta name="twitter:title" content={`${PROPERTY.airbnbTitle} | Cotswolds Luxury Retreat`} />
         <meta name="twitter:description" content={PROPERTY.tagline} />
-        <meta name="twitter:image" content="https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg" />
+        <meta name="twitter:image" content="https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/224A8292.jpg" />
         
         {/* Structured Data (JSON-LD) for LodgingBusiness */}
         <script
@@ -250,7 +246,7 @@ export default function CotswoldsLuxuryRetreat() {
               "@context": "https://schema.org",
               "@type": "LodgingBusiness",
               "name": PROPERTY.airbnbTitle,
-              "image": "https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg",
+              "image": "https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/224A8292.jpg",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": PROPERTY.location,

@@ -80,7 +80,7 @@ const styles = {
     transition: 'background-color 0.3s ease',
   },
   hero: {
-    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090532_0522_D.jpg')",
+    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/DJI_20260722212904_0203_D.jpg')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     color: colors.white,
@@ -314,7 +314,7 @@ export default function FamilyGatheringBlog() {
           </p>
 
           <img
-            src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg"
+            src="/photos/listings/Cotswolds Luxury Retreat/224A8292.jpg"
             alt="Cotswolds Estate exterior view"
             style={styles.blogImage}
           />
@@ -368,7 +368,7 @@ export default function FamilyGatheringBlog() {
           </div>
 
           <img
-            src="/photos/listings/Cotswolds Luxury Retreat/224A5472.jpg"
+            src="/photos/listings/Cotswolds Luxury Retreat/224A5463.jpg"
             alt="Luxury bedroom in Cotswolds Estate"
             style={styles.blogImage}
           />
@@ -414,7 +414,7 @@ export default function FamilyGatheringBlog() {
           </p>
 
           <img
-            src="/photos/listings/Cotswolds Luxury Retreat/224A5307.jpg"
+            src="/photos/listings/Cotswolds Luxury Retreat/224A5450.jpg"
             alt="Dining area in Cotswolds Estate"
             style={styles.blogImage}
           />
@@ -487,7 +487,7 @@ export default function FamilyGatheringBlog() {
           </p>
 
           <img
-            src="/photos/listings/Cotswolds Luxury Retreat/224A5368.jpg"
+            src="/photos/listings/Cotswolds Luxury Retreat/224A5413.jpg"
             alt="Cozy living area for family gatherings"
             style={styles.blogImage}
           />

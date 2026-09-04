@@ -51,7 +51,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       if (path === '/') {
         sitemap += `
     <image:image>
-      <image:loc>${baseUrl}/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg</image:loc>
+      <image:loc>${baseUrl}/photos/listings/Cotswolds%20Luxury%20Retreat/224A8292.jpg</image:loc>
       <image:title>Cotswolds Luxury Retreat - Main View</image:title>
     </image:image>`;
       }

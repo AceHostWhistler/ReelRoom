@@ -1,31 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { OptimizedGallery } from '../components/OptimizedGallery';
+import { GALLERY_PHOTOS } from '../config/cotswoldsPhotos';
 
-// Photos for gallery - same as luxury-retreat.tsx
-const photos = [
-  '/photos/listings/Cotswolds Luxury Retreat/224A5508.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5516.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090720_0527_D.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5307.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5435.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090532_0522_D.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5368.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5463.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5472.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5478.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5492.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5502.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5506.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5528.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5532.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5535.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5450.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5441.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5437.jpg',
-  '/photos/listings/Cotswolds Luxury Retreat/224A5433.jpg',
-  // Just including the first 20 photos to focus on optimizing these
-];
+const photos = GALLERY_PHOTOS.slice(0, 20);
 
 export default function GalleryTest() {
   // Using state to handle the origin URL to avoid client/server mismatch

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { GALLERY_PHOTOS } from '../config/cotswoldsPhotos';
 
 interface FallbackGalleryProps {
   photos: string[];
@@ -165,15 +166,7 @@ export const FallbackGallery: React.FC<FallbackGalleryProps> = ({ photos, proper
     }
   };
 
-  // Hardcoded paths for the first 6 images that were having issues
-  const hardcodedFirstSeven = [
-    "/photos/listings/Cotswolds Luxury Retreat/224A5508.jpg",
-    "/photos/listings/Cotswolds Luxury Retreat/224A5516.jpg", 
-    "/photos/listings/Cotswolds Luxury Retreat/224A5307.jpg",
-    "/photos/listings/Cotswolds Luxury Retreat/224A5435.jpg",
-    "/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090532_0522_D.jpg",
-    "/photos/listings/Cotswolds Luxury Retreat/224A5368.jpg"
-  ];
+  const hardcodedFirstSeven = GALLERY_PHOTOS.slice(0, 6);
 
   return (
     <div className="relative w-full">

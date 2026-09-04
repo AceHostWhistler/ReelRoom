@@ -80,7 +80,7 @@ const styles = {
     transition: 'background-color 0.3s ease',
   },
   hero: {
-    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/DJI_20250602091050_0536_D.jpg')",
+    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/DJI_20260722213403_0216_D.jpg')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     color: colors.white,
@@ -341,7 +341,7 @@ export default function PerfectEstateFamiliesBlog() {
           </p>
 
           <img
-            src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602091213_0541_D.jpg"
+            src="/photos/listings/Cotswolds Luxury Retreat/DJI_20260722215623_0226_D.jpg"
             alt="Aerial view of Cotswolds Estate"
             style={styles.blogImage}
           />
@@ -574,7 +574,7 @@ export default function PerfectEstateFamiliesBlog() {
           </ul>
 
           <img
-            src="/photos/listings/Cotswolds Luxury Retreat/224A5359.jpg"
+            src="/photos/listings/Cotswolds Luxury Retreat/224A8456.jpg"
             alt="Main floor bedroom - no stairs"
             style={styles.blogImage}
           />

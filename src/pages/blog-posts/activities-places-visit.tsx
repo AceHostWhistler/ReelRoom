@@ -80,7 +80,7 @@ const styles = {
     transition: 'background-color 0.3s ease',
   },
   hero: {
-    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/224A5348.jpg')",
+    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/224A5345.jpg')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     color: colors.white,
@@ -391,7 +391,7 @@ export default function ActivitiesPlacesVisitBlog() {
           </p>
 
           <img
-            src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090500_0519_D.jpg"
+            src="/photos/listings/Cotswolds Luxury Retreat/DJI_20260720185020_0008_D.jpg"
             alt="Aerial view of the Cotswolds"
             style={styles.blogImage}
           />
@@ -438,7 +438,7 @@ export default function ActivitiesPlacesVisitBlog() {
 
             <div style={styles.activityCard}>
               <img
-                src="/photos/listings/Cotswolds Luxury Retreat/224A5428.jpg"
+                src="/photos/listings/Cotswolds Luxury Retreat/224A5423.jpg"
                 alt="Stow-on-the-Wold"
                 style={styles.activityImage}
               />
@@ -468,7 +468,7 @@ export default function ActivitiesPlacesVisitBlog() {
           <div style={styles.activityGrid}>
             <div style={styles.activityCard}>
               <img
-                src="/photos/listings/Cotswolds Luxury Retreat/224A5348.jpg"
+                src="/photos/listings/Cotswolds Luxury Retreat/224A5345.jpg"
                 alt="Blenheim Palace"
                 style={styles.activityImage}
               />
@@ -485,7 +485,7 @@ export default function ActivitiesPlacesVisitBlog() {
 
             <div style={styles.activityCard}>
               <img
-                src="/photos/listings/Cotswolds Luxury Retreat/224A5368.jpg"
+                src="/photos/listings/Cotswolds Luxury Retreat/224A5413.jpg"
                 alt="Sudeley Castle"
                 style={styles.activityImage}
               />
@@ -501,7 +501,7 @@ export default function ActivitiesPlacesVisitBlog() {
 
             <div style={styles.activityCard}>
               <img
-                src="/photos/listings/Cotswolds Luxury Retreat/224A5466.jpg"
+                src="/photos/listings/Cotswolds Luxury Retreat/224A5468.jpg"
                 alt="Cotswold Motoring Museum"
                 style={styles.activityImage}
               />
@@ -526,7 +526,7 @@ export default function ActivitiesPlacesVisitBlog() {
           <div style={styles.activityGrid}>
             <div style={styles.activityCard}>
               <img
-                src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602091050_0536_D.jpg"
+                src="/photos/listings/Cotswolds Luxury Retreat/DJI_20260722213403_0216_D.jpg"
                 alt="Cotswold Way"
                 style={styles.activityImage}
               />
@@ -543,7 +543,7 @@ export default function ActivitiesPlacesVisitBlog() {
 
             <div style={styles.activityCard}>
               <img
-                src="/photos/listings/Cotswolds Luxury Retreat/224A5314.jpg"
+                src="/photos/listings/Cotswolds Luxury Retreat/224A5423.jpg"
                 alt="Cycling Routes"
                 style={styles.activityImage}
               />
@@ -609,7 +609,7 @@ export default function ActivitiesPlacesVisitBlog() {
           <div style={styles.activityGrid}>
             <div style={styles.activityCard}>
               <img
-                src="/photos/listings/Cotswolds Luxury Retreat/224A5433.jpg"
+                src="/photos/listings/Cotswolds Luxury Retreat/224A5417.jpg"
                 alt="Cotswold Wildlife Park"
                 style={styles.activityImage}
               />
@@ -625,7 +625,7 @@ export default function ActivitiesPlacesVisitBlog() {
 
             <div style={styles.activityCard}>
               <img
-                src="/photos/listings/Cotswolds Luxury Retreat/224A5492.jpg"
+                src="/photos/listings/Cotswolds Luxury Retreat/224A5516.jpg"
                 alt="Adam Henson's Cotswold Farm Park"
                 style={styles.activityImage}
               />

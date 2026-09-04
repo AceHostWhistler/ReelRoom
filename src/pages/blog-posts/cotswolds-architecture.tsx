@@ -80,7 +80,7 @@ const styles = {
     transition: 'background-color 0.3s ease',
   },
   hero: {
-    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090500_0519_D.jpg')",
+    backgroundImage: "url('/photos/listings/Cotswolds Luxury Retreat/DJI_20260720185020_0008_D.jpg')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     color: colors.white,
@@ -402,7 +402,7 @@ export default function CotswoldsArchitectureBlog() {
           </p>
 
           <img
-            src="/photos/listings/Cotswolds Luxury Retreat/DJI_20250602090653_0526_D.jpg"
+            src="/photos/listings/Cotswolds Luxury Retreat/224A8292.jpg"
             alt="Aerial view of Cotswolds architecture"
             style={styles.blogImage}
           />
@@ -541,7 +541,7 @@ export default function CotswoldsArchitectureBlog() {
 
             <div style={styles.featureCard}>
               <img
-                src="/photos/listings/Cotswolds Luxury Retreat/224A5461.jpg"
+                src="/photos/listings/Cotswolds Luxury Retreat/224A5463.jpg"
                 alt="Mullioned Windows"
                 style={styles.featureImage}
               />
@@ -573,7 +573,7 @@ export default function CotswoldsArchitectureBlog() {
           <div style={styles.featureGrid}>
             <div style={styles.featureCard}>
               <img
-                src="/photos/listings/Cotswolds Luxury Retreat/224A5428.jpg"
+                src="/photos/listings/Cotswolds Luxury Retreat/224A5423.jpg"
                 alt="Entry Porch"
                 style={styles.featureImage}
               />
@@ -589,7 +589,7 @@ export default function CotswoldsArchitectureBlog() {
 
             <div style={styles.featureCard}>
               <img
-                src="/photos/listings/Cotswolds Luxury Retreat/224A5314.jpg"
+                src="/photos/listings/Cotswolds Luxury Retreat/224A5423.jpg"
                 alt="Stone Walls"
                 style={styles.featureImage}
               />
