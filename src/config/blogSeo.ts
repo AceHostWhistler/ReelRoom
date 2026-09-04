@@ -29,7 +29,7 @@ export const BLOG_SEO: Record<string, BlogSeoEntry> = {
     ogImage: `${PHOTO}/DJI_20260722215623_0226_D.jpg`,
     published: '2026-09-04',
     publishedDisplay: 'September 4, 2026',
-    readTime: '6 min read',
+    readTime: '12 min read',
   },
   'dog-friendly-cotswolds-holiday': {
     slug: 'dog-friendly-cotswolds-holiday',
@@ -43,7 +43,7 @@ export const BLOG_SEO: Record<string, BlogSeoEntry> = {
     ogImage: `${PHOTO}/224A5345.jpg`,
     published: '2026-09-02',
     publishedDisplay: 'September 2, 2026',
-    readTime: '5 min read',
+    readTime: '11 min read',
   },
   'london-to-cotswolds-weekend': {
     slug: 'london-to-cotswolds-weekend',
@@ -57,7 +57,35 @@ export const BLOG_SEO: Record<string, BlogSeoEntry> = {
     ogImage: `${PHOTO}/224A8292.jpg`,
     published: '2026-08-28',
     publishedDisplay: 'August 28, 2026',
-    readTime: '6 min read',
+    readTime: '12 min read',
+  },
+  'cotswolds-wellness-retreat': {
+    slug: 'cotswolds-wellness-retreat',
+    title: 'Cotswolds Wellness Retreat: Pool, Spa & Sauna Guide',
+    h1: 'Cotswolds Wellness Retreat: Pool, Hot Tub, Sauna & Cold Plunge',
+    description:
+      'Reset with a private Cotswolds wellness retreat — heated pool, hot tub, infrared sauna and cold plunge at our 8-bedroom luxury estate near Soho Farmhouse in Sandford Saint Martin.',
+    keywords:
+      'Cotswolds wellness retreat, luxury spa rental Cotswolds, heated pool hot tub Oxfordshire, sauna cold plunge UK, wellness weekend Soho Farmhouse area',
+    heroSubtitle: 'Your private spa estate — pool, hot tub, sauna & cold plunge on your schedule',
+    ogImage: `${PHOTO}/Hot tub shot no AC cotswolds.png`,
+    published: '2026-09-05',
+    publishedDisplay: 'September 5, 2026',
+    readTime: '11 min read',
+  },
+  'celebration-weekend-cotswolds': {
+    slug: 'celebration-weekend-cotswolds',
+    title: 'Celebration Weekends in the Cotswolds | Hen, Birthday & Group Stays',
+    h1: 'Planning a Celebration Weekend in the Cotswolds',
+    description:
+      'Hen parties, milestone birthdays and group celebrations — how to host up to 15 guests at a private Cotswolds estate with pool, tennis court and spa near Soho Farmhouse.',
+    keywords:
+      'hen party Cotswolds, birthday celebration rental Oxfordshire, large group celebration Cotswolds, private estate hen do, milestone birthday UK, Soho Farmhouse area party house',
+    heroSubtitle: 'Hen dos, birthdays & reunions — pool, tennis & room for 15',
+    ogImage: `${PHOTO}/224A5450.jpg`,
+    published: '2026-09-06',
+    publishedDisplay: 'September 6, 2026',
+    readTime: '11 min read',
   },
   'seasonal-activities': {
     slug: 'seasonal-activities',
@@ -153,6 +181,8 @@ export function getBlogSeo(slug: string): BlogSeoEntry {
 
 /** Display order on /cotswolds-blog (newest first) */
 export const BLOG_INDEX_ORDER = [
+  'celebration-weekend-cotswolds',
+  'cotswolds-wellness-retreat',
   'soho-farmhouse-area-guide',
   'dog-friendly-cotswolds-holiday',
   'london-to-cotswolds-weekend',

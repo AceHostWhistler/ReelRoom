@@ -139,10 +139,16 @@ export default function LondonToCotswoldsWeekendBlog() {
             sauna, tennis, and enough bedrooms that nobody draws the short straw on the sofa bed.
           </p>
 
+          <p style={styles.paragraph}>
+            This is a realistic itinerary — not a fantasy where everyone wakes at 6am for yoga. It is designed for
+            groups who want maximum relaxation per hour away from the city, with optional exploring if the mood strikes.
+          </p>
+
           <div style={styles.calloutBox}>
             <p style={{ ...styles.paragraph, marginBottom: 0 }}>
               <strong>Getting there:</strong> Drive via M40 (easy boot space for prosecco). Or train to
               Kingham / Charlbury and taxi — roughly 20–30 minutes to the estate. EV? Charger on site.
+              Aim to leave London by 5:30pm Friday and you will be in the hot tub by 8pm.
             </p>
           </div>
 
@@ -153,6 +159,11 @@ export default function LondonToCotswoldsWeekendBlog() {
           />
 
           <h2 style={styles.heading}>Friday evening: escape velocity</h2>
+
+          <p style={styles.paragraph}>
+            The first evening sets the tone. Do not over-plan it — arrive, exhale, and establish that you are
+            no longer in London. Nominate a playlist curator and a wine opener; the rest takes care of itself.
+          </p>
 
           <div style={styles.itineraryBlock}>
             <p style={styles.paragraph}>
@@ -173,6 +184,11 @@ export default function LondonToCotswoldsWeekendBlog() {
           </div>
 
           <h2 style={styles.heading}>Saturday: the main character day</h2>
+
+          <p style={styles.paragraph}>
+            Saturday is why you came. Pool, tennis, optional village expedition, long dinner. The estate is large
+            enough that different energy levels coexist — marathon swimmers and hammock philosophers, united by lunch.
+          </p>
 
           <div style={styles.itineraryBlock}>
             <p style={styles.paragraph}>
@@ -202,6 +218,28 @@ export default function LondonToCotswoldsWeekendBlog() {
             style={styles.blogImage}
           />
 
+          <h2 style={styles.heading}>Saturday alternatives (if you can tear yourself away)</h2>
+
+          <p style={styles.paragraph}>
+            Not everyone wants a full pool day — shocking, but true. Swap an hour or two for:
+          </p>
+
+          <ul style={{ ...styles.paragraph, paddingLeft: '24px' }}>
+            <li style={{ marginBottom: '10px' }}>
+              <strong>Daylesford run</strong> — twenty minutes by car, excellent lunch, provisions for the house
+            </li>
+            <li style={{ marginBottom: '10px' }}>
+              <strong>Great Tew pub lunch</strong> — The Falkland Arms, dogs welcome, classic Cotswolds atmosphere
+            </li>
+            <li style={{ marginBottom: '10px' }}>
+              <strong>Soho Farmhouse trail walk</strong> — thirty minutes from the estate door, no membership required
+              for the countryside part
+            </li>
+            <li style={{ marginBottom: '10px' }}>
+              <strong>Blenheim Palace</strong> — if someone in the group is a history or Downton enthusiast
+            </li>
+          </ul>
+
           <h2 style={styles.heading}>Sunday: soft landing back to reality</h2>
 
           <div style={styles.itineraryBlock}>
@@ -215,6 +253,11 @@ export default function LondonToCotswoldsWeekendBlog() {
               <strong>12:00pm</strong> — Depart. Already planning the next weekend. This is normal.
             </p>
           </div>
+
+          <p style={styles.paragraph}>
+            Pro tip: book a late Sunday checkout if available on your dates — a 2pm departure with a morning swim
+            feels infinitely better than a rushed 10am scramble. Check the listing for exact checkout times.
+          </p>
 
           <h2 style={styles.heading}>Who this weekend works for</h2>
 
@@ -231,7 +274,16 @@ export default function LondonToCotswoldsWeekendBlog() {
             <li style={{ marginBottom: '10px' }}>
               <strong>Remote-work escapees</strong> — two office spaces if Monday WFH from the Cotswolds sounds tempting
             </li>
+            <li style={{ marginBottom: '10px' }}>
+              <strong>Celebration weekends</strong> — birthdays, reunions, low-key hen dos with pool instead of clubs
+            </li>
           </ul>
+
+          <img
+            src="/photos/listings/Cotswolds Luxury Retreat/224A5405.jpg"
+            alt="Master suite at Cotswolds luxury weekend rental from London"
+            style={styles.blogImage}
+          />
 
           <h2 style={styles.heading}>Budget reality check</h2>
 
@@ -242,9 +294,29 @@ export default function LondonToCotswoldsWeekendBlog() {
             peak weekends.
           </p>
 
+          <p style={styles.paragraph}>
+            Example: eight friends splitting a weekend at {PROPERTY.priceRange} often lands at a per-person cost
+            comparable to a mid-range hotel — except here you get the pool, tennis, spa, parking, and a kitchen
+            that makes brunch for twelve without queueing. Run your own numbers; groups are usually pleasantly surprised.
+          </p>
+
           <img
             src="/photos/listings/Cotswolds Luxury Retreat/Cotswolds Cover Pool 2.jpeg"
             alt="Heated pool at Cotswolds estate weekend rental from London"
+            style={styles.blogImage}
+          />
+
+          <h2 style={styles.heading}>What to pack for 48 hours</h2>
+
+          <p style={styles.paragraph}>
+            Swimwear (obviously), tennis shoes, one smart-casual outfit for pub or Wild Rabbit if you are feeling ambitious,
+            toiletries — the house provides luxury linens and towels. Bring a Bluetooth speaker for the kitchen.
+            Leave work laptop at home if at all possible (we said if at all possible).
+          </p>
+
+          <img
+            src="/photos/listings/Cotswolds Luxury Retreat/DJI_20260722212904_0203_D.jpg"
+            alt="Aerial view of Cotswolds estate for London weekend escape"
             style={styles.blogImage}
           />
 
@@ -254,7 +326,11 @@ export default function LondonToCotswoldsWeekendBlog() {
 
           <p style={styles.paragraph}>
             London will still be there on Monday. The emails will too. But for forty-eight hours you will have
-            had stone walls, open sky, and a proper swim — and that is exactly the point.
+            had stone walls, open sky, and a proper swim — and that is exactly the point. Read our{' '}
+            <Link href="/blog-posts/cotswolds-wellness-retreat" style={{ color: colors.darkGreen }}>
+              wellness retreat guide
+            </Link>{' '}
+            if you want to lean into the spa side of the stay.
           </p>
         </article>
 

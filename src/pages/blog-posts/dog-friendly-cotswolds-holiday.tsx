@@ -140,6 +140,11 @@ export default function DogFriendlyCotswoldsBlog() {
             Your dog will have a better holiday than you. Possibly a better social life too.
           </p>
 
+          <p style={styles.paragraph}>
+            This guide covers the walks, pubs, practical tips and seasonal advice we give every guest who asks
+            &quot;can we bring the dogs?&quot; (The answer is yes — within reason, and with a little countryside etiquette.)
+          </p>
+
           <img
             src="/photos/listings/Cotswolds Luxury Retreat/DJI_20260720185020_0008_D.jpg"
             alt="Cotswolds estate grounds perfect for dog walks"
@@ -154,10 +159,17 @@ export default function DogFriendlyCotswoldsBlog() {
             coastal trips in August, you are not fighting every other spaniel on a single beach path.
           </p>
 
+          <p style={styles.paragraph}>
+            The area around Sandford Saint Martin is particularly good for dogs: open countryside, established bridleways,
+            and villages where a well-behaved dog in a pub garden is unremarkable. Many guests plan their stay around
+            morning walks, afternoon pool time for humans, and evening pub visits where the dogs crash under the table.
+          </p>
+
           <div style={styles.calloutBox}>
             <p style={{ ...styles.paragraph, marginBottom: 0 }}>
               <strong>House rule reminder:</strong> Spa and tennis court hours are 8am–10pm (neighbours sleep too).
-              Dogs + hot tub = hard no. Dogs + morning walk through the fields = absolutely yes.
+              Dogs + hot tub = hard no. Dogs + morning walk through the fields = absolutely yes. Keep dogs supervised
+              near the pond and driveways, as you would at any countryside property.
             </p>
           </div>
 
@@ -169,7 +181,8 @@ export default function DogFriendlyCotswoldsBlog() {
             </p>
             <p style={{ ...styles.paragraph, marginBottom: 0 }}>
               Roughly thirty minutes each way through open countryside. Flat enough for older dogs, interesting
-              enough that yours will pretend they discovered it personally.
+              enough that yours will pretend they discovered it personally. Best in early morning or late afternoon
+              when the light is soft and the paths are quiet.
             </p>
           </div>
 
@@ -179,7 +192,8 @@ export default function DogFriendlyCotswoldsBlog() {
             </p>
             <p style={{ ...styles.paragraph, marginBottom: 0 }}>
               Before breakfast, after lunch, or that fourth walk of the day because someone has energy. Bocce,
-              horseshoes, fire pit — plenty to sniff around while humans pretend to relax.
+              horseshoes, fire pit — plenty to sniff around while humans pretend to relax. Ideal for dogs
+              who prefer familiar territory before venturing further afield.
             </p>
           </div>
 
@@ -193,6 +207,16 @@ export default function DogFriendlyCotswoldsBlog() {
             </p>
           </div>
 
+          <div style={styles.tipCard}>
+            <p style={{ ...styles.paragraph, marginBottom: '8px' }}>
+              <strong>Great Tew circular</strong>
+            </p>
+            <p style={{ ...styles.paragraph, marginBottom: 0 }}>
+              Park near The Falkland Arms and pick up footpaths through fields and woodland. Reward with a pub stop —
+              dogs welcome in the garden. One of our favourite post-walk combinations in the area.
+            </p>
+          </div>
+
           <h2 style={styles.heading}>Dog-friendly pubs worth the muddy boots</h2>
 
           <p style={styles.paragraph}>
@@ -202,10 +226,24 @@ export default function DogFriendlyCotswoldsBlog() {
           </p>
 
           <ul style={{ ...styles.paragraph, paddingLeft: '24px' }}>
-            <li style={{ marginBottom: '10px' }}>The Falkland Arms, Great Tew — classic village pub vibes</li>
-            <li style={{ marginBottom: '10px' }}>The Killingworth Castle — good food, cosy corners</li>
-            <li style={{ marginBottom: '10px' }}>Local farm shops with outdoor seating — coffee for you, sausage for them (ask first)</li>
+            <li style={{ marginBottom: '10px' }}>
+              <strong>The Falkland Arms, Great Tew</strong> — classic village pub vibes, garden seating
+            </li>
+            <li style={{ marginBottom: '10px' }}>
+              <strong>The Killingworth Castle</strong> — good food, cosy corners; book ahead for Saturday dinner
+            </li>
+            <li style={{ marginBottom: '10px' }}>
+              <strong>Daylesford farm shop</strong> — outdoor seating and excellent provisions for the house
+            </li>
+            <li style={{ marginBottom: '10px' }}>
+              Local farm shops with outdoor seating — coffee for you, sausage for them (ask first)
+            </li>
           </ul>
+
+          <p style={styles.paragraph}>
+            Pub etiquette in the Cotswolds is straightforward: lead on, water bowl appreciated, muddy paws wiped
+            before entering. Most landlords are dog people themselves — a little courtesy goes a long way.
+          </p>
 
           <img
             src="/photos/listings/Cotswolds Luxury Retreat/224A5463.jpg"
@@ -223,24 +261,58 @@ export default function DogFriendlyCotswoldsBlog() {
 
           <ul style={{ ...styles.paragraph, paddingLeft: '24px' }}>
             <li style={{ marginBottom: '10px' }}>Bring familiar beds and bowls — new house, same smells home</li>
-            <li style={{ marginBottom: '10px' }}>Pack tick treatment in spring and summer</li>
+            <li style={{ marginBottom: '10px' }}>Pack tick treatment in spring and summer; check for burrs after long grass walks</li>
             <li style={{ marginBottom: '10px' }}>Use the boot room / downstairs space for wet-dog protocol</li>
             <li style={{ marginBottom: '10px' }}>EV charger on site if you are doing the electric dog-wagon thing</li>
+            <li style={{ marginBottom: '10px' }}>Bring a spare towel per dog — you will use them all</li>
           </ul>
 
           <p style={styles.paragraph}>
-            {PROPERTY.petPolicy} The estate is not fenced like a kennel — keep dogs supervised near the pond
-            and driveways, as you would at any countryside property.
+            {PROPERTY.petPolicy} The estate is not fenced like a kennel — if your dogs recall reliably, the grounds
+            feel wonderfully private; if not, leads on near roads and livestock fields.
           </p>
+
+          <img
+            src="/photos/listings/Cotswolds Luxury Retreat/224A5506.jpg"
+            alt="Living spaces at pet-friendly Cotswolds luxury estate"
+            style={styles.blogImage}
+          />
 
           <h2 style={styles.heading}>When to visit with dogs</h2>
 
           <p style={styles.paragraph}>
-            <strong>Spring &amp; autumn</strong> — ideal walking weather, fewer midges, gorgeous light.
-            <strong> Summer</strong> — early walks, pool time for humans, shade in the afternoon.
-            <strong> Winter</strong> — roaring fires, empty footpaths, maximum pub cosiness. Dogs do not care
-            about season. They care about walks. Always walks.
+            <strong>Spring (March–May)</strong> — lambs in the fields, bluebells in the woods, ideal walking weather.
+            Watch for nesting birds and keep dogs on leads near livestock.
           </p>
+
+          <p style={styles.paragraph}>
+            <strong>Summer (June–August)</strong> — early walks before heat builds, pool time for humans, shade in the
+            afternoon. Busier village car parks — arrive early for popular walks.
+          </p>
+
+          <p style={styles.paragraph}>
+            <strong>Autumn (September–November)</strong> — empty footpaths, gorgeous light, pub cosiness. Mud increases;
+            towels become non-negotiable.
+          </p>
+
+          <p style={styles.paragraph}>
+            <strong>Winter (December–February)</strong> — roaring fires, empty footpaths, maximum pub cosiness. Dogs
+            do not care about season. They care about walks. Always walks.
+          </p>
+
+          <h2 style={styles.heading}>Two dogs, one estate: making it work</h2>
+
+          <p style={styles.paragraph}>
+            Most guests bring one or two dogs. Two is our maximum — enough for company on walks without turning the
+            holiday into a kennel management exercise. The annex works well if one dog prefers quiet while the main
+            house hosts the chaos of a family dinner.
+          </p>
+
+          <img
+            src="/photos/listings/Cotswolds Luxury Retreat/224A8480.jpg"
+            alt="Annex bedroom at dog-friendly Cotswolds estate with step-free access"
+            style={styles.blogImage}
+          />
 
           <div className="text-center my-8">
             <AirbnbButton variant="lg">Book on Airbnb</AirbnbButton>
@@ -248,7 +320,11 @@ export default function DogFriendlyCotswoldsBlog() {
 
           <p style={styles.paragraph}>
             A Cotswolds break with dogs should feel effortless — long walks, warm house, cold drink, repeat.
-            Book the estate, pack the leads, and let Oxfordshire do the rest.
+            Book the estate, pack the leads, and let Oxfordshire do the rest. See our{' '}
+            <Link href="/blog-posts/soho-farmhouse-area-guide" style={{ color: colors.darkGreen }}>
+              Soho Farmhouse area guide
+            </Link>{' '}
+            for more on walks and villages nearby.
           </p>
         </article>
 

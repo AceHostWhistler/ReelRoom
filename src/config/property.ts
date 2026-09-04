@@ -28,8 +28,14 @@ export const PROPERTY = {
     'Luxury retreat near Soho Farmhouse with outdoor spa, heated pool, hot tub, A/C, tennis court & annex — sleeps 15.',
   metaDescription:
     'Luxury Retreat Near Soho Farmhouse | Pool & Tennis. 8-bedroom estate in Sandford Saint Martin with outdoor spa, heated pool, hot tub, sauna, cold plunge, private tennis court & cozy annex. Sleeps 15.',
+  /** Browser tab title — primary keywords first, under ~60 characters */
+  pageTitle: 'Luxury Cotswolds Rental Near Soho Farmhouse | Pool & Tennis',
+  /** One sentence under the H1 — location + property type for SEO and guests */
+  heroIntro:
+    'Private 8-bedroom luxury vacation rental in Sandford Saint Martin, Oxfordshire — 4 minutes from Soho Farmhouse. Sleeps up to 15.',
   heroSubtitle:
     'Outdoor spa, heated pool & hot tub · A/C · Private tennis court · Cozy annex — 8 bedrooms, 8 beds, 5 baths, sleeps 15',
+  aboutHeading: 'Luxury Cotswolds Estate Near Soho Farmhouse',
   /** Opening description — matches Airbnb listing copy */
   airbnbIntro:
     'Escape to a stunning estate near Soho Farmhouse, offering a luxurious retreat with an outdoor spa & heated pool/hot tub, A/C, private tennis court, and cozy annex for additional sleeping. This beautiful house is spread across several acres, features 8 bedrooms, a gourmet kitchen, multiple living areas, and 5 bathrooms. Enjoy the hot tub, infrared sauna, cold plunge, pool, & outdoor fire pit.',

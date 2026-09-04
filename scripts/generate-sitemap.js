@@ -9,6 +9,8 @@ const INDEXABLE_ROUTES = [
   { path: '/', priority: 1.0 },
   { path: '/cotswolds-luxury-retreat', priority: 0.9 },
   { path: '/cotswolds-blog', priority: 0.8 },
+  { path: '/blog-posts/celebration-weekend-cotswolds', priority: 0.7 },
+  { path: '/blog-posts/cotswolds-wellness-retreat', priority: 0.7 },
   { path: '/blog-posts/soho-farmhouse-area-guide', priority: 0.7 },
   { path: '/blog-posts/dog-friendly-cotswolds-holiday', priority: 0.7 },
   { path: '/blog-posts/london-to-cotswolds-weekend', priority: 0.7 },

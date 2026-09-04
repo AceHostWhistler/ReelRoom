@@ -7,6 +7,8 @@ const INDEXABLE_ROUTES: Array<{ path: string; priority: string; changefreq: stri
   { path: '/', priority: '1.0', changefreq: 'weekly' },
   { path: '/cotswolds-luxury-retreat', priority: '0.9', changefreq: 'weekly' },
   { path: '/cotswolds-blog', priority: '0.8', changefreq: 'weekly' },
+  { path: '/blog-posts/celebration-weekend-cotswolds', priority: '0.7', changefreq: 'monthly' },
+  { path: '/blog-posts/cotswolds-wellness-retreat', priority: '0.7', changefreq: 'monthly' },
   { path: '/blog-posts/soho-farmhouse-area-guide', priority: '0.7', changefreq: 'monthly' },
   { path: '/blog-posts/dog-friendly-cotswolds-holiday', priority: '0.7', changefreq: 'monthly' },
   { path: '/blog-posts/london-to-cotswolds-weekend', priority: '0.7', changefreq: 'monthly' },

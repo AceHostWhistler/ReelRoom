@@ -221,10 +221,20 @@ const styles = {
     textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
   },
   heroSubtitle: {
-    fontSize: '1.6em',
+    fontSize: '1.35em',
     color: colors.white,
-    marginBottom: '1.5em',
+    marginBottom: '1em',
     textShadow: '1px 1px 3px rgba(0,0,0,0.5)',
+    maxWidth: '820px',
+  },
+  heroIntro: {
+    fontSize: '1.15em',
+    color: colors.white,
+    marginBottom: '1.25em',
+    textShadow: '1px 1px 3px rgba(0,0,0,0.5)',
+    maxWidth: '720px',
+    lineHeight: 1.5,
+    opacity: 0.95,
   },
   videoPlaceholder: {
     width: '100%',
@@ -389,9 +399,9 @@ export default function LuxuryRetreatFixed() {
   return (
     <div style={styles.container}>
       <Head>
-        <title>{PROPERTY.airbnbTitle} | Cotswolds Vacation Rental</title>
+        <title>{PROPERTY.pageTitle}</title>
         <meta name="description" content={PROPERTY.metaDescription} />
-        <meta name="keywords" content="luxury Cotswolds estate, Soho Farmhouse rental, heated pool, tennis court, Sandford Saint Martin, 8 bedroom Cotswolds, wellness retreat, UK holiday home" />
+        <meta name="keywords" content="luxury Cotswolds rental, Soho Farmhouse vacation rental, heated pool Cotswolds, tennis court estate Oxfordshire, Sandford Saint Martin, 8 bedroom sleeps 15, luxury holiday home UK" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="google-site-verification" content="UmTMmjHtW3Q_-Uzi8WXxrPgE2YBsv0GXgq0RXCQuB_Y" />
         
@@ -402,7 +412,7 @@ export default function LuxuryRetreatFixed() {
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         
         {/* Open Graph / Facebook */}
-        <meta property="og:title" content={`${PROPERTY.airbnbTitle} | Cotswolds Vacation Rental`} />
+        <meta property="og:title" content={PROPERTY.pageTitle} />
         <meta property="og:description" content={PROPERTY.metaDescription} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.cotswoldsvacation.com" />
@@ -412,8 +422,8 @@ export default function LuxuryRetreatFixed() {
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${PROPERTY.airbnbTitle} | Cotswolds Vacation Rental`} />
-        <meta name="twitter:description" content={PROPERTY.tagline} />
+        <meta name="twitter:title" content={PROPERTY.pageTitle} />
+        <meta name="twitter:description" content={PROPERTY.metaDescription} />
         <meta name="twitter:image" content={ogImageUrl} />
         
         {/* Structured Data for LodgingBusiness */}
@@ -422,7 +432,7 @@ export default function LuxuryRetreatFixed() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LodgingBusiness",
+              "@type": ["LodgingBusiness", "VacationRental"],
               "name": PROPERTY.airbnbTitle,
               "image": ogImageUrl,
               "url": PROPERTY.siteUrl,
@@ -485,6 +495,7 @@ export default function LuxuryRetreatFixed() {
           <div style={styles.heroOverlay}></div>
           <div style={styles.heroContent}>
             <h1 style={styles.heroTitle}>{PROPERTY.airbnbTitle}</h1>
+            <p style={styles.heroIntro}>{PROPERTY.heroIntro}</p>
             <p style={styles.heroSubtitle}>{PROPERTY.heroSubtitle}</p>
             <p style={{ fontSize: '1.1em', color: colors.white, marginBottom: '0.5em', textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }}>
               ★ {PROPERTY.rating} · {PROPERTY.bedrooms} bedrooms · {PROPERTY.beds} beds · {PROPERTY.bathrooms} baths · Sleeps {PROPERTY.maxGuests} · {PROPERTY.location}, {PROPERTY.region}
@@ -504,7 +515,7 @@ export default function LuxuryRetreatFixed() {
 
         <section id="about" style={styles.section}>
           <div style={styles.sectionContainer}>
-            <h2 style={styles.heading}>The Space</h2>
+            <h2 style={styles.heading}>{PROPERTY.aboutHeading}</h2>
             <p style={styles.paragraph}>{PROPERTY.airbnbIntro}</p>
             <p style={styles.paragraph}>{PROPERTY.airbnbIntroClosing}</p>
             <p style={styles.paragraph}>
@@ -527,7 +538,7 @@ export default function LuxuryRetreatFixed() {
               }}>
                 <img 
                   src="/photos/listings/Cotswolds Luxury Retreat/DJI_20260722213403_0216_D.jpg" 
-                  alt="Aerial view of Cotswolds Estate" 
+                  alt="Aerial view of luxury Cotswolds estate near Soho Farmhouse with heated pool and tennis court" 
                   style={{ 
                     width: '100%', 
                     height: '100%', 
@@ -543,7 +554,7 @@ export default function LuxuryRetreatFixed() {
               }}>
                 <img 
                   src="/photos/listings/Cotswolds Luxury Retreat/DJI_20260722215623_0226_D.jpg" 
-                  alt="Panoramic drone view of the property" 
+                  alt="Panoramic drone view of 8-bedroom Sandford Saint Martin vacation rental in Oxfordshire" 
                   style={{ 
                     width: '100%', 
                     height: '100%', 
