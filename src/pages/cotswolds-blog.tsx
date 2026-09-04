@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import MobileMenu from '../components/MobileMenu';
+import { AIRBNB_LINK } from '../config/property';
 
 // Color scheme to match luxury-retreat-fixed.tsx
 const colors = {
@@ -265,8 +266,6 @@ const styles = {
 };
 
 export default function CotswoldsBlog() {
-  const AIRBNB_LINK = "https://www.airbnb.ca/rooms/1414129878809697902?check_in=2025-08-20&check_out=2025-08-24&guests=10&adults=10&s=67&unique_share_id=3bb66e80-1ca0-4eb8-9866-40b102c76e50";
-  
   return (
     <div style={styles.container}>
       <Head>

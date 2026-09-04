@@ -4,8 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FallbackGallery } from '../components/FallbackGallery';
 import MobileMenu from '../components/MobileMenu';
-
-const AIRBNB_LINK = "https://www.airbnb.ca/rooms/1414129878809697902?check_in=2025-08-20&check_out=2025-08-24&guests=10&adults=10&s=67&unique_share_id=3bb66e80-1ca0-4eb8-9866-40b102c76e50";
+import { AIRBNB_LINK, PROPERTY } from '../config/property';
 
 // Color scheme
 const colors = {
@@ -479,9 +478,9 @@ export default function LuxuryRetreatFixed() {
   return (
     <div style={styles.container}>
       <Head>
-        <title>Luxury Cotswolds Airbnb Vacation Rental | Near Soho Farm House</title>
-        <meta name="description" content="Experience the ultimate luxury vacation in our exclusive Cotswolds Estate. Private tennis court, wellness facilities, elegant interiors, and just 3 minutes from Soho Farm House." />
-        <meta name="keywords" content="luxury Cotswolds estate, Cotswolds retreat, tennis court, wellness facilities, Soho Farm House, luxury holiday rental, Cotswolds vacation, UK countryside escape" />
+        <title>{PROPERTY.airbnbTitle} | Cotswolds Vacation Rental</title>
+        <meta name="description" content={PROPERTY.metaDescription} />
+        <meta name="keywords" content="luxury Cotswolds estate, Soho Farmhouse rental, heated pool, tennis court, Sandford Saint Martin, 8 bedroom Cotswolds, wellness retreat, UK holiday home" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="google-site-verification" content="UmTMmjHtW3Q_-Uzi8WXxrPgE2YBsv0GXgq0RXCQuB_Y" />
         
@@ -492,8 +491,8 @@ export default function LuxuryRetreatFixed() {
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         
         {/* Open Graph / Facebook */}
-        <meta property="og:title" content="Luxury Cotswolds Airbnb Vacation Rental | Near Soho Farm House" />
-        <meta property="og:description" content="Experience the ultimate luxury vacation in our exclusive Cotswolds Estate. Private tennis court, wellness facilities, and just 3 minutes from Soho Farm House." />
+        <meta property="og:title" content={`${PROPERTY.airbnbTitle} | Cotswolds Vacation Rental`} />
+        <meta property="og:description" content={PROPERTY.metaDescription} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.cotswoldsvacation.com" />
         <meta property="og:image" content="https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg" />
@@ -502,8 +501,8 @@ export default function LuxuryRetreatFixed() {
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Luxury Cotswolds Airbnb Vacation Rental | Near Soho Farm House" />
-        <meta name="twitter:description" content="Luxury estate in the heart of the Cotswolds with tennis court and wellness facilities." />
+        <meta name="twitter:title" content={`${PROPERTY.airbnbTitle} | Cotswolds Vacation Rental`} />
+        <meta name="twitter:description" content={PROPERTY.tagline} />
         <meta name="twitter:image" content="https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg" />
         
         {/* Structured Data for LodgingBusiness */}
@@ -513,27 +512,40 @@ export default function LuxuryRetreatFixed() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LodgingBusiness",
-              "name": "Cotswolds Luxury Retreat",
+              "name": PROPERTY.airbnbTitle,
               "image": "https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg",
-              "url": "https://www.cotswoldsvacation.com",
+              "url": PROPERTY.siteUrl,
               "address": {
                 "@type": "PostalAddress",
-                "addressRegion": "Cotswolds",
-                "addressCountry": "United Kingdom"
+                "addressLocality": PROPERTY.location,
+                "addressRegion": PROPERTY.region,
+                "addressCountry": PROPERTY.country
               },
               "geo": {
                 "@type": "GeoCoordinates",
                 "latitude": "51.9210",
                 "longitude": "-1.7090"
               },
-              "description": "Premium Cotswolds Estate with Private Tennis Court & Wellness Facilities, Just 3 Minutes from Soho Farm House",
-              "priceRange": "$$$$",
+              "description": PROPERTY.metaDescription,
+              "numberOfRooms": PROPERTY.bedrooms,
+              "occupancy": {
+                "@type": "QuantitativeValue",
+                "maxValue": PROPERTY.maxGuests
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": PROPERTY.rating,
+                "bestRating": 5
+              },
+              "priceRange": "££££",
               "amenityFeature": [
+                {"@type": "LocationFeatureSpecification", "name": "Heated Outdoor Pool"},
                 {"@type": "LocationFeatureSpecification", "name": "Tennis Court"},
-                {"@type": "LocationFeatureSpecification", "name": "Wellness Facilities"},
-                {"@type": "LocationFeatureSpecification", "name": "High-speed Internet"},
-                {"@type": "LocationFeatureSpecification", "name": "Luxury Bedrooms"},
-                {"@type": "LocationFeatureSpecification", "name": "Garden"}
+                {"@type": "LocationFeatureSpecification", "name": "Hot Tub"},
+                {"@type": "LocationFeatureSpecification", "name": "Sauna"},
+                {"@type": "LocationFeatureSpecification", "name": "Cold Plunge Pool"},
+                {"@type": "LocationFeatureSpecification", "name": "High-speed WiFi"},
+                {"@type": "LocationFeatureSpecification", "name": "Electric Vehicle Charger"}
               ]
             })
           }}
@@ -561,8 +573,11 @@ export default function LuxuryRetreatFixed() {
         <section id="home" style={styles.hero}>
           <div style={styles.heroOverlay}></div>
           <div style={styles.heroContent}>
-            <h1 style={styles.heroTitle}>Cotswolds Luxury Retreat | Tennis & Wellness</h1>
-            <p style={styles.heroSubtitle}>Premium Cotswolds Estate with Private Tennis Court & Wellness Facilities, Just 3 Minutes from Soho Farm House</p>
+            <h1 style={styles.heroTitle}>{PROPERTY.airbnbTitle}</h1>
+            <p style={styles.heroSubtitle}>{PROPERTY.heroSubtitle}</p>
+            <p style={{ fontSize: '1.1em', color: colors.white, marginBottom: '0.5em', textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }}>
+              {PROPERTY.bedrooms} bedrooms · {PROPERTY.bathrooms} bathrooms · Sleeps {PROPERTY.maxGuests} · {PROPERTY.location}, {PROPERTY.region}
+            </p>
             <a 
               href={AIRBNB_LINK} 
               style={styles.bookNowHero} 
@@ -578,13 +593,13 @@ export default function LuxuryRetreatFixed() {
           <div style={styles.sectionContainer}>
             <h2 style={styles.heading}>About Our Luxury Estate</h2>
             <p style={styles.paragraph}>
-              Welcome to our exclusive Cotswolds Estate, a stunning haven nestled in the heart of the English countryside. Our meticulously designed property offers a perfect blend of traditional Cotswold charm and contemporary luxury, creating an unforgettable escape from the everyday.
+              Welcome to our exclusive Cotswolds estate in {PROPERTY.location}, a stunning stone retreat set on {PROPERTY.acres} acres of peaceful Oxfordshire countryside. Beautifully renovated with over 320m² of living space across the main house and annex, this is a rare blend of rustic Cotswold charm and modern luxury.
             </p>
             <p style={styles.paragraph}>
-              Set amidst rolling hills and picturesque landscapes, this exceptional property provides the ultimate setting for family gatherings, romantic getaways, or special celebrations. With spacious living areas, luxurious bedrooms, and breathtaking outdoor spaces, every aspect of your stay has been thoughtfully curated to ensure absolute comfort and relaxation.
+              Perfect for families and groups of 6–{PROPERTY.maxGuests}, the estate combines elegant interiors, a Devol designer kitchen with AGA oven, multiple living areas, and exceptional outdoor amenities — including a year-round heated pool, private tennis court, hot tub, sauna, and cold plunge.
             </p>
             <p style={styles.paragraph}>
-              The estate features elegant interiors with high-end furnishings, a state-of-the-art kitchen, and expansive windows that flood the space with natural light while framing the spectacular countryside views. Outside, you'll find beautifully landscaped gardens, perfect for morning coffees or evening cocktails under the stars.
+              Soho Farmhouse is just {PROPERTY.sohoFarmhouseDrive} by car, or a scenic {PROPERTY.sohoFarmhouseWalk}. Whether you are planning a family gathering, celebratory weekend, or corporate retreat, every detail has been curated for comfort, privacy, and unforgettable countryside living.
             </p>
             
             {/* New drone photos */}
@@ -697,31 +712,47 @@ export default function LuxuryRetreatFixed() {
                     <span style={{ position: 'absolute', left: 0, top: '4px', color: colors.darkGreen, fontWeight: 'bold' }}>✓</span> 
                     Outdoor firepit
                   </li>
+                  <li style={{ fontSize: '1.05em', marginBottom: '12px', paddingLeft: '25px', position: 'relative' }}>
+                    <span style={{ position: 'absolute', left: 0, top: '4px', color: colors.darkGreen, fontWeight: 'bold' }}>✓</span> 
+                    Outdoor BBQ (April–October)
+                  </li>
+                  <li style={{ fontSize: '1.05em', marginBottom: '12px', paddingLeft: '25px', position: 'relative' }}>
+                    <span style={{ position: 'absolute', left: 0, top: '4px', color: colors.darkGreen, fontWeight: 'bold' }}>✓</span> 
+                    Parking for up to 6 vehicles & EV charger
+                  </li>
+                  <li style={{ fontSize: '1.05em', marginBottom: '12px', paddingLeft: '25px', position: 'relative' }}>
+                    <span style={{ position: 'absolute', left: 0, top: '4px', color: colors.darkGreen, fontWeight: 'bold' }}>✓</span> 
+                    Extendable dining table (seats 14–16)
+                  </li>
+                  <li style={{ fontSize: '1.05em', marginBottom: '12px', paddingLeft: '25px', position: 'relative' }}>
+                    <span style={{ position: 'absolute', left: 0, top: '4px', color: colors.darkGreen, fontWeight: 'bold' }}>✓</span> 
+                    Two fireplaces (gas & wood-burning)
+                  </li>
                 </ul>
               </div>
 
               <div style={{ backgroundColor: colors.white, borderRadius: '12px', padding: '25px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', border: `1px solid ${colors.lightGray}` }}>
-                <h3 style={{ fontSize: '1.3em', color: colors.darkGreen, marginBottom: '15px', fontWeight: 600 }}>Wellness</h3>
+                <h3 style={{ fontSize: '1.3em', color: colors.darkGreen, marginBottom: '15px', fontWeight: 600 }}>Wellness & Pool</h3>
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                  <li style={{ fontSize: '1.05em', marginBottom: '12px', paddingLeft: '25px', position: 'relative' }}>
+                    <span style={{ position: 'absolute', left: 0, top: '4px', color: colors.darkGreen, fontWeight: 'bold' }}>✓</span> 
+                    Year-round heated outdoor pool (heating included)
+                  </li>
+                  <li style={{ fontSize: '1.05em', marginBottom: '12px', paddingLeft: '25px', position: 'relative' }}>
+                    <span style={{ position: 'absolute', left: 0, top: '4px', color: colors.darkGreen, fontWeight: 'bold' }}>✓</span> 
+                    Private hot tub & cold plunge pool
+                  </li>
                   <li style={{ fontSize: '1.05em', marginBottom: '12px', paddingLeft: '25px', position: 'relative' }}>
                     <span style={{ position: 'absolute', left: 0, top: '4px', color: colors.darkGreen, fontWeight: 'bold' }}>✓</span> 
                     Infrared sauna
                   </li>
                   <li style={{ fontSize: '1.05em', marginBottom: '12px', paddingLeft: '25px', position: 'relative' }}>
                     <span style={{ position: 'absolute', left: 0, top: '4px', color: colors.darkGreen, fontWeight: 'bold' }}>✓</span> 
-                    Private hot tub
+                    Aesop toiletries in every bedroom
                   </li>
                   <li style={{ fontSize: '1.05em', marginBottom: '12px', paddingLeft: '25px', position: 'relative' }}>
                     <span style={{ position: 'absolute', left: 0, top: '4px', color: colors.darkGreen, fontWeight: 'bold' }}>✓</span> 
-                    Refreshing cold plunge pool
-                  </li>
-                  <li style={{ fontSize: '1.05em', marginBottom: '12px', paddingLeft: '25px', position: 'relative' }}>
-                    <span style={{ position: 'absolute', left: 0, top: '4px', color: colors.darkGreen, fontWeight: 'bold' }}>✓</span> 
-                    Welcome package upon arrival
-                  </li>
-                  <li style={{ fontSize: '1.05em', marginBottom: '12px', paddingLeft: '25px', position: 'relative' }}>
-                    <span style={{ position: 'absolute', left: 0, top: '4px', color: colors.darkGreen, fontWeight: 'bold' }}>✓</span> 
-                    Concierge services
+                    Split A/C in living room, master suite & annex
                   </li>
                 </ul>
               </div>
@@ -822,7 +853,7 @@ export default function LuxuryRetreatFixed() {
                 </div>
                 <div style={{ padding: '20px' }}>
                   <h3 style={{ fontSize: '1.4em', color: colors.darkGreen, marginBottom: '10px' }}>Bedroom 5</h3>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Type:</strong> Double</p>
+                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Type:</strong> California King</p>
                   <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Features:</strong> Shared bathroom access, charming space</p>
                   <p style={{ fontSize: '0.9em', color: '#666', fontStyle: 'italic' }}>Main House</p>
                 </div>
@@ -838,9 +869,9 @@ export default function LuxuryRetreatFixed() {
                 </div>
                 <div style={{ padding: '20px' }}>
                   <h3 style={{ fontSize: '1.4em', color: colors.darkGreen, marginBottom: '10px' }}>Bedroom 6</h3>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Type:</strong> Single</p>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Features:</strong> Shared bathroom access, perfect for one person</p>
-                  <p style={{ fontSize: '0.9em', color: '#666', fontStyle: 'italic' }}>Main House (main floor no stairs)</p>
+                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Type:</strong> Queen</p>
+                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Features:</strong> Main-floor access with one step, shared bathroom nearby</p>
+                  <p style={{ fontSize: '0.9em', color: '#666', fontStyle: 'italic' }}>Main House — main floor</p>
                 </div>
               </div>
             </div>
@@ -848,8 +879,7 @@ export default function LuxuryRetreatFixed() {
             <div style={{ marginBottom: '40px', marginTop: '40px' }}>
               <h3 style={{ fontSize: '1.8em', color: colors.darkGreen, marginBottom: '15px' }}>Annex House (40m²)</h3>
               <p style={styles.paragraph}>
-                Tucked away behind the newly surfaced private tennis court, the annex is a peaceful escape of its own.
-                It features a full bathroom and a compact kitchenette—perfect for early risers or night owls who want their own space.
+                Tucked away behind the newly surfaced private tennis court, the annex is a peaceful escape of its own — with step-free access to two bedrooms and a full bathroom, ideal for elderly guests or anyone who prefer minimal stairs. It features a compact kitchenette for light meals and snacks.
               </p>
             </div>
 
@@ -864,7 +894,7 @@ export default function LuxuryRetreatFixed() {
                 </div>
                 <div style={{ padding: '20px' }}>
                   <h3 style={{ fontSize: '1.4em', color: colors.darkGreen, marginBottom: '10px' }}>Bedroom 7</h3>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Type:</strong> King</p>
+                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Type:</strong> Super King</p>
                   <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Features:</strong> Private bathroom access, secluded retreat</p>
                   <p style={{ fontSize: '0.9em', color: '#666', fontStyle: 'italic' }}>Annex House</p>
                 </div>
@@ -880,9 +910,9 @@ export default function LuxuryRetreatFixed() {
                 </div>
                 <div style={{ padding: '20px' }}>
                   <h3 style={{ fontSize: '1.4em', color: colors.darkGreen, marginBottom: '10px' }}>Bedroom 8</h3>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Type:</strong> Flexible (Two Singles or King)</p>
-                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Features:</strong> Shared bathroom in annex, adaptable configuration</p>
-                  <p style={{ fontSize: '0.9em', color: '#666', fontStyle: 'italic' }}>Annex House</p>
+                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Type:</strong> Single</p>
+                  <p style={{ fontSize: '1.1em', marginBottom: '5px' }}><strong>Features:</strong> Shared bathroom in annex, comfortable single bed</p>
+                  <p style={{ fontSize: '0.9em', color: '#666', fontStyle: 'italic' }}>Annex House — step-free access</p>
                 </div>
               </div>
             </div>
@@ -911,7 +941,7 @@ export default function LuxuryRetreatFixed() {
             </p>
           </div>
           
-          <p style={styles.copyright}>&copy; 2025 Cotswolds Estate. All Rights Reserved.</p>
+          <p style={styles.copyright}>&copy; {new Date().getFullYear()} Cotswolds Estate. All Rights Reserved.</p>
         </div>
       </footer>
     </div>

@@ -14,7 +14,7 @@ const colors = {
   darkGray: '#333333',
 };
 
-const AIRBNB_LINK = "https://www.airbnb.ca/rooms/1414129878809697902?check_in=2025-08-20&check_out=2025-08-24&guests=10&adults=10&s=67&unique_share_id=3bb66e80-1ca0-4eb8-9866-40b102c76e50";
+import { AIRBNB_LINK } from "../../config/property";
 
 // Define TypeScript-compatible styles
 const styles = {
@@ -350,7 +350,7 @@ export default function PerfectEstateFamiliesBlog() {
           
           <p style={styles.paragraph}>
             With eight beautifully appointed bedrooms across the main house and annex, our <strong>luxury villa in the Cotswolds</strong> 
-            comfortably accommodates up to 16 guests. The main house features six bedrooms ranging from an emperor king master suite 
+            comfortably accommodates up to 15 guests. The main house features six bedrooms ranging from an emperor king master suite 
             to a cozy single, while the annex offers two additional bedrooms with flexible configurations. This variety makes our 
             estate perfect for multi-generational family holidays, where grandparents, parents, and children of all ages can find 
             their own comfortable space.
@@ -636,7 +636,7 @@ export default function PerfectEstateFamiliesBlog() {
 
           <p style={styles.paragraph}>
             Experience the perfect blend of luxury, comfort, and practicality in our <strong>Cotswolds estate near Soho Farm House</strong>. 
-            With space for up to 16 guests, comprehensive amenities for all ages, and a prime location in one of England's most 
+            With space for up to 15 guests, comprehensive amenities for all ages, and a prime location in one of England's most 
             beautiful regions, it's the ideal setting for your next family gathering. We look forward to welcoming your family to 
             our special corner of the Cotswolds.
           </p>

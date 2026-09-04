@@ -15,7 +15,7 @@ const colors = {
   darkGray: '#333333',
 };
 
-const AIRBNB_LINK = "https://www.airbnb.ca/rooms/1414129878809697902?check_in=2025-08-20&check_out=2025-08-24&guests=10&adults=10&s=67&unique_share_id=3bb66e80-1ca0-4eb8-9866-40b102c76e50";
+import { AIRBNB_LINK } from "../../config/property";
 
 // Define TypeScript-compatible styles
 const styles = {
@@ -610,7 +610,7 @@ export default function SeasonalActivitiesBlog() {
           </p>
 
           <p style={styles.paragraph}>
-            With eight bedrooms accommodating up to 16 guests, comprehensive amenities for all weather conditions, and a prime 
+            With eight bedrooms accommodating up to 15 guests, comprehensive amenities for all weather conditions, and a prime 
             location for exploring the Cotswolds' seasonal highlights, our property is the ideal year-round destination.
           </p>
 

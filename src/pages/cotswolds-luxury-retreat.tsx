@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import styles from '../styles/cotswolds-retreat.module.css'; // We'll create this file next
+import styles from '../styles/cotswolds-retreat.module.css';
+import { AIRBNB_LINK, PROPERTY } from '../config/property';
 
 // Note: Next.js Image component optimizes images automatically
 // Define image paths for easy management
@@ -19,9 +20,6 @@ const imagePaths = {
     diningKitchen: '/photos/listings/Cotswolds Luxury Retreat/224A5368.jpg',
   }
 };
-
-// Airbnb link
-const AIRBNB_LINK = "https://www.airbnb.ca/rooms/1414129878809697902?check_in=2025-08-20&check_out=2025-08-24&guests=10&adults=10&s=67&unique_share_id=3bb66e80-1ca0-4eb8-9866-40b102c76e50";
 
 // Mobile Menu Component - Separated for better isolation
 const MobileMenuOverlay = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
@@ -226,22 +224,22 @@ export default function CotswoldsLuxuryRetreat() {
   return (
     <>
       <Head>
-        <title>Cotswolds Luxury Retreat | Premium Estate with Tennis Court & Wellness Facilities</title>
-        <meta name="description" content="Experience the ultimate luxury retreat in the heart of the Cotswolds. Our exclusive estate features elegant interiors, private tennis court, wellness facilities, and is just minutes from Soho Farmhouse." />
-        <meta name="keywords" content="Cotswolds luxury retreat, Cotswolds estate rental, luxury Cotswolds vacation, Cotswolds holiday home, Soho Farmhouse, tennis court, wellness retreat" />
+        <title>{PROPERTY.airbnbTitle} | Cotswolds Luxury Retreat</title>
+        <meta name="description" content={PROPERTY.metaDescription} />
+        <meta name="keywords" content="Cotswolds luxury retreat, heated pool, Soho Farmhouse, Sandford Saint Martin, tennis court, 8 bedroom estate, wellness retreat" />
         
         {/* Canonical URL */}
         <link rel="canonical" href="https://www.cotswoldsvacation.com/cotswolds-luxury-retreat" />
         
         {/* Open Graph / Facebook */}
-        <meta property="og:title" content="Cotswolds Luxury Retreat | Premium Estate with Tennis Court & Wellness Facilities" />
-        <meta property="og:description" content="Experience the ultimate luxury retreat in the heart of the Cotswolds. Our exclusive estate features elegant interiors, private tennis court, wellness facilities, and is just minutes from Soho Farmhouse." />
+        <meta property="og:title" content={`${PROPERTY.airbnbTitle} | Cotswolds Luxury Retreat`} />
+        <meta property="og:description" content={PROPERTY.metaDescription} />
         <meta property="og:image" content="https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg" />
         <meta property="og:url" content="https://www.cotswoldsvacation.com/cotswolds-luxury-retreat" />
         
         {/* Twitter */}
-        <meta name="twitter:title" content="Cotswolds Luxury Retreat | Premium Estate with Tennis Court & Wellness" />
-        <meta name="twitter:description" content="Experience the ultimate luxury retreat in the heart of the Cotswolds, just minutes from Soho Farmhouse." />
+        <meta name="twitter:title" content={`${PROPERTY.airbnbTitle} | Cotswolds Luxury Retreat`} />
+        <meta name="twitter:description" content={PROPERTY.tagline} />
         <meta name="twitter:image" content="https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg" />
         
         {/* Structured Data (JSON-LD) for LodgingBusiness */}
@@ -251,19 +249,26 @@ export default function CotswoldsLuxuryRetreat() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LodgingBusiness",
-              "name": "Cotswolds Luxury Retreat",
+              "name": PROPERTY.airbnbTitle,
               "image": "https://www.cotswoldsvacation.com/photos/listings/Cotswolds%20Luxury%20Retreat/DJI_20250602090653_0526_D.jpg",
               "address": {
                 "@type": "PostalAddress",
-                "addressRegion": "Cotswolds",
-                "addressCountry": "United Kingdom"
+                "addressLocality": PROPERTY.location,
+                "addressRegion": PROPERTY.region,
+                "addressCountry": PROPERTY.country
               },
-              "description": "An exclusive luxury estate in the heart of the Cotswolds with private tennis court and wellness facilities.",
+              "description": PROPERTY.metaDescription,
+              "numberOfRooms": PROPERTY.bedrooms,
+              "occupancy": {
+                "@type": "QuantitativeValue",
+                "maxValue": PROPERTY.maxGuests
+              },
               "amenityFeature": [
+                {"@type": "LocationFeatureSpecification", "name": "Heated Outdoor Pool"},
                 {"@type": "LocationFeatureSpecification", "name": "Tennis Court"},
-                {"@type": "LocationFeatureSpecification", "name": "Wellness Facilities"},
-                {"@type": "LocationFeatureSpecification", "name": "High-speed Internet"},
-                {"@type": "LocationFeatureSpecification", "name": "Luxury Bedrooms"}
+                {"@type": "LocationFeatureSpecification", "name": "Hot Tub"},
+                {"@type": "LocationFeatureSpecification", "name": "Sauna"},
+                {"@type": "LocationFeatureSpecification", "name": "Cold Plunge Pool"}
               ],
               "url": "https://www.cotswoldsvacation.com/cotswolds-luxury-retreat",
               "priceRange": "$$$$"
@@ -328,8 +333,8 @@ export default function CotswoldsLuxuryRetreat() {
         <main>
           <section id="home" className={styles.hero}>
             <div className={styles.heroContent}>
-              <h1>Cotswolds Luxury Retreat</h1>
-              <p>An Oasis of Tranquility</p>
+              <h1>{PROPERTY.airbnbTitle}</h1>
+              <p>{PROPERTY.heroSubtitle}</p>
               {/* Video placeholder */}
               <div className={styles.videoPlaceholder}>
                 <p>Your amazing video will be here soon!</p>

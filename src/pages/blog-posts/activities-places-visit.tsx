@@ -14,7 +14,7 @@ const colors = {
   darkGray: '#333333',
 };
 
-const AIRBNB_LINK = "https://www.airbnb.ca/rooms/1414129878809697902?check_in=2025-08-20&check_out=2025-08-24&guests=10&adults=10&s=67&unique_share_id=3bb66e80-1ca0-4eb8-9866-40b102c76e50";
+import { AIRBNB_LINK, PROPERTY } from "../../config/property";
 
 // Define TypeScript-compatible styles
 const styles = {
@@ -732,7 +732,7 @@ export default function ActivitiesPlacesVisitBlog() {
           <ul style={{listStyle: 'none', padding: 0, margin: '0 0 20px 0'}}>
             <li style={styles.listItem}>
               <span style={styles.listItemDot}></span>
-              <strong>Soho Farm House</strong> (10 min drive) – Members and their guests can enjoy the restaurant, spa, cinema, indoor and 
+              <strong>Soho Farm House</strong> ({PROPERTY.sohoFarmhouseDrive}) – Members and their guests can enjoy the restaurant, spa, cinema, indoor and 
               outdoor pools, tennis courts, and various activities like horse riding.
             </li>
             <li style={styles.listItem}>
